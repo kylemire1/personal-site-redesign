@@ -20,15 +20,12 @@ const StyledContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.875rem 0;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
 `;
 
 const Nav = styled.nav`
   display: flex;
-
-  > a + a {
-    margin-left: 1.5rem;
-  }
 `;
 
 const Header = () => {
