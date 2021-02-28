@@ -5,7 +5,7 @@ import Link from 'next/link';
 const NavItem = ({ href, children }) => {
   const { pathname } = useRouter();
 
-  if (pathname === '/') {
+  if (pathname !== '/') {
     return (
       <Link href={href}>
         <a>{children}</a>
