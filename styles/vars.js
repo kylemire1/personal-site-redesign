@@ -7,11 +7,15 @@ const vars = {
   /** 145px */
   fontSizeHeadingContact: '9.063rem',
   /** 135px */
-  fontSizeHeading1: '8.438rem',
+  fontSizeHeading5: '8.438rem',
+  /** 135px */
+  fontSizeHeading4: '3.75rem',
   /** 48px */
-  fontSizeHeading2: '3rem',
+  fontSizeHeading3: '3rem',
+  /** 30px */
+  fontSizeHeading2: '1.875rem',
   /** 24px */
-  fontSizeHeading3: '1.5rem',
+  fontSizeHeading1: '1.5rem',
   /** 24px */
   fontSizeTextLarge: '1.5rem',
   /** 20px */
@@ -21,7 +25,7 @@ const vars = {
   fontWeightLight: '300',
   fontWeightNormal: 'normal',
   fontWeightBold: '700',
-  fontWeightBolder: '900',
+  fontWeightBlack: '900',
   colorAlmostBlack: '#333',
   colorBlack: 'black',
   colorWhite: '#FFF',

@@ -11,13 +11,10 @@ const StyledHeader = styled.header`
   left: 0;
   right: 0;
   z-index: 99;
-
-  > div {
-  }
 `;
 
 const StyledContainer = styled(Container)`
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-top: 0.875rem;
