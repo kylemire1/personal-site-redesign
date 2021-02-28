@@ -1,19 +1,38 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import styled, { css } from 'styled-components';
+
+import vars from '../../styles/vars';
+
+const commonStyles = css`
+  font-weight: ${vars.fontWeightBold};
+
+  & + & {
+    margin-left: 1.5rem;
+  }
+`;
+
+const StyledNextLink = styled(Link)`
+  ${commonStyles}
+`;
+
+const StyledAnchorLink = styled.a`
+  ${commonStyles}
+`;
 
 const NavItem = ({ href, children }) => {
   const { pathname } = useRouter();
 
   if (pathname !== '/') {
     return (
-      <Link href={href}>
+      <StyledNextLink href={href}>
         <a>{children}</a>
-      </Link>
+      </StyledNextLink>
     );
   }
 
-  return <a href={href}>{children}</a>;
+  return <StyledAnchorLink href={href}>{children}</StyledAnchorLink>;
 };
 
 export default NavItem;

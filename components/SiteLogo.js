@@ -1,9 +1,11 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import styled from "styled-components";
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
-import LogoImg from "./icons/Logo";
+import LogoImg from './icons/Logo';
+
+import vars from '../styles/vars';
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -12,13 +14,17 @@ const LogoWrapper = styled.div`
 `;
 
 const LogoText = styled.span`
-  margin-left: 1rem;
+  display: none;
+
+  @media (min-width: ${vars.breakpointLarge}) {
+    display: block;
+  }
 `;
 
 const Logo = () => {
   const { pathname } = useRouter();
 
-  if (pathname === "/") {
+  if (pathname === '/') {
     return (
       <a href="/#home">
         <LogoWrapper>
