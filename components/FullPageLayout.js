@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import ReactFullpage from "@fullpage/react-fullpage";
+import React, { useState, useEffect } from 'react';
+import ReactFullpage from '@fullpage/react-fullpage';
 
-import HomeLayout from "./HomeLayout";
-import Header from "./Header";
+import HomeLayout from './HomeLayout';
+import Header from './Header';
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -12,23 +12,23 @@ const pluginWrapper = () => {
    */
 };
 
-const originalColors = ["#white", "#0798ec"];
+const originalColors = ['#white', '#0798ec'];
 
 const FullPageLayout = () => {
   const [activeSectionData, setActiveSectionData] = useState({});
   const [sectionsColor] = useState([...originalColors]);
   const [fullpages] = useState([
     {
-      text: "Home",
-      anchor: "home",
+      text: 'Home',
+      anchor: 'home',
     },
-    { text: "page 2", anchor: "portfolio" },
+    { text: 'page 2', anchor: 'portfolio' },
   ]);
 
   const anchors = fullpages.map((page) => page.anchor);
 
   useEffect(() => {
-    if (typeof fullpage_api !== "undefined") {
+    if (typeof fullpage_api !== 'undefined') {
       setActiveSectionData(fullpage_api.getActiveSection());
     }
   }, []);
@@ -40,7 +40,6 @@ const FullPageLayout = () => {
     <>
       <Header />
       <ReactFullpage
-        navigation
         pluginWrapper={pluginWrapper}
         onLeave={onLeave}
         anchors={anchors}
