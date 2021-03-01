@@ -6,7 +6,11 @@ import '../styles/globals.scss';
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-size: 85%;
+    font-size: 80%;
+
+    @media (min-width: ${vars.breakpointExtraSmall}) {
+      font-size: 85%;
+    }
 
     @media (min-width: ${vars.breakpointLarge}) {
       font-size: 100%;
@@ -17,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: ${vars.fontWeightLight};
     font-size: ${vars.fontSizeText};
     line-height: 1.5;
+    max-width: 75ch;
   }
 
   p:not(:last-child) {
