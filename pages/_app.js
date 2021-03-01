@@ -1,8 +1,27 @@
+import { useState, useMemo } from 'react';
 import { createGlobalStyle } from 'styled-components';
+
+import SectionContext from '../contexts/SectionContext';
 
 import vars from '../styles/vars';
 import '../styles/normalize.css';
 import '../styles/globals.scss';
+
+function MyApp({ Component, pageProps }) {
+  const [activeSectionData, setActiveSectionData] = useState(null);
+
+  const value = useMemo(() => [activeSectionData, setActiveSectionData], [
+    activeSectionData,
+    setActiveSectionData,
+  ]);
+
+  return (
+    <SectionContext.Provider value={value}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </SectionContext.Provider>
+  );
+}
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -28,14 +47,5 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 1rem;
   }
 `;
-
-function MyApp({ Component, pageProps }) {
-  return (
-    <div>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </div>
-  );
-}
 
 export default MyApp;

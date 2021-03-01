@@ -10,16 +10,6 @@ import CheckMeOutSection from './CheckMeOutSection';
 
 import vars from '../../styles/vars';
 
-const HomeWrapper = styled(Wrapper)`
-  background-color: ${vars.colorPrimary};
-  grid-template-rows: 1.4fr 1.6fr 1fr;
-  grid-template-columns: 2fr 1fr;
-
-  @media (min-height: 800px) {
-    grid-template-rows: 1.6fr 1.4fr 1fr;
-  }
-`;
-
 const HomeLayout = () => {
   return (
     <Layout>
@@ -33,6 +23,16 @@ const HomeLayout = () => {
     </Layout>
   );
 };
+
+const HomeWrapper = styled(Wrapper)`
+  background-color: ${vars.colorPrimary};
+  grid-template-rows: 1.4fr 1.6fr 1fr;
+  grid-template-columns: 2fr 1fr;
+
+  @media (min-height: 800px) {
+    grid-template-rows: 1.6fr 1.4fr 1fr;
+  }
+`;
 
 const Me = styled(PageSection)`
   display: none;
