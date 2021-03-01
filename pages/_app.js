@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-weight: ${vars.fontWeightLight};
     font-size: ${vars.fontSizeText};
-    line-height: 1.3;
+    line-height: 1.5;
   }
 
   p:not(:last-child) {

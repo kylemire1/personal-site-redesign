@@ -7,20 +7,6 @@ import LogoImg from './icons/Logo';
 
 import vars from '../styles/vars';
 
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const LogoText = styled.span`
-  display: none;
-
-  @media (min-width: ${vars.breakpointLarge}) {
-    display: block;
-  }
-`;
-
 const Logo = () => {
   const { pathname } = useRouter();
 
@@ -46,5 +32,19 @@ const Logo = () => {
     </Link>
   );
 };
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LogoText = styled.span`
+  display: none;
+
+  @media (min-width: ${vars.breakpointLarge}) {
+    display: block;
+  }
+`;
 
 export default Logo;
