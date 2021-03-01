@@ -5,32 +5,6 @@ import SiteLogo from '../SiteLogo';
 import { Container } from '../styled/global';
 import NavItem from './NavItem';
 
-const StyledHeader = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-
-  > div {
-  }
-`;
-
-const StyledContainer = styled(Container)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.875rem 0;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-
-  > a + a {
-    margin-left: 1.5rem;
-  }
-`;
-
 const Header = () => {
   return (
     <StyledHeader>
@@ -45,5 +19,25 @@ const Header = () => {
     </StyledHeader>
   );
 };
+
+const StyledHeader = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+`;
+
+const StyledContainer = styled(Container)`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+`;
 
 export default Header;
