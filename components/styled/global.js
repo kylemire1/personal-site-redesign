@@ -43,5 +43,6 @@ export const orangeButtonStyles = css`
   color: ${vars.colorHighlight};
   font-weight: ${vars.fontWeightLight};
   font-size: ${vars.fontSizeText};
+  white-space: nowrap;
   cursor: pointer;
 `;

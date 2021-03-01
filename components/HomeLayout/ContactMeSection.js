@@ -12,7 +12,7 @@ const ContactMeSection = () => {
       <Container>
         <ContactHeading as="h2">Don't need convincing?</ContactHeading>
         <ContactText>
-          Or just want to say hi?{' '}
+          Or just saying hi?{' '}
           <span role="img" aria-label="Waving hand">
             👋
           </span>
@@ -26,8 +26,9 @@ const ContactMeSection = () => {
 };
 
 const ContactMeNow = styled(PageSection)`
-  padding: 2em 0;
+  grid-column: 2 / -1;
   background-color: ${vars.colorPrimaryDark};
+  border-top-left-radius: ${vars.borderRadiusLarge};
 `;
 
 const ContactHeading = styled(Heading)`
@@ -40,7 +41,8 @@ const ContactText = styled.p`
 `;
 
 const ButtonWrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 export default ContactMeSection;

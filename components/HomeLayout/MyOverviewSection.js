@@ -24,10 +24,15 @@ const MyOverviewSection = () => {
 };
 
 const MyOverview = styled(PageSection)`
+  grid-column: 1 / -1;
   margin-top: -2rem;
-  padding: 8em 0 3em;
   background-color: ${vars.colorPrimary};
   z-index: 0;
+  padding: 8em 0 3em;
+
+  @media (min-height: ${vars.breakpointMedium}) {
+    padding: 8em 0 3em;
+  }
 `;
 
 const OverviewText = styled.p`
