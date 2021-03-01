@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 import vars from '../../styles/vars';
+import SectionContext from '../../contexts/SectionContext';
 
 const NavItem = ({ href, children }) => {
   const { pathname } = useRouter();
+  const [activeSectionData] = useContext(SectionContext);
 
   if (pathname !== '/') {
     return (
-      <StyledNextLink href={href}>
+      <StyledNextLink section={activeSectionData?.index + 1} href={href}>
         <a>{children}</a>
       </StyledNextLink>
     );
   }
 
-  return <StyledAnchorLink href={href}>{children}</StyledAnchorLink>;
+  return (
+    <StyledAnchorLink section={activeSectionData?.index + 1} href={href}>
+      {children}
+    </StyledAnchorLink>
+  );
 };
 
-const commonStyles = css`
+const linkStyles = css`
   font-weight: ${vars.fontWeightBold};
 
   & + & {
@@ -28,11 +34,17 @@ const commonStyles = css`
 `;
 
 const StyledNextLink = styled(Link)`
-  ${commonStyles}
+  ${linkStyles}
+  color: ${({ section }) =>
+    section === 1 ? vars.colorAlmostBlack : vars.colorWhite};
+  transition: color 500ms ${vars.ease};
 `;
 
 const StyledAnchorLink = styled.a`
-  ${commonStyles}
+  ${linkStyles}
+  color: ${({ section }) =>
+    section === 1 ? vars.colorAlmostBlack : vars.colorWhite};
+  transition: color 500ms ${vars.ease};
 `;
 
 export default NavItem;

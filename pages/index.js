@@ -1,13 +1,13 @@
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Head from 'next/head';
 
-import FullPageLayout from "../components/FullPageLayout";
+import FullPageLayout from '../components/FullPageLayout';
 
 const Home = () => {
   return (
     <>
       <Head>
-        <title>My styled page</title>
+        <title>Chicago based web developer Kyle Lemire</title>
       </Head>
       <FullPageLayout />
     </>

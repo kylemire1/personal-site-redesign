@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
 
 import HomeLayout from './HomeLayout';
+import PortfolioLayout from './PortfolioLayout';
 import Header from './Header';
+import SectionContext from '../contexts/SectionContext';
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -12,11 +14,8 @@ const pluginWrapper = () => {
    */
 };
 
-const originalColors = ['#white', '#0798ec'];
-
 const FullPageLayout = () => {
-  const [activeSectionData, setActiveSectionData] = useState({});
-  const [sectionsColor] = useState([...originalColors]);
+  const [, setActiveSectionData] = useContext(SectionContext);
   const [fullpages] = useState([
     {
       text: 'Home',
@@ -43,12 +42,13 @@ const FullPageLayout = () => {
         pluginWrapper={pluginWrapper}
         onLeave={onLeave}
         anchors={anchors}
+        licenseKey={process.env.NEXT_PUBLIC_FULLPAGEJS_KEY}
         // scrollHorizontally = {true}
-        sectionsColor={sectionsColor}
-        render={(comp) => (
+        sectionsColor={['#white', '#0798ec']}
+        render={() => (
           <ReactFullpage.Wrapper>
             <HomeLayout />
-            <HomeLayout />
+            <PortfolioLayout />
           </ReactFullpage.Wrapper>
         )}
       />
