@@ -5,6 +5,21 @@ import SiteLogo from '../SiteLogo';
 import { Container } from '../styled/global';
 import NavItem from './NavItem';
 
+const Header = () => {
+  return (
+    <StyledHeader>
+      <StyledContainer>
+        <SiteLogo />
+        <Nav role="menu">
+          <NavItem href="/#portfolio">Portfolio</NavItem>
+          <NavItem href="/#experience">Experience</NavItem>
+          <NavItem href="/#contact">Contact</NavItem>
+        </Nav>
+      </StyledContainer>
+    </StyledHeader>
+  );
+};
+
 const StyledHeader = styled.header`
   position: fixed;
   top: 0;
@@ -24,20 +39,5 @@ const StyledContainer = styled(Container)`
 const Nav = styled.nav`
   display: flex;
 `;
-
-const Header = () => {
-  return (
-    <StyledHeader>
-      <StyledContainer>
-        <SiteLogo />
-        <Nav role="menu">
-          <NavItem href="/#portfolio">Portfolio</NavItem>
-          <NavItem href="/#experience">Experience</NavItem>
-          <NavItem href="/#contact">Contact</NavItem>
-        </Nav>
-      </StyledContainer>
-    </StyledHeader>
-  );
-};
 
 export default Header;

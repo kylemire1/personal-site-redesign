@@ -5,6 +5,20 @@ import styled, { css } from 'styled-components';
 
 import vars from '../../styles/vars';
 
+const NavItem = ({ href, children }) => {
+  const { pathname } = useRouter();
+
+  if (pathname !== '/') {
+    return (
+      <StyledNextLink href={href}>
+        <a>{children}</a>
+      </StyledNextLink>
+    );
+  }
+
+  return <StyledAnchorLink href={href}>{children}</StyledAnchorLink>;
+};
+
 const commonStyles = css`
   font-weight: ${vars.fontWeightBold};
 
@@ -20,19 +34,5 @@ const StyledNextLink = styled(Link)`
 const StyledAnchorLink = styled.a`
   ${commonStyles}
 `;
-
-const NavItem = ({ href, children }) => {
-  const { pathname } = useRouter();
-
-  if (pathname !== '/') {
-    return (
-      <StyledNextLink href={href}>
-        <a>{children}</a>
-      </StyledNextLink>
-    );
-  }
-
-  return <StyledAnchorLink href={href}>{children}</StyledAnchorLink>;
-};
 
 export default NavItem;
