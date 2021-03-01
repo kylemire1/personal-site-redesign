@@ -12,11 +12,11 @@ import vars from '../../styles/vars';
 
 const HomeWrapper = styled(Wrapper)`
   background-color: ${vars.colorPrimary};
-  grid-template-rows: 35% 40% 25%;
+  grid-template-rows: 1.4fr 1.6fr 1fr;
   grid-template-columns: 2fr 1fr;
 
   @media (min-height: 800px) {
-    grid-template-rows: 40% 35% 25%;
+    grid-template-rows: 1.6fr 1.4fr 1fr;
   }
 `;
 

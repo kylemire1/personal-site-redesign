@@ -26,7 +26,7 @@ const HelloWrapper = styled(PageSection)`
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   background-color: ${vars.colorWhite};
-  box-shadow: 0 4px 90px ${rgba(vars.colorAlmostBlack, 0.3)};
+  box-shadow: 0 4px 90px ${rgba(vars.colorBlack, 0.5)};
   z-index: 1;
 
   @media (max-width: ${vars.breakpointLarge}) {

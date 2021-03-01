@@ -38,7 +38,7 @@ export const Heading = styled.h1`
 export const orangeButtonStyles = css`
   border: solid ${vars.pixel} ${vars.colorHighlight};
   border-radius: ${vars.borderRadiusSmall};
-  padding: 1em;
+  padding: 0.75em 1em;
   background-color: none;
   color: ${vars.colorHighlight};
   font-weight: ${vars.fontWeightLight};
