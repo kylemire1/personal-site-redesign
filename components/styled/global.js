@@ -45,4 +45,12 @@ export const orangeButtonStyles = css`
   font-size: ${vars.fontSizeText};
   white-space: nowrap;
   cursor: pointer;
+  transition: all 250ms ${vars.ease};
+
+  :hover,
+  :focus {
+    background-color: ${vars.colorHighlight};
+    color: ${vars.colorPrimaryDark};
+    transition: all 250ms ${vars.ease};
+  }
 `;
