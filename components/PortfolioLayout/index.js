@@ -6,7 +6,6 @@ import { Wrapper, Heading, Container } from '../styled/global';
 
 import vars from '../../styles/vars';
 import PortfolioShowcase from './PortfolioShowcase';
-import AllProjects from './AllProjects';
 
 const Index = () => {
   return (
@@ -16,7 +15,6 @@ const Index = () => {
           <PortfolioHeading>Portfolio</PortfolioHeading>
         </Container>
         <PortfolioShowcase />
-        <AllProjects />
       </PortfolioWrapper>
     </Layout>
   );
@@ -24,7 +22,7 @@ const Index = () => {
 
 const PortfolioWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 1.5rem;
-  grid-template-rows: auto 5fr 1fr 4rem;
+  grid-template-rows: auto 5fr 4rem;
   background-color: ${vars.colorPrimary};
   padding-top: 8em;
 `;
