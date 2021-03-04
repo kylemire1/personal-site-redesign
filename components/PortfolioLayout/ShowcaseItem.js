@@ -7,7 +7,15 @@ import { Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
 
-const ShowcaseItem = ({ name, image, link, repo, projectFor }) => {
+const ShowcaseItem = ({
+  name,
+  description,
+  image,
+  link,
+  repo,
+  caseStudy,
+  projectFor,
+}) => {
   const [showImage, setShowImage] = useState(true);
 
   return (
@@ -17,6 +25,24 @@ const ShowcaseItem = ({ name, image, link, repo, projectFor }) => {
       </CloseButton>
       <ItemContent>
         <ItemHeading as="h3">{name}</ItemHeading>
+        <ItemDescription>{description}</ItemDescription>
+        <ItemLinks>
+          {link && (
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              View Project
+            </a>
+          )}
+          {repo && (
+            <a href={repo} target="_blank" rel="noopener noreferrer">
+              Project Repo
+            </a>
+          )}
+          {caseStudy && (
+            <a href={caseStudy} target="_blank" rel="noopener noreferrer">
+              View Case Study
+            </a>
+          )}
+        </ItemLinks>
       </ItemContent>
       <CSSTransition in={showImage} timeout={250} classNames="showcase-image">
         <ItemImage
@@ -72,6 +98,16 @@ const ItemHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading1};
 `;
 
+const ItemDescription = styled.p`
+  display: none;
+
+  @media (min-height: ${vars.breakpointMedium}) {
+    display: block;
+    margin: 0;
+    font-size: ${vars.fontSizeTextSmall};
+  }
+`;
+
 const ItemImage = styled.button`
   border: none;
   position: absolute;
@@ -95,6 +131,19 @@ const ItemImage = styled.button`
     background-image: ${vars.gradientHorizontal};
     opacity: 0.3;
     pointer-events: none;
+  }
+`;
+
+const ItemLinks = styled.div`
+  display: flex;
+
+  a {
+    color: ${vars.colorPrimary};
+    font-weight: ${vars.fontWeightBold};
+  }
+
+  a + a {
+    margin-left: 1.5rem;
   }
 `;
 
