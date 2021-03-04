@@ -24,7 +24,9 @@ const ShowcaseItem = ({
         <IoIosCloseCircleOutline />
       </CloseButton>
       <ItemContent>
-        <ItemHeading as="h3">{name}</ItemHeading>
+        <ItemHeading as="h3">
+          {name} <span aria-label={`for ${projectFor}`}>{projectFor}</span>
+        </ItemHeading>
         <ItemDescription>{description}</ItemDescription>
         <ItemLinks>
           {link && (
@@ -92,10 +94,30 @@ const StyledItem = styled.div`
   }
 `;
 
-const ItemContent = styled.div``;
+const ItemContent = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: solid ${vars.pixel} ${vars.colorPrimary};
+  padding-bottom: 0.5em;
+`;
 
 const ItemHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading1};
+
+  span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: ${vars.fontSizeTextSmall};
+    font-weight: ${vars.fontWeightLight};
+    color: ${vars.colorPrimary};
+    text-align: right;
+    padding-bottom: 0.5em;
+  }
 `;
 
 const ItemDescription = styled.p`
@@ -153,6 +175,7 @@ const CloseButton = styled.button`
   position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 10;
   cursor: pointer;
 
   svg {
