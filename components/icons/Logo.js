@@ -6,12 +6,6 @@ import SectionContext from '../../contexts/SectionContext';
 
 import vars from '../../styles/vars';
 
-const Svg = styled.svg`
-  path {
-    transition: fill 500ms ${vars.ease};
-  }
-`;
-
 const Logo = () => {
   const { pathname } = useRouter();
   const [activeSectionData] = useContext(SectionContext);
@@ -56,5 +50,11 @@ const Logo = () => {
     </Svg>
   );
 };
+
+const Svg = styled.svg`
+  path {
+    transition: fill 500ms ${vars.ease};
+  }
+`;
 
 export default Logo;
