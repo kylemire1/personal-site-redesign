@@ -33,8 +33,10 @@ const vars = {
   colorPrimary: '#524A86',
   colorPrimaryDark: '#211E33',
   colorHighlight: '#EE8041',
-  gradientBrightToDark:
+  gradientVertical:
     'linear-gradient(0deg, rgba(119,0,147,1) 0%, rgba(214,107,45,1) 100%)',
+  gradientHorizontal:
+    'linear-gradient(90deg, rgba(119,0,147,1) 0%, rgba(214,107,45,1) 100%)',
   borderRadiusSmall: '0.625em',
   borderRadiusLarge: '1.875em',
   /** 1px */
