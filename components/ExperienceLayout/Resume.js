@@ -8,6 +8,7 @@ import { Heading, Container } from '../styled/global';
 
 import vars from '../../styles/vars';
 import resumeData from './resumeData';
+import Pdf from '../icons/Pdf';
 
 const Resume = () => {
   const [openResumeNotes] = useContext(ResumeContext);
@@ -35,6 +36,7 @@ const Resume = () => {
       </Container>
       <ResumeDownloadButton href="/#" target="_blank" rel="noopener noreferrer">
         <span>Download Full Resume</span>
+        <Pdf />
       </ResumeDownloadButton>
     </ResumeWrapper>
   );
@@ -54,12 +56,17 @@ const ResumeHeading = styled(Heading)`
 `;
 
 const ResumeDownloadButton = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   background-color: ${vars.colorHighlight};
   color: ${vars.colorPrimaryDark};
   font-size: ${vars.fontSizeTextSmall};
+  font-weight: ${vars.fontWeightBold};
   border-radius: ${vars.borderRadiusSmall};
   margin-left: 1rem;
-  padding: 1em;
+  padding: 0.75em 1em;
   position: absolute;
   bottom: 2rem;
   right: -1rem;
@@ -74,6 +81,10 @@ const ResumeDownloadButton = styled.a`
     border-style: solid;
     border-width: 10px 10px 0 0;
     border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
+  }
+
+  svg {
+    margin-left: 0.5rem;
   }
 `;
 
