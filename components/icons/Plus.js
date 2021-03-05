@@ -3,7 +3,7 @@ import React from 'react';
 const Plus = () => {
   return (
     <svg
-      enable-background="new 0 0 96 96"
+      enableBackground="new 0 0 96 96"
       height="96px"
       id="square_add"
       version="1.1"
