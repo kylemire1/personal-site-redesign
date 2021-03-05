@@ -8,6 +8,7 @@ export const Container = styled.div`
   max-width: 105rem;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
 
   @media (min-width: ${vars.breakpointLarge}) {
     padding: 0 0.25rem;
