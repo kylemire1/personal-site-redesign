@@ -17,7 +17,7 @@ const ResumeNotesList = ({ id, notes }) => {
 
   return (
     <CSSTransition appear in={showNotes} timeout={250} classNames="notes-list">
-      <ResumeNotesListWrapper>
+      <ResumeNotesListWrapper aria-expanded={showNotes}>
         <StyledResumeNotesList>
           {notes.map((note, noteIndex) => (
             <li
