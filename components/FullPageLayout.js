@@ -6,6 +6,7 @@ import PortfolioLayout from './PortfolioLayout';
 import Header from './Header';
 import SectionContext from '../contexts/SectionContext';
 import ExperienceLayout from './ExperienceLayout';
+import ContactLayout from './ContactLayout';
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -18,7 +19,7 @@ const pluginWrapper = () => {
 const FullPageLayout = () => {
   const [, setActiveSectionData] = useContext(SectionContext);
 
-  const anchors = ['home', 'portfolio', 'experience'];
+  const anchors = ['home', 'portfolio', 'experience', 'contact'];
 
   useEffect(() => {
     if (typeof fullpage_api !== 'undefined') {
@@ -44,6 +45,7 @@ const FullPageLayout = () => {
             <HomeLayout />
             <PortfolioLayout />
             <ExperienceLayout />
+            <ContactLayout />
           </ReactFullpage.Wrapper>
         )}
       />

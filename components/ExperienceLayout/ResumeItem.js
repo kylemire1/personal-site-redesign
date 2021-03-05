@@ -37,7 +37,7 @@ const ResumeItem = ({
     <StyledResumeItem>
       <EmploymentPeriod>
         {startMonth && startMonth}
-        {startYear && ` ${startYear}`} - {endMonth && endMonth}
+        {startYear && ` ${startYear}`} &mdash; {endMonth && endMonth}
         {endYear && ` ${endYear}`}
         {current && ' Present'}
       </EmploymentPeriod>

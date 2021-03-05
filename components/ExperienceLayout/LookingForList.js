@@ -36,6 +36,7 @@ const LookingForListItem = styled.li`
   font-size: ${vars.fontSizeTextSmall};
   padding: 0.75em;
   border-radius: ${vars.borderRadiusLarge};
+  margin-right: 0.5rem;
 
   @media (min-height: ${vars.breakpointMedium}) {
     font-weight: bold;
