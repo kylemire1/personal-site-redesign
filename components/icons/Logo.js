@@ -10,7 +10,10 @@ const Logo = () => {
   const { pathname } = useRouter();
   const [activeSectionData] = useContext(SectionContext);
 
-  const isWhite = pathname === '/' && activeSectionData?.index !== 0;
+  const isWhite =
+    pathname === '/' &&
+    activeSectionData?.index !== 0 &&
+    activeSectionData?.index !== 2;
   const lightColor = isWhite ? vars.colorWhite : '#7268b5';
   const darkColor = isWhite ? '#DBDBDB' : vars.colorPrimary;
 

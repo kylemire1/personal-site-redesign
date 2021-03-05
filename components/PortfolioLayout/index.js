@@ -7,7 +7,7 @@ import { Wrapper, Heading, Container } from '../styled/global';
 import vars from '../../styles/vars';
 import PortfolioShowcase from './PortfolioShowcase';
 
-const Index = () => {
+const PortfolioLayout = () => {
   return (
     <Layout>
       <PortfolioWrapper>
@@ -24,7 +24,7 @@ const PortfolioWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 1.5rem;
   grid-template-rows: auto 5fr 4rem;
   background-color: ${vars.colorPrimary};
-  padding-top: 8em;
+  padding-top: 6em;
 `;
 
 const PortfolioHeading = styled(Heading)`
@@ -32,4 +32,4 @@ const PortfolioHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading3};
 `;
 
-export default Index;
+export default PortfolioLayout;

@@ -38,6 +38,7 @@ const StyledContainer = styled(Container)`
 
 const Nav = styled.nav`
   display: flex;
+  padding-right: 1rem;
 `;
 
 export default Header;
