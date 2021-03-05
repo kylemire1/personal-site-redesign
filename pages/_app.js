@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ul {
-    padding-left: 1rem;
+    padding-left: 1.25rem;
     margin-bottom: 1.5rem;
     li + li {
       margin-top: 1em;

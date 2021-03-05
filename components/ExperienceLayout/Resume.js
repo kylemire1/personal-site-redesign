@@ -43,11 +43,16 @@ const Resume = () => {
 };
 
 const ResumeWrapper = styled.div`
-  padding: 6rem 0 6rem;
+  padding: 6rem 0 4rem;
   background-color: ${vars.colorWhite};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   z-index: 2;
   position: relative;
+
+  @media (min-width: ${vars.breakpointExtraSmall}),
+    (min-height: ${vars.breakpointMedium}) {
+    padding: 6rem 0 6rem;
+  }
 `;
 
 const ResumeHeading = styled(Heading)`
@@ -68,23 +73,28 @@ const ResumeDownloadButton = styled.a`
   margin-left: 1rem;
   padding: 0.75em 1em;
   position: absolute;
-  bottom: 2rem;
+  bottom: 0.75rem;
   right: -1rem;
-
-  ::after {
-    content: '';
-    position: absolute;
-    bottom: -0.7rem;
-    right: 0.3rem;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 0 0;
-    border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
-  }
 
   svg {
     margin-left: 0.5rem;
+  }
+
+  @media (min-width: ${vars.breakpointExtraSmall}),
+    (min-height: ${vars.breakpointMedium}) {
+    bottom: 2rem;
+
+    ::after {
+      content: '';
+      position: absolute;
+      bottom: -0.7rem;
+      right: 0.3rem;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 10px 0 0;
+      border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
+    }
   }
 `;
 

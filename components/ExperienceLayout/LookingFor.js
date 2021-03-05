@@ -10,7 +10,7 @@ const LookingFor = () => {
   return (
     <LookingForWrapper>
       <LookingForInner>
-        <LookingForHeading as="h3">Looking for...</LookingForHeading>
+        <LookingForHeading as="h3">Looking for ...</LookingForHeading>
         <LookingForList />
       </LookingForInner>
     </LookingForWrapper>
