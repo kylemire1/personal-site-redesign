@@ -36,14 +36,14 @@ const linkStyles = css`
 const StyledNextLink = styled(Link)`
   ${linkStyles}
   color: ${({ section }) =>
-    section === 1 ? vars.colorAlmostBlack : vars.colorWhite};
+    [1, 3].includes(section) ? vars.colorAlmostBlack : vars.colorWhite};
   transition: color 500ms ${vars.ease};
 `;
 
 const StyledAnchorLink = styled.a`
   ${linkStyles}
   color: ${({ section }) =>
-    section === 1 ? vars.colorAlmostBlack : vars.colorWhite};
+    [1, 3].includes(section) ? vars.colorAlmostBlack : vars.colorWhite};
   transition: color 500ms ${vars.ease};
 `;
 
