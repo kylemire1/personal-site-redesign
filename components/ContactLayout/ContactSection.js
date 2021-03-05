@@ -5,17 +5,22 @@ import { darken, rgba } from 'polished';
 import { Container } from '../styled/global';
 
 import vars from '../../styles/vars';
+import Input from './Input';
+import ContactForm from './ContactForm';
 
 const ContactSection = () => {
   return (
     <FormContainer>
-      <FormWrapper>Contact</FormWrapper>
+      <FormWrapper>
+        <ContactForm />
+      </FormWrapper>
     </FormContainer>
   );
 };
 
 const FormContainer = styled(Container)`
   z-index: 1;
+  grid-row: 4 / 5;
 `;
 
 const FormWrapper = styled.div`
@@ -24,7 +29,7 @@ const FormWrapper = styled.div`
   border-top-left-radius: ${vars.borderRadiusLarge};
   border-top-right-radius: ${vars.borderRadiusLarge};
   height: 100%;
-  padding: 4em 2em 2em;
+  padding: 3em 2em 2em;
   margin-top: 2rem;
   position: relative;
 
@@ -39,6 +44,10 @@ const FormWrapper = styled.div`
     left: 2em;
     right: 2em;
     z-index: -1;
+  }
+
+  @media (min-height: ${vars.breakpointMedium}) {
+    padding: 4em 2em 2em;
   }
 `;
 

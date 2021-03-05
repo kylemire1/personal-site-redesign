@@ -27,6 +27,10 @@ const ContactWrapper = styled(Wrapper)`
   grid-template-rows: auto 6rem 5fr;
   background-color: ${vars.colorPrimary};
   padding-top: 6em;
+
+  @media (min-height: ${vars.breakpointMedium}) {
+    grid-template-rows: auto 6rem 4rem 5fr;
+  }
 `;
 
 const ContactHeading = styled(Heading)`
