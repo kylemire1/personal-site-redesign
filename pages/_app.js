@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useMemo, useReducer, useRef } from 'react';
+import { useState, useMemo, useReducer } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 import SectionContext from '../contexts/SectionContext';
@@ -12,7 +12,6 @@ import '../styles/normalize.css';
 import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
-  const wrapperRef = useRef();
   const [activeSectionData, setActiveSectionData] = useState(null);
   const [openResumeNotes, dispatch] = useReducer(
     reducer,
@@ -29,19 +28,11 @@ const MyApp = ({ Component, pageProps }) => {
     dispatch,
   ]);
 
-  useLayoutEffect(() => {
-    if (typeof wrapperRef.current !== 'undefined') {
-      wrapperRef.current.style.visibility = 'visible';
-    }
-  }, []);
-
   return (
     <ResumeContext.Provider value={resumeContextValue}>
       <SectionContext.Provider value={sectionContextValue}>
         <GlobalStyle />
-        <div ref={wrapperRef} id="app-wrapper" style={{ visibility: 'hidden' }}>
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       </SectionContext.Provider>
     </ResumeContext.Provider>
   );
