@@ -31,7 +31,6 @@ const MyApp = ({ Component, pageProps }) => {
 
   useLayoutEffect(() => {
     if (typeof wrapperRef.current !== 'undefined') {
-      console.log(wrapperRef.current);
       wrapperRef.current.style.visibility = 'visible';
     }
   }, []);
