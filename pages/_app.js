@@ -1,4 +1,4 @@
-import { useState, useMemo, useReducer } from 'react';
+import { useEffect, useState, useMemo, useReducer } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 import SectionContext from '../contexts/SectionContext';
@@ -12,6 +12,7 @@ import '../styles/normalize.css';
 import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
+  const [scriptLoaded, setScriptLoaded] = useState(false);
   const [activeSectionData, setActiveSectionData] = useState(null);
   const [openResumeNotes, dispatch] = useReducer(
     reducer,
@@ -27,6 +28,17 @@ const MyApp = ({ Component, pageProps }) => {
     openResumeNotes,
     dispatch,
   ]);
+
+  useEffect(() => {
+    if (!scriptLoaded) {
+      const script = document.createElement('script');
+      script.setAttribute('async', ''); // Or defer or nothing
+      script.setAttribute('id', 'dummy-for-firefox');
+      const position = document.querySelector('body'); // Or any other location , example head
+      position.prepend(script);
+      setScriptLoaded(true);
+    }
+  }, []);
 
   return (
     <ResumeContext.Provider value={resumeContextValue}>
