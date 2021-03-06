@@ -33,6 +33,7 @@ const LookingForInner = styled(Container)`
 const LookingForHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading1};
   color: ${vars.colorWhite};
+  margin-bottom: 0;
 
   @media (min-height: ${vars.breakpointMedium}) {
     font-size: ${vars.fontSizeHeading2};
