@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "postbuild": "next-on-netlify"
+    "build": "next build && next export -o build",
+    "start": "next dev"
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.19",
