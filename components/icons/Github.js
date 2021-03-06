@@ -1,5 +1,3 @@
-import React from 'react';
-
 import vars from '../../styles/vars';
 
 const Github = () => {
