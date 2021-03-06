@@ -31,10 +31,10 @@ const MyApp = ({ Component, pageProps }) => {
 
   useEffect(() => {
     if (!scriptLoaded) {
+      // Add dummy script tag for firefox FOUC bug
       const script = document.createElement('script');
-      script.setAttribute('async', ''); // Or defer or nothing
-      script.setAttribute('id', 'dummy-for-firefox');
-      const position = document.querySelector('body'); // Or any other location , example head
+      script.innerText = '0';
+      const position = document.querySelector('body');
       position.prepend(script);
       setScriptLoaded(true);
     }
