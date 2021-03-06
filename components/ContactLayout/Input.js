@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FormControl } from '../styled/global';
 
 const Input = ({ type, name, label, id, required, className }) => {
