@@ -1,14 +1,37 @@
+import { useLayoutEffect, useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import useDimensions from 'react-use-dimensions';
 
 import { Container, PageSection, Heading } from '../styled/global';
+import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import meSrcMobile from '../../public/images/me-large.jpg';
 
-const HelloSection = () => {
+const HelloSection = (props) => {
+  const [showChild, setShowChild] = useState(false);
+
+  useEffect(() => setShowChild(true), []);
+
+  if (!showChild) {
+    return null;
+  }
+
+  return <LazyLoaded {...props} />;
+};
+
+const LazyLoaded = () => {
+  const [ref, { height }] = useDimensions();
+  const [, setWelcomeSectionHeight] = useContext(LayoutContext);
+
+  useLayoutEffect(() => {
+    console.log({ height });
+    setWelcomeSectionHeight(height);
+  }, [height]);
+
   return (
-    <HelloWrapper>
+    <HelloWrapper ref={ref}>
       <HelloContainer>
         <HelloHeading as="h1">Hello there!</HelloHeading>
         <IntroText>

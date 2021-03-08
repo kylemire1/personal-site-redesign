@@ -29,24 +29,24 @@ const Logo = () => {
           <path
             d="M150.874,40h21.382L159.127,59.468l13.128,19.348H150.874Z"
             transform="translate(-11 45)"
-            fill={darkColor}
+            fill={vars.colorPrimary}
           />
           <path
             d="M182.859,40h8.291V78.631h-8.291L169.932,59.419Z"
             transform="translate(-11 45)"
-            fill={darkColor}
+            fill={vars.colorPrimary}
           />
         </g>
         <g transform="translate(0 -45)">
           <path
             d="M150.874,40h21.382L159.127,59.468h-8.253Z"
             transform="translate(-11 45)"
-            fill={lightColor}
+            fill="#7268b5"
           />
           <path
             d="M182.859,40h8.291V59.419H169.932Z"
             transform="translate(-11 45)"
-            fill={lightColor}
+            fill="#7268b5"
           />
         </g>
       </g>

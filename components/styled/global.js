@@ -58,9 +58,10 @@ export const FormControl = styled.div`
   }
 
   input {
-    height: 2.5rem;
+    height: 2.75rem;
 
-    @media (min-height: ${vars.breakpointMedium}) {
+    @media (min-height: ${vars.breakpointMedium}),
+      (min-width: ${vars.breakpointTiny}) {
       height: 3rem;
     }
   }
@@ -68,7 +69,8 @@ export const FormControl = styled.div`
   textarea {
     min-height: 5rem;
 
-    @media (min-height: ${vars.breakpointMedium}) {
+    @media (min-height: ${vars.breakpointMedium}),
+      (min-width: ${vars.breakpointTiny}) {
       min-height: 8rem;
     }
   }

@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import SectionContext from '../contexts/SectionContext';
 import ResumeContext from '../contexts/ResumeContext';
+import LayoutContext from '../contexts/LayoutContext';
 
 import vars from '../styles/vars';
 import reducer, {
@@ -12,10 +13,16 @@ import '../styles/normalize.css';
 import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
+  const [welcomeSectionHeight, setWelcomeSectionHeight] = useState(null);
   const [activeSectionData, setActiveSectionData] = useState(null);
   const [openResumeNotes, dispatch] = useReducer(
     reducer,
     RESUME_NOTES_INITIAL_STATE
+  );
+
+  const layoutContextValue = useMemo(
+    () => [welcomeSectionHeight, setWelcomeSectionHeight],
+    [welcomeSectionHeight, setWelcomeSectionHeight]
   );
 
   const sectionContextValue = useMemo(
@@ -31,8 +38,10 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ResumeContext.Provider value={resumeContextValue}>
       <SectionContext.Provider value={sectionContextValue}>
-        <GlobalStyle />
-        <Component {...pageProps} />
+        <LayoutContext.Provider value={layoutContextValue}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </LayoutContext.Provider>
       </SectionContext.Provider>
     </ResumeContext.Provider>
   );
@@ -40,9 +49,10 @@ const MyApp = ({ Component, pageProps }) => {
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-size: 80%;
+    font-size: 72%;
+    background-color: ${vars.colorPrimary};
 
-    @media (min-width: ${vars.breakpointExtraSmall}) {
+    @media (min-width: ${vars.breakpointTiny}) {
       font-size: 85%;
     }
 
@@ -68,6 +78,10 @@ const GlobalStyle = createGlobalStyle`
     li + li {
       margin-top: 1em;
     }
+  }
+
+  .section-wrapper + .section-wrapper {
+    padding-top: 4rem;
   }
 `;
 

@@ -4,7 +4,6 @@ import { darken, rgba } from 'polished';
 import { Container } from '../styled/global';
 
 import vars from '../../styles/vars';
-import Input from './Input';
 import ContactForm from './ContactForm';
 
 const ContactSection = () => {
@@ -27,10 +26,12 @@ const FormWrapper = styled.div`
   box-shadow: 0.25em 0.25em 1.875em ${rgba(vars.colorPrimaryDark, 0.16)};
   border-top-left-radius: ${vars.borderRadiusLarge};
   border-top-right-radius: ${vars.borderRadiusLarge};
-  height: 100%;
-  padding: 3em 2em 2em;
-  margin-top: 2rem;
+  padding: 3rem 2rem;
+  margin-top: auto;
   position: relative;
+  display: grid;
+  align-content: start;
+  height: 100%;
 
   ::before {
     content: '';
@@ -43,10 +44,6 @@ const FormWrapper = styled.div`
     left: 2em;
     right: 2em;
     z-index: -1;
-  }
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    padding: 4em 2em 2em;
   }
 `;
 
