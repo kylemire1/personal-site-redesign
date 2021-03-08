@@ -1,6 +1,8 @@
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 
+import vars from '../../styles/vars';
+
 const ResumeNotesListItem = ({ note, showNotes }) => {
   return (
     <CSSTransition in={showNotes} timeout={750} classNames="notes-list-item">
