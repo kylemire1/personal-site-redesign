@@ -44,6 +44,7 @@ const LazyLoaded = () => {
         <ReactFullpage
           onLeave={onLeave}
           anchors={anchors}
+          responsiveWidth={900}
           licenseKey={process.env.NEXT_PUBLIC_FULLPAGEJS_KEY}
           sectionsColor={Array.from({ length: anchors.length }).map(
             () => vars.colorPrimary
