@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 import ReactFullpage from '@fullpage/react-fullpage';
 
 import HomeLayout from './HomeLayout';
@@ -10,7 +11,19 @@ import ContactLayout from './ContactLayout';
 
 import vars from '../styles/vars';
 
-const FullPageLayout = () => {
+const FullPageLayout = (props) => {
+  const [showChild, setShowChild] = useState(false);
+
+  useEffect(() => setShowChild(true), []);
+
+  if (!showChild) {
+    return null;
+  }
+
+  return <LazyLoaded {...props} />;
+};
+
+const LazyLoaded = () => {
   const [, setActiveSectionData] = useContext(SectionContext);
 
   const anchors = ['home', 'portfolio', 'experience', 'contact'];
@@ -27,23 +40,31 @@ const FullPageLayout = () => {
   return (
     <>
       <Header />
-      <ReactFullpage
-        onLeave={onLeave}
-        anchors={anchors}
-        licenseKey={process.env.NEXT_PUBLIC_FULLPAGEJS_KEY}
-        responsiveWidth={900}
-        sectionsColor={Array.from({ length: anchors.length }).map(
-          () => vars.colorPrimary
-        )}
-        render={() => (
-          <ReactFullpage.Wrapper>
-            <HomeLayout />
-            <PortfolioLayout />
-            <ExperienceLayout />
-            <ContactLayout />
-          </ReactFullpage.Wrapper>
-        )}
-      />
+      <BrowserView>
+        <ReactFullpage
+          onLeave={onLeave}
+          anchors={anchors}
+          responsiveWidth={900}
+          licenseKey={process.env.NEXT_PUBLIC_FULLPAGEJS_KEY}
+          sectionsColor={Array.from({ length: anchors.length }).map(
+            () => vars.colorPrimary
+          )}
+          render={() => (
+            <ReactFullpage.Wrapper>
+              <HomeLayout />
+              <PortfolioLayout />
+              <ExperienceLayout />
+              <ContactLayout />
+            </ReactFullpage.Wrapper>
+          )}
+        />
+      </BrowserView>
+      <MobileView>
+        <HomeLayout />
+        <PortfolioLayout />
+        <ExperienceLayout />
+        <ContactLayout />
+      </MobileView>
     </>
   );
 };

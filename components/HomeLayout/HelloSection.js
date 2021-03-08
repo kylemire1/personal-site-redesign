@@ -26,7 +26,6 @@ const LazyLoaded = () => {
   const [, setWelcomeSectionHeight] = useContext(LayoutContext);
 
   useLayoutEffect(() => {
-    console.log({ height });
     setWelcomeSectionHeight(height);
   }, [height]);
 
