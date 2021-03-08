@@ -19,7 +19,7 @@ const ResumeNotesList = ({ id, notes }) => {
   return (
     <CSSTransition appear in={showNotes} timeout={750} classNames="notes-list">
       <ResumeNotesListWrapper aria-expanded={showNotes}>
-        <StyledResumeNotesList>
+        <ul>
           {notes.map((note, noteIndex) => (
             <ResumeNotesListItem
               key={`${note}_${noteIndex}`}
@@ -27,7 +27,7 @@ const ResumeNotesList = ({ id, notes }) => {
               showNotes={showNotes}
             />
           ))}
-        </StyledResumeNotesList>
+        </ul>
       </ResumeNotesListWrapper>
     </CSSTransition>
   );
