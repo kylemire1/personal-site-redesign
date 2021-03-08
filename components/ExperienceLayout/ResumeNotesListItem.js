@@ -12,7 +12,7 @@ const ResumeNotesListItem = ({ note, showNotes }) => {
 };
 
 const StyledListItem = styled.li`
-  opacity: 0;
+  opacity: 1;
   &.notes-list-item-enter {
     opacity: 0;
   }
