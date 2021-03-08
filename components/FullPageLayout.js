@@ -8,13 +8,7 @@ import SectionContext from '../contexts/SectionContext';
 import ExperienceLayout from './ExperienceLayout';
 import ContactLayout from './ContactLayout';
 
-// NOTE: if using fullpage extensions/plugins put them here and pass it as props.
-// This is no longer required for the scrollOverflow option.
-const pluginWrapper = () => {
-  /*
-   * require('../static/fullpage.scrollHorizontally.min.js'); // Optional. Required when using the "scrollHorizontally" extension.
-   */
-};
+import vars from '../styles/vars';
 
 const FullPageLayout = () => {
   const [, setActiveSectionData] = useContext(SectionContext);
@@ -34,12 +28,13 @@ const FullPageLayout = () => {
     <>
       <Header />
       <ReactFullpage
-        pluginWrapper={pluginWrapper}
         onLeave={onLeave}
         anchors={anchors}
         licenseKey={process.env.NEXT_PUBLIC_FULLPAGEJS_KEY}
-        // scrollHorizontally = {true}
-        sectionsColor={['#white', '#0798ec']}
+        responsiveWidth={900}
+        sectionsColor={Array.from({ length: anchors.length }).map(
+          () => vars.colorPrimary
+        )}
         render={() => (
           <ReactFullpage.Wrapper>
             <HomeLayout />

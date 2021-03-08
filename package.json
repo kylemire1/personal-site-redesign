@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "build": "next build && next export -o build",
+    "serve": "next start",
     "start": "next dev"
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.19",
+    "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@types/react": "^17.0.3",
     "next": "10.0.7",
     "next-images": "^1.7.0",
     "polished": "^4.1.1",
@@ -15,6 +18,7 @@
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
     "react-transition-group": "^4.4.1",
+    "react-use-dimensions": "^1.2.1",
     "sass": "^1.32.8",
     "styled-components": "^5.2.1",
     "webpack": "^5.24.3"

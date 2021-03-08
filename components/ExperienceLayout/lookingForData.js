@@ -1,6 +1,6 @@
 const lookingForData = [
   'Web Design',
-  'Front End Web Development',
+  'Front End Development',
   'GatsbyJS Consulting',
   'Contract Work',
   'Web Accessibility Consulting',
