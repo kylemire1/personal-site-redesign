@@ -27,16 +27,16 @@ const LookingForInner = styled(Container)`
   position: absolute;
   left: 0;
   bottom: 0;
+
+  @media (min-height: ${vars.breakpointMedium}) {
+    bottom: 1.2rem;
+  }
 `;
 
 const LookingForHeading = styled(Heading)`
-  font-size: ${vars.fontSizeHeading1};
+  font-size: ${vars.fontSizeHeading3};
   color: ${vars.colorWhite};
   margin-bottom: 0;
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    font-size: ${vars.fontSizeHeading2};
-  }
 `;
 
 export default LookingFor;

@@ -43,15 +43,16 @@ const Resume = () => {
 };
 
 const ResumeWrapper = styled.div`
-  padding: 6rem 0 4rem;
+  padding: 4rem 0;
   background-color: ${vars.colorWhite};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
+  border-top-right-radius: ${vars.borderRadiusLarge};
   z-index: 2;
   position: relative;
 
   @media (min-width: ${vars.breakpointExtraSmall}),
     (min-height: ${vars.breakpointMedium}) {
-    padding: 6rem 0 6rem;
+    padding: 4rem 0 6rem;
   }
 `;
 

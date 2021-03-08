@@ -29,22 +29,25 @@ const linkStyles = css`
   font-weight: ${vars.fontWeightBold};
 
   & + & {
-    margin-left: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  @media (min-width: ${vars.breakpointTiny}) {
+    & + & {
+      margin-left: 1.5rem;
+    }
   }
 `;
 
 const StyledNextLink = styled(Link)`
   ${linkStyles}
-  color: ${({ section }) =>
-    [1, 3].includes(section) ? vars.colorAlmostBlack : vars.colorWhite};
+  color: ${vars.colorAlmostBlack};
   transition: color 500ms ${vars.ease};
 `;
 
 const StyledAnchorLink = styled.a`
   ${linkStyles}
-  color: ${({ section }) =>
-    [1, 3].includes(section) ? vars.colorAlmostBlack : vars.colorWhite};
-  transition: color 500ms ${vars.ease};
+  color: ${vars.colorAlmostBlack};
 `;
 
 export default NavItem;
