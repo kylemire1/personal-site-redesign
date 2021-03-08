@@ -32,6 +32,17 @@ const SubmitButton = styled.button`
   padding: 1.25em 1em;
   margin-top: 2rem;
   width: 100%;
+  cursor: pointer;
+  transition: all 250ms ${vars.ease};
+  transition-property: background-color, color;
+
+  :hover,
+  :focus {
+    background-color: ${vars.colorHighlight};
+    color: ${vars.colorPrimaryDark};
+    transition: all 250ms ${vars.ease};
+    transition-property: background-color, color;
+  }
 `;
 
 export default ContactForm;
