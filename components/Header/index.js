@@ -1,12 +1,43 @@
+import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+import useDimensions from 'react-use-dimensions';
+import { rgba } from 'polished';
 
 import SiteLogo from '../SiteLogo';
 import { Container } from '../styled/global';
 import NavItem from './NavItem';
+import LayoutContext from '../../contexts/LayoutContext';
 
-const Header = () => {
+import vars from '../../styles/vars';
+
+const Header = (props) => {
+  const [showChild, setShowChild] = useState(false);
+
+  useEffect(() => setShowChild(true), []);
+
+  if (!showChild) {
+    return null;
+  }
+
+  return <LazyLoaded {...props} />;
+};
+
+const LazyLoaded = () => {
+  const [ref, { height: headerHeight }] = useDimensions();
+  const [welcomeSectionHeight] = useContext(LayoutContext);
+  const [scrollDistance, setScrollDistance] = useState(0);
+
+  useScrollPosition(({ currPos }) => {
+    if (currPos.y * -1 !== scrollDistance) {
+      setScrollDistance(currPos.y * -1);
+    }
+  });
+
+  const scrollPassed = scrollDistance > welcomeSectionHeight - headerHeight;
+
   return (
-    <StyledHeader>
+    <StyledHeader className={scrollPassed ? 'passed' : ''} ref={ref}>
       <StyledContainer>
         <SiteLogo />
         <Nav role="menu">
@@ -23,8 +54,16 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  right: 1.5rem;
   z-index: 99;
+  background-color: transparent;
+  transition: all 500ms ${vars.ease};
+  border-bottom-right-radius: ${vars.borderRadiusLarge};
+
+  &.passed {
+    box-shadow: 0 4px 30px ${rgba(vars.colorBlack, 0.2)};
+    background-color: ${vars.colorWhite};
+  }
 `;
 
 const StyledContainer = styled(Container)`
@@ -37,7 +76,6 @@ const StyledContainer = styled(Container)`
 
 const Nav = styled.nav`
   display: flex;
-  padding-right: 1rem;
 `;
 
 export default Header;

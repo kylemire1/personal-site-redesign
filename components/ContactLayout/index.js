@@ -23,12 +23,11 @@ const ContactLayout = () => {
 
 const ContactWrapper = styled(Wrapper)`
   grid-template-columns: 1fr;
-  grid-template-rows: auto 6rem 5fr;
+  grid-template-rows: auto auto 6rem 1fr;
   background-color: ${vars.colorPrimary};
-  padding-top: 6em;
 
   @media (min-height: ${vars.breakpointMedium}) {
-    grid-template-rows: auto 6rem 4rem 5fr;
+    grid-template-rows: auto auto 8rem 1fr;
   }
 `;
 

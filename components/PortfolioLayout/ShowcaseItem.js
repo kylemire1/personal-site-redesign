@@ -123,7 +123,7 @@ const ItemHeading = styled(Heading)`
 const ItemDescription = styled.p`
   display: none;
 
-  @media (min-height: ${vars.breakpointMedium}) {
+  @media (min-width: ${vars.breakpointTiny}) {
     display: block;
     margin: 0;
     font-size: ${vars.fontSizeTextSmall};
