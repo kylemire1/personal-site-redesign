@@ -41,20 +41,11 @@ const ContactHeading = styled(Heading)`
   font-size: ${vars.fontSizeText};
   font-weight: bold;
   margin-bottom: 0.5rem;
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    font-size: ${vars.fontSizeHeading2};
-    font-weight: black;
-  }
 `;
 
 const ContactText = styled.p`
   color: ${vars.colorPrimaryLight};
   font-size: ${vars.fontSizeTextSmall};
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    font-size: ${vars.fontSizeText};
-  }
 `;
 
 const ButtonWrapper = styled.div`

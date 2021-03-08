@@ -27,6 +27,8 @@ const CheckMeOutButton = styled.button`
   cursor: pointer;
   text-align: left;
   color: ${vars.colorWhite};
+  transition: all 250ms ${vars.ease};
+  transition-property: border-bottom-right-radius, color, background-color;
 
   svg {
     width: 2rem;
@@ -36,7 +38,9 @@ const CheckMeOutButton = styled.button`
   :focus {
     background-color: ${vars.colorWhite};
     color: ${vars.colorPrimary};
+    border-bottom-right-radius: ${vars.borderRadiusLarge};
     transition: all 250ms ${vars.ease};
+    transition-property: border-bottom-right-radius, color, background-color;
 
     svg {
       path {
