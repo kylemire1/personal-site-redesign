@@ -36,6 +36,7 @@ const ResumeNotesList = ({ id, notes }) => {
 const ResumeNotesListWrapper = styled.div`
   max-height: 0px;
   overflow: hidden;
+  will-change: max-height;
 
   &.notes-list-enter {
     max-height: 0px;
