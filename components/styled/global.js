@@ -21,7 +21,6 @@ export const Grid = styled.div`
 `;
 
 export const Wrapper = styled(Grid)`
-  height: 100vh;
   width: 100vw;
   position: relative;
 `;
