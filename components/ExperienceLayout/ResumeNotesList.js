@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import ResumeContext from '../../contexts/ResumeContext';
 
 import vars from '../../styles/vars';
+import ResumeNotesListItem from './ResumeNotesListItem';
 
 const ResumeNotesList = ({ id, notes }) => {
   const [openResumeNotes] = useContext(ResumeContext);
@@ -16,16 +17,15 @@ const ResumeNotesList = ({ id, notes }) => {
   });
 
   return (
-    <CSSTransition appear in={showNotes} timeout={250} classNames="notes-list">
+    <CSSTransition appear in={showNotes} timeout={750} classNames="notes-list">
       <ResumeNotesListWrapper aria-expanded={showNotes}>
         <StyledResumeNotesList>
           {notes.map((note, noteIndex) => (
-            <li
+            <ResumeNotesListItem
               key={`${note}_${noteIndex}`}
-              className={noteIndex >= 3 ? 'mobile-hide' : ''}
-            >
-              {note}
-            </li>
+              note={note}
+              showNotes={showNotes}
+            />
           ))}
         </StyledResumeNotesList>
       </ResumeNotesListWrapper>
@@ -36,43 +36,26 @@ const ResumeNotesList = ({ id, notes }) => {
 const ResumeNotesListWrapper = styled.div`
   max-height: 0px;
   overflow: hidden;
-  will-change: max-height;
 
   &.notes-list-enter {
     max-height: 0px;
-    opacity: 0;
   }
   &.notes-list-enter-active {
     max-height: 300px;
-    opacity: 1;
-    transition: all 750ms ${vars.ease};
-    transition-property: max-height, opacity;
+    transition: max-height 750ms ${vars.ease};
   }
   &.notes-list-enter-done {
     max-height: 300px;
-    opacity: 1;
   }
   &.notes-list-exit {
     max-height: 300px;
-    opacity: 1;
   }
   &.notes-list-exit-active {
     max-height: 0px;
-    opacity: 0;
-    transition: all 750ms ${vars.ease};
-    transition-property: max-height, opacity;
+    transition: max-height 750ms ${vars.ease};
   }
   &.notes-list-exit-done {
     max-height: 0px;
-    opacity: 0;
-  }
-`;
-
-const StyledResumeNotesList = styled.ul`
-  li {
-    &.mobile-hide {
-      display: none;
-    }
   }
 `;
 
