@@ -22,16 +22,9 @@ const LookingForWrapper = styled.div`
   height: 100%;
   position: relative;
   z-index: 1;
+  margin-top: 1.5rem;
 `;
-const LookingForInner = styled(Container)`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    bottom: 1.2rem;
-  }
-`;
+const LookingForInner = styled(Container)``;
 
 const LookingForHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading3};

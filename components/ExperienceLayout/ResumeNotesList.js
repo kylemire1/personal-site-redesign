@@ -44,7 +44,7 @@ const ResumeNotesListWrapper = styled.div`
   &.notes-list-enter-active {
     max-height: 300px;
     opacity: 1;
-    transition: all 500ms ${vars.ease};
+    transition: all 750ms ${vars.ease};
     transition-property: max-height, opacity;
   }
   &.notes-list-enter-done {
@@ -58,7 +58,7 @@ const ResumeNotesListWrapper = styled.div`
   &.notes-list-exit-active {
     max-height: 0px;
     opacity: 0;
-    transition: all 500ms ${vars.ease};
+    transition: all 750ms ${vars.ease};
     transition-property: max-height, opacity;
   }
   &.notes-list-exit-done {
