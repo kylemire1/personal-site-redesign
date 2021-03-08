@@ -21,12 +21,8 @@ const PortfolioLayout = () => {
 
 const PortfolioWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 1.5rem;
-  grid-template-rows: auto 1fr 4rem;
+  grid-template-rows: auto 1fr;
   background-color: ${vars.colorPrimary};
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    grid-template-rows: auto 1fr;
-  }
 `;
 
 const PortfolioHeading = styled(Heading)`
