@@ -27,6 +27,7 @@ const HomeWrapper = styled(Wrapper)`
   background-color: ${vars.colorPrimary};
   grid-template-rows: 1.4fr 1.6fr 1fr;
   grid-template-columns: 1fr 0.75fr;
+  height: 100vh;
 
   @media (min-height: 800px) {
     grid-template-rows: 1.6fr 1.4fr 1fr;

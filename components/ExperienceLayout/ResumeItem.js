@@ -96,11 +96,8 @@ const Toggle = styled.button`
 const StyledResumeItem = styled.div`
   position: relative;
   padding-left: 1.5rem;
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    font-size: ${vars.fontSizeText};
-    font-weight: ${vars.fontWeightLight};
-  }
+  font-size: ${vars.fontSizeText};
+  font-weight: ${vars.fontWeightLight};
 `;
 
 const ResumeItemHeading = styled(Heading)`

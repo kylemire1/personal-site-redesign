@@ -33,14 +33,10 @@ const LookingForListItem = styled.li`
   background-color: ${vars.colorPrimaryDark};
   color: ${vars.colorWhite};
   font-size: ${vars.fontSizeTextSmall};
-  padding: 0.75em;
+  font-weight: ${vars.fontWeightBold};
+  padding: 1em;
   border-radius: ${vars.borderRadiusLarge};
   margin-right: 0.5rem;
-
-  @media (min-height: ${vars.breakpointMedium}) {
-    font-weight: bold;
-    padding: 1em;
-  }
 `;
 
 export default LookingForList;
