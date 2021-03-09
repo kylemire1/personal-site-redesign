@@ -19,6 +19,7 @@ const ContactSection = () => {
 const FormContainer = styled(Container)`
   z-index: 1;
   grid-row: 4 / 5;
+  max-width: 40rem;
 `;
 
 const FormWrapper = styled.div`

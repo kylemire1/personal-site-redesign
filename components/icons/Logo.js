@@ -1,22 +1,8 @@
-import React, { useContext } from 'react';
-import { useRouter } from 'next/router';
 import styled from 'styled-components';
-
-import SectionContext from '../../contexts/SectionContext';
 
 import vars from '../../styles/vars';
 
 const Logo = () => {
-  const { pathname } = useRouter();
-  const [activeSectionData] = useContext(SectionContext);
-
-  const isWhite =
-    pathname === '/' &&
-    activeSectionData?.index !== 0 &&
-    activeSectionData?.index !== 2;
-  const lightColor = isWhite ? vars.colorWhite : '#7268b5';
-  const darkColor = isWhite ? '#DBDBDB' : vars.colorPrimary;
-
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
