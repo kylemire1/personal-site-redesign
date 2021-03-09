@@ -4,8 +4,9 @@ import Layout from '../Layout';
 import ContactMeSection from './ContactMeSection';
 import MyOverviewSection from './MyOverviewSection';
 import HelloSection from './HelloSection';
-import { Wrapper, PageSection } from '../styled/global';
 import CheckMeOutSection from './CheckMeOutSection';
+import Me from './Me';
+import { Wrapper } from '../styled/global';
 
 import vars from '../../styles/vars';
 
@@ -27,18 +28,14 @@ const HomeWrapper = styled(Wrapper)`
   background-color: ${vars.colorPrimary};
   grid-template-rows: 1.4fr 1.6fr 1fr;
   grid-template-columns: 1fr 0.75fr;
-  height: 100vh;
 
-  @media (min-height: 800px) {
-    grid-template-rows: 1.6fr 1.4fr 1fr;
+  @media (min-height: ${vars.breakpointExtraSmall}) {
+    height: 100vh;
   }
-`;
 
-const Me = styled(PageSection)`
-  display: none;
-
-  @media (min-width: ${vars.breakpointLarge}) {
-    display: block;
+  @media (min-width: ${vars.breakpointMedium}) {
+    grid-template-rows: 3.5fr 1.6fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr 1fr;
   }
 `;
 
