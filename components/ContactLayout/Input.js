@@ -14,6 +14,7 @@ const Input = ({ type, name, label, id, required, className }) => {
       ) : (
         <TextInput
           name={name}
+          type={type}
           id={id}
           required={required}
           className={className}
@@ -23,10 +24,10 @@ const Input = ({ type, name, label, id, required, className }) => {
   );
 };
 
-const TextInput = ({ name, id, className, required }) => {
+const TextInput = ({ name, type, id, className, required }) => {
   return (
     <input
-      type="text"
+      type={type}
       name={name}
       id={id}
       className={className}

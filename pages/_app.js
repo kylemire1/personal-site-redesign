@@ -79,7 +79,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .section-wrapper + .section-wrapper {
-    padding-top: 4rem;
+    padding-top: 8rem;
+
+    @media (min-width: ${vars.breakpointExtraSmall}) {
+      padding-top: 10rem;
+    }
   }
 `;
 

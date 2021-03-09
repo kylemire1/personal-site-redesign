@@ -24,8 +24,9 @@ const StyledLookingForList = styled.ul`
   flex-wrap: wrap;
   align-items: center;
 
-  li {
-    margin-top: 0.5rem;
+  @media (min-width: ${vars.breakpointMedium}) {
+    display: block;
+    width: 100%;
   }
 `;
 
@@ -37,6 +38,11 @@ const LookingForListItem = styled.li`
   padding: 1em;
   border-radius: ${vars.borderRadiusLarge};
   margin-right: 0.5rem;
+  margin-top: 0.5rem;
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    width: 100%;
+  }
 `;
 
 export default LookingForList;
