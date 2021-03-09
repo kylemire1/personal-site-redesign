@@ -11,9 +11,9 @@ const ContactLayout = () => {
   return (
     <Layout>
       <ContactWrapper>
-        <Container>
+        <HeadingContainer>
           <ContactHeading>I can't wait to hear from you!</ContactHeading>
-        </Container>
+        </HeadingContainer>
         <Socials />
         <ContactSection />
       </ContactWrapper>
@@ -25,12 +25,26 @@ const ContactWrapper = styled(Wrapper)`
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 6rem 1fr;
   background-color: ${vars.colorPrimary};
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 8.75rem;
+  }
+`;
+
+const HeadingContainer = styled(Container)`
+  align-self: center;
 `;
 
 const ContactHeading = styled(Heading)`
   color: ${vars.colorWhite};
   font-size: ${vars.fontSizeHeading3};
   text-transform: capitalize;
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    font-size: min(8vw, 8rem);
+    max-width: 48.875rem;
+  }
 `;
 
 export default ContactLayout;

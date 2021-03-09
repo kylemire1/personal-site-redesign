@@ -36,7 +36,7 @@ const LazyLoaded = () => {
     }
   });
 
-  const scrollPassed = scrollDistance > welcomeSectionHeight - headerHeight;
+  const scrollPassed = scrollDistance > welcomeSectionHeight / 2 - headerHeight;
 
   return (
     <StyledHeader className={scrollPassed ? 'passed' : ''} ref={ref}>
