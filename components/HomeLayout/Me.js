@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import vars from '../../styles/vars';
-import meSrc from '../../public/images/profile-pic.jpg';
+const meSrc = '/v1615326271/profile-pic_dxzdj7.jpg';
 
 const Me = () => {
   return (
