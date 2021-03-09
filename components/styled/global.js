@@ -10,10 +10,6 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
-
-  @media (min-width: ${vars.breakpointLarge}) {
-    padding: 0 0.25rem;
-  }
 `;
 
 export const Grid = styled.div`
@@ -42,6 +38,8 @@ export const FormControl = styled.div`
 
   input,
   textarea {
+    box-shadow: none;
+    --webkit-appearance: none;
     border: solid ${vars.pixel} ${vars.colorPrimary};
     border-radius: ${vars.borderRadiusSmall};
     background-color: ${rgba(vars.colorPrimary, 0.05)};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
@@ -121,13 +121,9 @@ const ItemHeading = styled(Heading)`
 `;
 
 const ItemDescription = styled.p`
-  display: none;
-
-  @media (min-width: ${vars.breakpointTiny}) {
-    display: block;
-    margin: 0;
-    font-size: ${vars.fontSizeTextSmall};
-  }
+  display: block;
+  margin: 0;
+  font-size: ${vars.fontSizeTextSmall};
 `;
 
 const ItemImage = styled.button`
@@ -139,8 +135,9 @@ const ItemImage = styled.button`
   width: 100%;
   height: 100%;
   background-image: ${({ image }) => `url(${image})`};
-  background-size: 600px;
+  background-size: cover;
   background-position: left bottom;
+  background-repeat: no-repeat;
   cursor: pointer;
 
   ::after {

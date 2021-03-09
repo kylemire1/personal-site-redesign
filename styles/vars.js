@@ -8,7 +8,7 @@ const vars = {
   fontSizeHeadingContact: '9.063rem',
   /** 135px */
   fontSizeHeading5: '8.438rem',
-  /** 135px */
+  /** 60px */
   fontSizeHeading4: '3.75rem',
   /** 48px */
   fontSizeHeading3: '3rem',

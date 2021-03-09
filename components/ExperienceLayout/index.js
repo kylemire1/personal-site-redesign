@@ -22,6 +22,10 @@ const ExperienceWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 1.5rem;
   grid-template-rows: auto 5fr;
   background-color: ${vars.colorPrimary};
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    grid-template-columns: 1fr 1fr 1.5rem;
+  }
 `;
 
 export default ExperienceLayout;

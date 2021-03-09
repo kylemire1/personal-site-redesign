@@ -1,48 +1,46 @@
 import { useState, useMemo, useReducer } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-import SectionContext from '../contexts/SectionContext';
 import ResumeContext from '../contexts/ResumeContext';
 import LayoutContext from '../contexts/LayoutContext';
 
 import vars from '../styles/vars';
-import reducer, {
+import resumeContextReducer, {
   RESUME_NOTES_INITIAL_STATE,
 } from '../contexts/resumeContextReducer';
+import layoutContextReducer, {
+  LAYOUT_INITIAL_STATE,
+} from '../contexts/layoutContextReducer';
 import '../styles/normalize.css';
 import '../styles/globals.scss';
 
 const MyApp = ({ Component, pageProps }) => {
   const [welcomeSectionHeight, setWelcomeSectionHeight] = useState(null);
-  const [activeSectionData, setActiveSectionData] = useState(null);
-  const [openResumeNotes, dispatch] = useReducer(
-    reducer,
+  const [openResumeNotes, resumeDispatch] = useReducer(
+    resumeContextReducer,
     RESUME_NOTES_INITIAL_STATE
   );
-
-  const layoutContextValue = useMemo(
-    () => [welcomeSectionHeight, setWelcomeSectionHeight],
-    [welcomeSectionHeight, setWelcomeSectionHeight]
+  const [layoutState, layoutDispatch] = useReducer(
+    layoutContextReducer,
+    LAYOUT_INITIAL_STATE
   );
 
-  const sectionContextValue = useMemo(
-    () => [activeSectionData, setActiveSectionData],
-    [activeSectionData, setActiveSectionData]
-  );
+  const layoutContextValue = useMemo(() => [layoutState, layoutDispatch], [
+    layoutState,
+    layoutDispatch,
+  ]);
 
-  const resumeContextValue = useMemo(() => [openResumeNotes, dispatch], [
+  const resumeContextValue = useMemo(() => [openResumeNotes, resumeDispatch], [
     openResumeNotes,
-    dispatch,
+    resumeDispatch,
   ]);
 
   return (
     <ResumeContext.Provider value={resumeContextValue}>
-      <SectionContext.Provider value={sectionContextValue}>
-        <LayoutContext.Provider value={layoutContextValue}>
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </LayoutContext.Provider>
-      </SectionContext.Provider>
+      <LayoutContext.Provider value={layoutContextValue}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </LayoutContext.Provider>
     </ResumeContext.Provider>
   );
 };
@@ -81,7 +79,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .section-wrapper + .section-wrapper {
-    padding-top: 4rem;
+    padding-top: 8rem;
+
+    @media (min-width: ${vars.breakpointExtraSmall}) {
+      padding-top: 10rem;
+    }
   }
 `;
 

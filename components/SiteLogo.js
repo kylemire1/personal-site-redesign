@@ -41,8 +41,11 @@ const LogoWrapper = styled.div`
 const LogoText = styled.span`
   display: none;
 
-  @media (min-width: ${vars.breakpointLarge}) {
+  @media (min-width: ${vars.breakpointMedium}) {
     display: block;
+    font-size: ${vars.fontSizeText};
+    font-weight: ${vars.fontWeightBlack};
+    margin-left: 0.5em;
   }
 `;
 
