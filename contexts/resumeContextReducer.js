@@ -5,7 +5,7 @@ export const RESUME_NOTES_INITIAL_STATE = resumeData.map((item, itemIndex) => ({
   isOpen: itemIndex === 0,
 }));
 
-const reducer = (state = RESUME_NOTES_INITIAL_STATE, action) => {
+const resumeContextReducer = (state = RESUME_NOTES_INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SHOW_LIST_ITEM':
       return state.map((listItem) => ({
@@ -21,4 +21,4 @@ const reducer = (state = RESUME_NOTES_INITIAL_STATE, action) => {
   }
 };
 
-export default reducer;
+export default resumeContextReducer;

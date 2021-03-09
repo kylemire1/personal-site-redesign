@@ -25,12 +25,14 @@ const Header = (props) => {
 
 const LazyLoaded = () => {
   const [ref, { height: headerHeight }] = useDimensions();
-  const [welcomeSectionHeight] = useContext(LayoutContext);
-  const [scrollDistance, setScrollDistance] = useState(0);
+  const [{ welcomeSectionHeight, scrollDistance }, dispatch] = useContext(
+    LayoutContext
+  );
 
   useScrollPosition(({ currPos }) => {
     if (currPos.y * -1 !== scrollDistance) {
-      setScrollDistance(currPos.y * -1);
+      const distance = currPos.y === 0 ? 0 : currPos.y * -1;
+      dispatch({ type: 'SET_SCROLL_DISTANCE', payload: distance });
     }
   });
 

@@ -23,10 +23,10 @@ const HelloSection = (props) => {
 
 const LazyLoaded = () => {
   const [ref, { height }] = useDimensions();
-  const [, setWelcomeSectionHeight] = useContext(LayoutContext);
+  const [, dispatch] = useContext(LayoutContext);
 
   useLayoutEffect(() => {
-    setWelcomeSectionHeight(height);
+    dispatch({ type: 'SET_WELCOME_SECTION_HEIGHT', payload: height });
   }, [height]);
 
   return (
@@ -48,18 +48,25 @@ const HelloWrapper = styled(PageSection)`
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   background-color: ${vars.colorWhite};
   box-shadow: 0 4px 90px ${rgba(vars.colorBlack, 0.5)};
-  z-index: 1;
+  z-index: 2;
+  transition: all 500ms ${vars.ease};
+  transition-property: background-position, background-size;
 
   @media (max-width: ${vars.breakpointLarge}) {
     background-image: url(${meSrcMobile});
     background-repeat: no-repeat;
     background-position: top 0 right -20rem;
     background-size: 42rem;
+    tansition: all 500ms ${vars.ease};
+    transition-property: background-position, background-size;
   }
 
-  @media (min-height: ${vars.breakpointMedium}) {
-    background-position: top 0 right -23rem;
-    background-size: 45rem;
+  @media (min-width: ${vars.breakpointMedium}) {
+    grid-column: 1 / 3;
+    background-image: none;
+    transition: all 500ms ${vars.ease};
+    transition-property: background-position, background-size;
+    border-bottom-left-radius: 0;
   }
 `;
 
