@@ -1,0 +1,9 @@
+{
+  "main.js": "render-page.js",
+  "render-page.js.map": "render-page.js.map",
+  "static/apex-legends-showcase.jpg": "static/apex-legends-showcase-66f94c9b57968b923ff41a3c53b10835.jpg",
+  "static/book-review-showcase.jpg": "static/book-review-showcase-4cde566acf8bc6d593f71bfe6018d4bf.jpg",
+  "static/dashboard-showcase.jpg": "static/dashboard-showcase-00aa13a7147f3cced6075f3bebf54a62.jpg",
+  "static/elyk-showcase.jpg": "static/elyk-showcase-e4dbf9934b3bf399f5710ec9e2e7c23f.jpg",
+  "static/me-large.jpg": "static/me-large-0e8a2c87987e390b10077c375ba5cd57.jpg"
+}
