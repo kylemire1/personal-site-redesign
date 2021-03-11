@@ -1,22 +1,22 @@
-import React from "react"
-import styled from "styled-components"
-import { StaticImage } from "gatsby-plugin-image"
+import React from 'react';
+import styled from 'styled-components';
+import { StaticImage } from 'gatsby-plugin-image';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const Me = () => {
   return (
     <StyledMe>
       <ImageWrapper>
         <StaticImage
-          src="../../images/profile-pic.jpg"
+          src="../../images/portrait.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
           placeholder="#FFFFFF"
         />
       </ImageWrapper>
     </StyledMe>
-  )
-}
+  );
+};
 
 const StyledMe = styled.div`
   display: none;
@@ -29,17 +29,20 @@ const StyledMe = styled.div`
     margin-left: -2rem;
     padding-left: 2rem;
   }
-`
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
   display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
   width: 100%;
   height: 100%;
+  max-width: 31.875rem;
 
   img {
     width: auto;
   }
-`
+`;
 
-export default Me
+export default Me;
