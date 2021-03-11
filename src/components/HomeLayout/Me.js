@@ -9,7 +9,7 @@ const Me = () => {
     <StyledMe>
       <ImageWrapper>
         <StaticImage
-          src="../../images/portrait.jpg"
+          src="../../images/profile-pic.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
           placeholder="#FFFFFF"
         />
@@ -23,6 +23,8 @@ const StyledMe = styled.div`
 
   @media (min-width: ${vars.breakpointMedium}) {
     display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     position: relative;
     z-index: 1;
     background-color: ${vars.colorWhite};
@@ -34,8 +36,6 @@ const StyledMe = styled.div`
 const ImageWrapper = styled.div`
   position: relative;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
   width: 100%;
   height: 100%;
   max-width: 31.875rem;
