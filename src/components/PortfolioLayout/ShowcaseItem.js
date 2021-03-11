@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import { CSSTransition } from "react-transition-group"
-import { IoIosCloseCircleOutline } from "react-icons/io"
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 
-import { Heading } from "../styled/global"
+import { Heading } from '../styled/global';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const ShowcaseItem = ({
   name,
@@ -16,7 +16,7 @@ const ShowcaseItem = ({
   caseStudy,
   projectFor,
 }) => {
-  const [showImage, setShowImage] = useState(true)
+  const [showImage, setShowImage] = useState(true);
 
   return (
     <StyledItem>
@@ -55,8 +55,8 @@ const ShowcaseItem = ({
         />
       </CSSTransition>
     </StyledItem>
-  )
-}
+  );
+};
 
 const StyledItem = styled.div`
   position: relative;
@@ -92,7 +92,7 @@ const StyledItem = styled.div`
   .showcase-image-exit-done {
     display: none;
   }
-`
+`;
 
 const ItemContent = styled.div`
   position: relative;
@@ -103,7 +103,7 @@ const ItemContent = styled.div`
   justify-content: space-between;
   border-bottom: solid ${vars.pixel} ${vars.colorPrimary};
   padding-bottom: 0.5em;
-`
+`;
 
 const ItemHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading1};
@@ -118,13 +118,17 @@ const ItemHeading = styled(Heading)`
     text-align: right;
     padding-bottom: 0.5em;
   }
-`
+`;
 
 const ItemDescription = styled.p`
   display: block;
   margin: 0;
   font-size: ${vars.fontSizeTextSmall};
-`
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    font-size: ${vars.fontSizeText};
+  }
+`;
 
 const ItemImage = styled.button`
   border: none;
@@ -141,7 +145,7 @@ const ItemImage = styled.button`
   cursor: pointer;
 
   ::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -151,7 +155,7 @@ const ItemImage = styled.button`
     opacity: 0.3;
     pointer-events: none;
   }
-`
+`;
 
 const ItemLinks = styled.div`
   display: flex;
@@ -164,7 +168,7 @@ const ItemLinks = styled.div`
   a + a {
     margin-left: 1.5rem;
   }
-`
+`;
 
 const CloseButton = styled.button`
   background: none;
@@ -190,6 +194,6 @@ const CloseButton = styled.button`
       }
     }
   }
-`
+`;
 
-export default ShowcaseItem
+export default ShowcaseItem;

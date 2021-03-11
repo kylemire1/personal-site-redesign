@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
-import { StaticImage } from "gatsby-plugin-image"
+import React from 'react';
+import styled from 'styled-components';
+import { StaticImage } from 'gatsby-plugin-image';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const Me = () => {
   return (
@@ -15,31 +15,34 @@ const Me = () => {
         />
       </ImageWrapper>
     </StyledMe>
-  )
-}
+  );
+};
 
 const StyledMe = styled.div`
   display: none;
 
   @media (min-width: ${vars.breakpointMedium}) {
     display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     position: relative;
     z-index: 1;
     background-color: ${vars.colorWhite};
     margin-left: -2rem;
     padding-left: 2rem;
   }
-`
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
   display: flex;
   width: 100%;
   height: 100%;
+  max-width: 31.875rem;
 
   img {
     width: auto;
   }
-`
+`;
 
-export default Me
+export default Me;

@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Container, PageSection } from "../styled/global"
+import { Container, PageSection } from '../styled/global';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const MyOverviewSection = () => {
   return (
@@ -20,8 +20,8 @@ const MyOverviewSection = () => {
         </OverviewText>
       </Container>
     </MyOverview>
-  )
-}
+  );
+};
 
 const MyOverview = styled(PageSection)`
   grid-column: 1 / -1;
@@ -29,7 +29,7 @@ const MyOverview = styled(PageSection)`
   background-color: ${vars.colorPrimary};
   z-index: 0;
   padding: 8em 0 3em;
-`
+`;
 
 const OverviewText = styled.p`
   color: ${vars.colorWhite};
@@ -37,6 +37,10 @@ const OverviewText = styled.p`
   &:first-child {
     margin-top: -3rem;
   }
-`
 
-export default MyOverviewSection
+  @media (min-width: ${vars.breakpointMedium}) {
+    font-size: ${vars.fontSizeTextLarge};
+  }
+`;
+
+export default MyOverviewSection;
