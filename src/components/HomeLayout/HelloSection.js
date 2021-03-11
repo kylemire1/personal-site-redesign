@@ -66,6 +66,10 @@ const HelloContainer = styled(Container)`
 
 const HelloHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading4};
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    font-size: ${vars.fontSizeHeading5};
+  }
 `;
 
 const IntroText = styled.p`

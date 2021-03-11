@@ -2,6 +2,8 @@
  * Variables for use in Styled Component CSS
  */
 const vars = {
+  /** 1680px */
+  maxContentWidth: '105rem',
   /** 200px */
   fontSizeHeadingHero: '12.5rem',
   /** 145px */
