@@ -1,11 +1,11 @@
-import React from "react"
-import styled from "styled-components"
-import { darken, rgba } from "polished"
+import React from 'react';
+import styled from 'styled-components';
+import { darken, rgba } from 'polished';
 
-import { Container } from "../styled/global"
+import { Container } from '../styled/global';
 
-import vars from "../../styles/vars"
-import ContactForm from "./ContactForm"
+import vars from '../../styles/vars';
+import ContactForm from './ContactForm';
 
 const ContactSection = () => {
   return (
@@ -14,8 +14,8 @@ const ContactSection = () => {
         <ContactForm />
       </FormWrapper>
     </FormContainer>
-  )
-}
+  );
+};
 
 const FormContainer = styled(Container)`
   z-index: 1;
@@ -26,7 +26,7 @@ const FormContainer = styled(Container)`
     grid-row: 1 / -1;
     grid-column: 2 / 3;
   }
-`
+`;
 
 const FormWrapper = styled.div`
   background-color: ${vars.colorWhite};
@@ -41,7 +41,7 @@ const FormWrapper = styled.div`
   height: 100%;
 
   ::before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: ${darken(0.05, vars.colorWhite)};
     border-top-left-radius: ${vars.borderRadiusLarge};
@@ -52,6 +52,12 @@ const FormWrapper = styled.div`
     right: 2em;
     z-index: -1;
   }
-`
 
-export default ContactSection
+  @media (min-width: ${vars.breakpointMedium}) {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`;
+
+export default ContactSection;

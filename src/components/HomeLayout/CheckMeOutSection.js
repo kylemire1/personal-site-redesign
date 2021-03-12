@@ -1,13 +1,13 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Container } from "../styled/global"
-import ArrowThinDown from "../icons/ArrowThinDown"
+import { Container } from '../styled/global';
+import ArrowThinDown from '../icons/ArrowThinDown';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const CheckMeOutSection = () => {
-  const handleClick = () => {}
+  const handleClick = () => {};
   return (
     <CheckMeOutButton onClick={handleClick}>
       <CheckMeOutContainer>
@@ -15,8 +15,8 @@ const CheckMeOutSection = () => {
         <ArrowThinDown />
       </CheckMeOutContainer>
     </CheckMeOutButton>
-  )
-}
+  );
+};
 
 const CheckMeOutButton = styled.button`
   background: none;
@@ -45,17 +45,21 @@ const CheckMeOutButton = styled.button`
       }
     }
   }
-`
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    position: absolute;
+  }
+`;
 
 const CheckMeOutContainer = styled(Container)`
   height: 100%;
   justify-content: center;
-`
+`;
 
 const CheckMeOutText = styled.p`
   font-size: ${vars.fontSizeTextLarge};
   font-weight: ${vars.fontWeightBold};
   line-height: 1.3;
-`
+`;
 
-export default CheckMeOutSection
+export default CheckMeOutSection;

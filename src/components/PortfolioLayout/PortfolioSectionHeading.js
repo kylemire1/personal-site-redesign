@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Heading, Container } from "../styled/global"
+import { Heading, Container } from '../styled/global';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const PortfolioSectionHeading = () => {
   return (
@@ -19,8 +19,8 @@ const PortfolioSectionHeading = () => {
         </HeadingEffect>
       </div>
     </HeadingContainer>
-  )
-}
+  );
+};
 
 const HeadingContainer = styled(Container)`
   @media (min-width: ${vars.breakpointMedium}) {
@@ -31,7 +31,7 @@ const HeadingContainer = styled(Container)`
     align-items: center;
     justify-content: center;
   }
-`
+`;
 
 const PortfolioHeading = styled(Heading)`
   color: ${vars.colorWhite};
@@ -42,7 +42,12 @@ const PortfolioHeading = styled(Heading)`
     text-align: center;
     margin: 0;
   }
-`
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    font-size: ${vars.fontSizeHeading5};
+    line-height: 1;
+  }
+`;
 
 const HeadingEffect = styled.div`
   display: none;
@@ -78,6 +83,6 @@ const HeadingEffect = styled.div`
         0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
     }
   }
-`
+`;
 
-export default PortfolioSectionHeading
+export default PortfolioSectionHeading;

@@ -32,6 +32,7 @@ const HelloSection = () => {
 
 const HelloWrapper = styled(PageSection)`
   grid-column: 1 / -1;
+  grid-row: 1 / 2;
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   background-color: ${vars.colorWhite};
@@ -39,6 +40,18 @@ const HelloWrapper = styled(PageSection)`
   z-index: 2;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
+  position: relative;
+
+  ::before {
+    content: '';
+    position: absolute;
+    background-color: ${vars.colorWhite};
+    width: 4rem;
+    top: 0;
+    bottom: 0;
+    left: -4rem;
+    border-bottom-left-radius: ${vars.borderRadiusLarge};
+  }
 
   @media (max-width: ${vars.breakpointLarge}) {
     background-image: url(${meSrcMobile});
@@ -59,8 +72,11 @@ const HelloWrapper = styled(PageSection)`
 `;
 
 const HelloContainer = styled(Container)`
-  @media (max-width: ${vars.breakpointLarge}) {
-    margin-bottom: -4rem;
+  position: relative;
+  margin-bottom: -4rem;
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    margin-bottom: -10rem;
   }
 `;
 
@@ -69,10 +85,22 @@ const HelloHeading = styled(Heading)`
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     font-size: ${vars.fontSizeHeading5};
+    position: absolute;
+    width: 200%;
+    left: 1rem;
+    top: -200%;
+  }
+  @media (min-width: ${vars.breakpointXXL}) {
+    font-size: ${vars.fontSizeHeadingHero};
+    position: absolute;
+    width: 200%;
+    left: 0.75rem;
+    top: -265%;
   }
 `;
 
 const IntroText = styled.p`
+  max-width: 50ch;
   span {
     font-weight: ${vars.fontWeightBold};
     color: ${vars.colorPrimary};

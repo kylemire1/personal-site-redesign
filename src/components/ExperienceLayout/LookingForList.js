@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import vars from "../../styles/vars"
-import lookingForData from "./lookingForData"
+import vars from '../../styles/vars';
+import lookingForData from './lookingForData';
 
 const LookingForList = () => {
   return (
@@ -13,8 +13,8 @@ const LookingForList = () => {
         </LookingForListItem>
       ))}
     </StyledLookingForList>
-  )
-}
+  );
+};
 
 const StyledLookingForList = styled.ul`
   margin-bottom: 0;
@@ -29,7 +29,7 @@ const StyledLookingForList = styled.ul`
     display: block;
     width: 100%;
   }
-`
+`;
 
 const LookingForListItem = styled.li`
   background-color: ${vars.colorPrimaryDark};
@@ -43,7 +43,12 @@ const LookingForListItem = styled.li`
 
   @media (min-width: ${vars.breakpointMedium}) {
     width: 100%;
+    margin-right: 0;
   }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    font-size: ${vars.fontSizeText};
+    margin-top: 1rem;
+  }
+`;
 
-export default LookingForList
+export default LookingForList;

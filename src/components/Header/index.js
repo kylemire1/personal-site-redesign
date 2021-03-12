@@ -1,45 +1,45 @@
-import React, { useState, useEffect, useContext } from "react"
-import styled from "styled-components"
-import { useScrollPosition } from "@n8tb1t/use-scroll-position"
-import useDimensions from "react-use-dimensions"
-import { rgba } from "polished"
+import React, { useState, useEffect, useContext } from 'react';
+import styled from 'styled-components';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+import useDimensions from 'react-use-dimensions';
+import { rgba } from 'polished';
 
-import SiteLogo from "../SiteLogo"
-import { Container } from "../styled/global"
-import NavItem from "./NavItem"
-import LayoutContext from "../../../contexts/LayoutContext"
+import SiteLogo from '../SiteLogo';
+import { Container } from '../styled/global';
+import NavItem from './NavItem';
+import LayoutContext from '../../../contexts/LayoutContext';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
-const Header = props => {
-  const [showChild, setShowChild] = useState(false)
+const Header = (props) => {
+  const [showChild, setShowChild] = useState(false);
 
-  useEffect(() => setShowChild(true), [])
+  useEffect(() => setShowChild(true), []);
 
   if (!showChild) {
-    return null
+    return null;
   }
 
-  return <LazyLoaded {...props} />
-}
+  return <LazyLoaded {...props} />;
+};
 
 const LazyLoaded = () => {
-  const [ref, { height: headerHeight }] = useDimensions()
+  const [ref, { height: headerHeight }] = useDimensions();
   const [{ welcomeSectionHeight, scrollDistance }, dispatch] = useContext(
     LayoutContext
-  )
+  );
 
   useScrollPosition(({ currPos }) => {
     if (currPos.y * -1 !== scrollDistance) {
-      const distance = currPos.y === 0 ? 0 : currPos.y * -1
-      dispatch({ type: "SET_SCROLL_DISTANCE", payload: distance })
+      const distance = currPos.y === 0 ? 0 : currPos.y * -1;
+      dispatch({ type: 'SET_SCROLL_DISTANCE', payload: distance });
     }
-  })
+  });
 
-  const scrollPassed = scrollDistance > welcomeSectionHeight / 2 - headerHeight
+  const scrollPassed = scrollDistance > welcomeSectionHeight / 2 - headerHeight;
 
   return (
-    <StyledHeader className={scrollPassed ? "passed" : ""} ref={ref}>
+    <StyledHeader className={scrollPassed ? 'passed' : ''} ref={ref}>
       <StyledContainer>
         <SiteLogo />
         <Nav role="menu">
@@ -49,8 +49,8 @@ const LazyLoaded = () => {
         </Nav>
       </StyledContainer>
     </StyledHeader>
-  )
-}
+  );
+};
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -65,19 +65,27 @@ const StyledHeader = styled.header`
   &.passed {
     box-shadow: 0 4px 30px ${rgba(vars.colorBlack, 0.2)};
     background-color: ${vars.colorWhite};
+
+    #logo-text {
+      opacity: 1;
+      transition: opacity 500ms ${vars.ease};
+    }
   }
-`
+`;
 
 const StyledContainer = styled(Container)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 0.875rem;
-  padding-bottom: 0.875rem;
-`
+  padding: 0.875rem 2.35rem;
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding-right: 1rem;
+  }
+`;
 
 const Nav = styled.nav`
   display: flex;
-`
+`;
 
-export default Header
+export default Header;

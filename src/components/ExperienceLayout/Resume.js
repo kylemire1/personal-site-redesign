@@ -1,39 +1,39 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import { darken } from "polished"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { darken } from 'polished';
 
-import ResumeItem from "./ResumeItem"
-import ResumeContext from "../../../contexts/ResumeContext"
-import { Heading, Container } from "../styled/global"
+import ResumeItem from './ResumeItem';
+import ResumeContext from '../../../contexts/ResumeContext';
+import { Heading, Container } from '../styled/global';
 
-import vars from "../../styles/vars"
-import resumeData from "./resumeData"
-import Pdf from "../icons/Pdf"
+import vars from '../../styles/vars';
+import resumeData from './resumeData';
+import Pdf from '../icons/Pdf';
 
 const Resume = () => {
-  const [openResumeNotes] = useContext(ResumeContext)
+  const [openResumeNotes] = useContext(ResumeContext);
 
   return (
     <ResumeWrapper>
       <Container>
         <ResumeHeading>Experience</ResumeHeading>
         {resumeData.map((item, itemIndex) => {
-          let isShowing = false
-          openResumeNotes.some(note => {
+          let isShowing = false;
+          openResumeNotes.some((note) => {
             if (note.id === item.id) {
-              isShowing = note.isOpen
-              return true
+              isShowing = note.isOpen;
+              return true;
             }
 
-            return null
-          })
+            return null;
+          });
           return (
             <ResumeItem
               key={`${item.jobTitle}_${itemIndex}`}
               {...item}
               isShowing={isShowing}
             />
-          )
+          );
         })}
       </Container>
       <ResumeDownloadButton href="/#" target="_blank" rel="noopener noreferrer">
@@ -41,8 +41,8 @@ const Resume = () => {
         <Pdf />
       </ResumeDownloadButton>
     </ResumeWrapper>
-  )
-}
+  );
+};
 
 const ResumeWrapper = styled.div`
   padding: 4rem 0 6rem;
@@ -51,12 +51,24 @@ const ResumeWrapper = styled.div`
   border-top-right-radius: ${vars.borderRadiusLarge};
   z-index: 2;
   position: relative;
-`
+
+  ::before {
+    content: '';
+    position: absolute;
+    background-color: ${vars.colorWhite};
+    width: 4rem;
+    top: 0;
+    bottom: 0;
+    left: -4rem;
+    border-top-left-radius: ${vars.borderRadiusLarge};
+    border-bottom-left-radius: ${vars.borderRadiusLarge};
+  }
+`;
 
 const ResumeHeading = styled(Heading)`
   color: ${vars.colorAlmostBlack};
   font-size: ${vars.fontSizeHeading3};
-`
+`;
 
 const ResumeDownloadButton = styled.a`
   display: flex;
@@ -79,7 +91,7 @@ const ResumeDownloadButton = styled.a`
   }
 
   ::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: -0.7rem;
     right: 0.3rem;
@@ -89,6 +101,6 @@ const ResumeDownloadButton = styled.a`
     border-width: 10px 10px 0 0;
     border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
   }
-`
+`;
 
-export default Resume
+export default Resume;

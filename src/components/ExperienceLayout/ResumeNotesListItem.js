@@ -1,16 +1,16 @@
-import React from "react"
-import { CSSTransition } from "react-transition-group"
-import styled from "styled-components"
+import React from 'react';
+import { CSSTransition } from 'react-transition-group';
+import styled from 'styled-components';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const ResumeNotesListItem = ({ note, showNotes }) => {
   return (
     <CSSTransition in={showNotes} timeout={750} classNames="notes-list-item">
       <StyledListItem>{note}</StyledListItem>
     </CSSTransition>
-  )
-}
+  );
+};
 
 const StyledListItem = styled.li`
   opacity: 1;
@@ -34,6 +34,6 @@ const StyledListItem = styled.li`
   &.notes-list-item-exit-done {
     opacity: 0;
   }
-`
+`;
 
-export default ResumeNotesListItem
+export default ResumeNotesListItem;

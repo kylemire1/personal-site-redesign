@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Container, Heading } from "../styled/global"
-import LookingForList from "./LookingForList"
+import { Container, Heading } from '../styled/global';
+import LookingForList from './LookingForList';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const LookingFor = () => {
   return (
@@ -14,8 +14,8 @@ const LookingFor = () => {
         <LookingForList />
       </LookingForInner>
     </LookingForWrapper>
-  )
-}
+  );
+};
 
 const LookingForWrapper = styled.div`
   grid-column: 1 / 2;
@@ -28,17 +28,19 @@ const LookingForWrapper = styled.div`
   @media (min-width: ${vars.breakpointMedium}) {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-  }
-`
-const LookingForInner = styled(Container)`
-  @media (min-width: ${vars.breakpointMedium}) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
     padding-right: 0;
+    margin-top: 0;
   }
-`
+`;
+const LookingForInner = styled(Container)`
+  @media (min-width: ${vars.breakpointMedium}) {
+    max-width: 40rem;
+  }
+`;
 
 const LookingForHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading3};
@@ -49,6 +51,10 @@ const LookingForHeading = styled(Heading)`
     margin-bottom: 1rem;
     font-size: ${vars.fontSizeHeading3};
   }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    margin-bottom: 0;
+    font-size: ${vars.fontSizeHeading3};
+  }
+`;
 
-export default LookingFor
+export default LookingFor;

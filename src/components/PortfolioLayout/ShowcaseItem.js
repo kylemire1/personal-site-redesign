@@ -19,7 +19,7 @@ const ShowcaseItem = ({
   const [showImage, setShowImage] = useState(true);
 
   return (
-    <StyledItem>
+    <StyledItem $show={showImage}>
       <CloseButton onClick={() => setShowImage(true)}>
         <IoIosCloseCircleOutline />
       </CloseButton>
@@ -62,15 +62,18 @@ const StyledItem = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 1em;
+  padding: 1em 2em;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background: ${vars.colorWhite};
 
   :first-child {
+    padding-top: 2em;
     border-top-right-radius: ${vars.borderRadiusLarge};
   }
   :last-child {
+    padding-bottom: 2em;
     border-bottom-right-radius: ${vars.borderRadiusLarge};
   }
 

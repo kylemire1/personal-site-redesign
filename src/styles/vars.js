@@ -5,7 +5,7 @@ const vars = {
   /** 1680px */
   maxContentWidth: '105rem',
   /** 200px */
-  fontSizeHeadingHero: '12.5rem',
+  fontSizeHeadingHero: '11rem',
   /** 145px */
   fontSizeHeadingContact: '9.063rem',
   /** 135px */
@@ -55,6 +55,8 @@ const vars = {
   breakpointLarge: '62em',
   /** 1200px */
   breakpointExtraLarge: '75em',
+  /** 1460px */
+  breakpointXXL: '91.25em',
   ease: 'cubic-bezier(0.55, 0, 0.1, 1)',
 };
 
