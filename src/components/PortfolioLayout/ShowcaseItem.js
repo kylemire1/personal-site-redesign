@@ -70,11 +70,9 @@ const StyledItem = styled.div`
 
   :first-child {
     padding-top: 2em;
-    border-top-right-radius: ${vars.borderRadiusLarge};
   }
   :last-child {
     padding-bottom: 2em;
-    border-bottom-right-radius: ${vars.borderRadiusLarge};
   }
 
   .showcase-image-enter {

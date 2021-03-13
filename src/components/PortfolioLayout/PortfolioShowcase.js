@@ -31,6 +31,11 @@ const StyledShowcase = styled.div`
     border-top-left-radius: ${vars.borderRadiusLarge};
     border-bottom-left-radius: ${vars.borderRadiusLarge};
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export default PortfolioShowcase;

@@ -28,6 +28,10 @@ const PortfolioWrapper = styled(Wrapper)`
   @media (min-width: ${vars.breakpointMedium}) {
     grid-template-columns: 1fr 1fr 1.5rem;
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-template-columns: 1.6fr 1fr 1.5rem;
+  }
 `;
 
 export default PortfolioLayout;

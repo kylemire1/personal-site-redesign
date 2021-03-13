@@ -31,6 +31,9 @@ const HeadingContainer = styled(Container)`
     align-items: center;
     justify-content: center;
   }
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    align-items: flex-end;
+  }
 `;
 
 const PortfolioHeading = styled(Heading)`
