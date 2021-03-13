@@ -36,7 +36,7 @@ const HelloWrapper = styled(PageSection)`
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   background-color: ${vars.colorWhite};
-  box-shadow: 0 4px 90px ${rgba(vars.colorPrimary, 0.3)};
+  box-shadow: 0 4px 90px ${rgba(vars.colorPrimaryDark, 0.4)};
   z-index: 2;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
@@ -53,13 +53,17 @@ const HelloWrapper = styled(PageSection)`
     border-bottom-left-radius: ${vars.borderRadiusLarge};
   }
 
-  @media (max-width: ${vars.breakpointLarge}) {
+  @media (min-width: ${vars.breakpointExtraSmall}) {
     background-image: url(${meSrcMobile});
     background-repeat: no-repeat;
     background-position: top 0 right -20rem;
     background-size: 42rem;
     tansition: all 500ms ${vars.ease};
     transition-property: background-position, background-size;
+  }
+
+  @media (min-width: ${vars.breakpointLarge}) {
+    background-image: none;
   }
 
   @media (min-width: ${vars.breakpointMedium}) {
@@ -69,6 +73,10 @@ const HelloWrapper = styled(PageSection)`
     transition-property: background-position, background-size;
     border-bottom-left-radius: 0;
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-column: 1 / 5;
+  }
 `;
 
 const HelloContainer = styled(Container)`
@@ -76,7 +84,7 @@ const HelloContainer = styled(Container)`
   margin-bottom: -4rem;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
-    margin-bottom: -10rem;
+    margin-bottom: 0;
   }
 `;
 
@@ -84,18 +92,12 @@ const HelloHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading4};
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
-    font-size: ${vars.fontSizeHeading5};
-    position: absolute;
-    width: 200%;
-    left: 1rem;
-    top: -200%;
-  }
-  @media (min-width: ${vars.breakpointXXL}) {
-    font-size: ${vars.fontSizeHeadingHero};
-    position: absolute;
-    width: 200%;
-    left: 0.75rem;
-    top: -265%;
+    font-size: clamp(
+      ${vars.fontSizeHeadingHeroSmall},
+      8vw,
+      ${vars.fontSizeHeadingHero}
+    );
+    margin-bottom: 0;
   }
 `;
 

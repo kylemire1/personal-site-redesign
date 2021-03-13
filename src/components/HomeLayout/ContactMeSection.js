@@ -34,6 +34,7 @@ const ContactMeNow = styled(PageSection)`
   display: flex;
   align-items: center;
   background-color: ${vars.colorPrimaryDark};
+  border-top-left-radius: ${vars.borderRadiusLarge};
   border-bottom-left-radius: ${({ $scrolled }) =>
     $scrolled ? vars.borderRadiusLarge : 0};
   transition: border-bottom-left-radius 250ms ${vars.ease};
@@ -53,6 +54,18 @@ const ContactMeNow = styled(PageSection)`
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-row: 3 / -1;
+    border-top-left-radius: 0;
+
+    ::before {
+      content: '';
+      height: 1px;
+      background-color: ${vars.colorWhite};
+      width: 40%;
+      position: absolute;
+      left: -40%;
+      top: -1px;
+      z-index: 5;
+    }
   }
 `;
 

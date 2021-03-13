@@ -16,7 +16,7 @@ const HomeLayout = () => {
     <Layout>
       <HomeWrapper>
         <HelloSection />
-        <Me></Me>
+        <Me />
         <MyOverviewSection />
         <CheckMeOutSection />
         <ContactMeSection />
@@ -32,6 +32,7 @@ const HomeWrapper = styled(Wrapper)`
 
   @media (min-height: ${vars.breakpointExtraSmall}) {
     height: 100vh;
+    max-height: 83.75em;
   }
 
   @media (min-width: ${vars.breakpointMedium}) {
@@ -40,8 +41,8 @@ const HomeWrapper = styled(Wrapper)`
   }
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
-    grid-template-columns: 1fr 0.2fr 0.2fr 1fr;
-    grid-template-rows: 1fr 10rem 0.75fr;
+    grid-template-columns: 1fr 0.2fr 0.2fr 0.2fr 1fr;
+    grid-template-rows: 1fr 12rem 0.75fr;
   }
 `;
 

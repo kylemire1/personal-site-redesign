@@ -4,8 +4,10 @@
 const vars = {
   /** 1680px */
   maxContentWidth: '105rem',
-  /** 200px */
-  fontSizeHeadingHero: '11rem',
+  /** 160px */
+  fontSizeHeadingHero: '10rem',
+  /** 125px */
+  fontSizeHeadingHeroSmall: '7.5rem',
   /** 145px */
   fontSizeHeadingContact: '9.063rem',
   /** 135px */

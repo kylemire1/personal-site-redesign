@@ -45,7 +45,7 @@ const PortfolioHeading = styled(Heading)`
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     font-size: ${vars.fontSizeHeading5};
-    line-height: 1;
+    line-height: 0.85;
   }
 `;
 

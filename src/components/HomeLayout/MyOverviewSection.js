@@ -24,8 +24,12 @@ const MyOverviewSection = () => {
 };
 
 const OverviewContainer = styled(Container)`
-  justify-content: space-between;
+  justify-content: center;
   height: 100%;
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    justify-content: space-between;
+  }
 `;
 
 const MyOverview = styled(PageSection)`
@@ -59,8 +63,13 @@ const OverviewText = styled.p`
     font-size: ${vars.fontSizeTextLarge};
   }
   @media (min-width: ${vars.breakpointExtraLarge}) {
+    &:first-child {
+      margin-top: -2rem;
+    }
+
     font-size: ${vars.fontSizeText};
     line-height: 1.5;
+    margin-bottom: 0 !important;
   }
 `;
 
