@@ -63,6 +63,10 @@ const ResumeWrapper = styled.div`
     border-top-left-radius: ${vars.borderRadiusLarge};
     border-bottom-left-radius: ${vars.borderRadiusLarge};
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding: 4rem 0.5rem;
+  }
 `;
 
 const ResumeHeading = styled(Heading)`
@@ -100,6 +104,12 @@ const ResumeDownloadButton = styled.a`
     border-style: solid;
     border-width: 10px 10px 0 0;
     border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
+  }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    top: 2rem;
+    bottom: auto;
+    font-size: ${vars.fontSizeText};
   }
 `;
 

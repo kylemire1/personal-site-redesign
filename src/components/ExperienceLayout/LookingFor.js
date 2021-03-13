@@ -35,6 +35,9 @@ const LookingForWrapper = styled.div`
     padding-right: 0;
     margin-top: 0;
   }
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    margin-left: 1rem;
+  }
 `;
 const LookingForInner = styled(Container)`
   @media (min-width: ${vars.breakpointMedium}) {

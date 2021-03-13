@@ -91,6 +91,10 @@ const Toggle = styled.button`
       fill: ${vars.colorPrimaryDark};
     }
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    display: none;
+  }
 `;
 
 const StyledResumeItem = styled.div`
@@ -98,6 +102,14 @@ const StyledResumeItem = styled.div`
   padding-left: 1.5rem;
   font-size: ${vars.fontSizeText};
   font-weight: ${vars.fontWeightLight};
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding-left: 0;
+
+    & + & {
+      margin-top: 1.5rem;
+    }
+  }
 `;
 
 const ResumeItemHeading = styled(Heading)`
@@ -129,6 +141,11 @@ const ShowNotesButton = styled.button`
     ${ResumeItemHeading} {
       color: ${vars.colorPrimary};
     }
+  }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    cursor: default;
+    pointer-events: none;
   }
 `;
 

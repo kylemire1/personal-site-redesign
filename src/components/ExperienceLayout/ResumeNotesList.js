@@ -57,6 +57,10 @@ const ResumeNotesListWrapper = styled.div`
   &.notes-list-exit-done {
     max-height: 0px;
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    max-height: 100% !important;
+  }
 `;
 
 export default ResumeNotesList;

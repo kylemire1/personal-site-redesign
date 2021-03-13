@@ -34,6 +34,10 @@ const StyledListItem = styled.li`
   &.notes-list-item-exit-done {
     opacity: 0;
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    opacity: 1 !important;
+  }
 `;
 
 export default ResumeNotesListItem;
