@@ -5,14 +5,20 @@ import { Heading, Container } from '../styled/global';
 
 import vars from '../../styles/vars';
 
+const HEADING_EFFECT_COUNT = 5;
+
 const PortfolioSectionHeading = () => {
   return (
     <HeadingContainer>
       <div>
         <PortfolioHeading>Portfolio</PortfolioHeading>
         <HeadingEffect>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div key={`portfolio_effect_${index}`} aria-hidden={true}>
+          {Array.from({ length: HEADING_EFFECT_COUNT }).map((_, index) => (
+            <div
+              key={`portfolio_effect_${index}`}
+              aria-hidden={true}
+              className={index === HEADING_EFFECT_COUNT - 1 ? 'last' : ''}
+            >
               <PortfolioHeading>Portfolio</PortfolioHeading>
             </div>
           ))}
@@ -84,6 +90,12 @@ const HeadingEffect = styled.div`
         calc(var(--stroke-width) * -1) 0 0 var(--stroke-color),
         0 var(--stroke-width) 0 var(--stroke-color),
         0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
+    }
+  }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    .last {
+      display: none;
     }
   }
 `;

@@ -5,10 +5,11 @@ import { darken } from 'polished';
 
 import ResumeNotesList from './ResumeNotesList';
 import ResumeContext from '../../../contexts/ResumeContext';
-import { Heading } from '../styled/global';
+
 import Plus from '../icons/Plus';
 
 import vars from '../../styles/vars';
+import ResumeItemHeading from './ResumeItemHeading';
 
 const ResumeItem = ({
   jobTitle,
@@ -48,16 +49,12 @@ const ResumeItem = ({
       >
         {isShowing ? <CgRemoveR /> : <Plus />}
       </Toggle>
-      <ShowNotesButton onClick={() => handleShowNotes(id)}>
-        <ResumeItemHeading as="h2">
-          {jobTitle}
-          {!!employer && (
-            <>
-              <span> @</span> {employer}
-            </>
-          )}
-        </ResumeItemHeading>
-      </ShowNotesButton>
+      <ResumeItemHeading
+        id={id}
+        jobTitle={jobTitle}
+        employer={employer}
+        handleShowNotes={handleShowNotes}
+      />
       {notes.length && <ResumeNotesList id={id} notes={notes} />}
     </StyledResumeItem>
   );
@@ -109,43 +106,6 @@ const StyledResumeItem = styled.div`
     & + & {
       margin-top: 1.5rem;
     }
-  }
-`;
-
-const ResumeItemHeading = styled(Heading)`
-  font-size: ${vars.fontSizeText};
-  span {
-    color: ${vars.colorPrimary};
-    font-weight: ${vars.fontWeightLight};
-  }
-
-  @media (min-width: ${vars.breakpointExtraLarge}) {
-    font-size: ${vars.fontSizeTextLarge};
-  }
-`;
-
-const ShowNotesButton = styled.button`
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-
-  ${ResumeItemHeading} {
-    color: ${vars.colorAlmostBlack};
-    transition: all 250ms ${vars.ease};
-  }
-
-  :hover,
-  :focus,
-  :focus-within {
-    ${ResumeItemHeading} {
-      color: ${vars.colorPrimary};
-    }
-  }
-
-  @media (min-width: ${vars.breakpointExtraLarge}) {
-    cursor: default;
-    pointer-events: none;
   }
 `;
 
