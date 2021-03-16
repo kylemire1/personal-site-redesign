@@ -36,7 +36,7 @@ const HelloWrapper = styled(PageSection)`
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   background-color: ${vars.colorWhite};
-  box-shadow: 0 4px 90px ${rgba(vars.colorPrimaryDark, 0.4)};
+  box-shadow: 0 4px 90px ${rgba(vars.colorPrimary, 0.4)};
   z-index: 2;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;

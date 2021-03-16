@@ -73,7 +73,6 @@ export const orangeButtonStyles = css`
   padding: 0.75em 1em;
   background-color: none;
   color: ${vars.colorHighlight};
-  font-weight: ${vars.fontWeightLight};
   font-size: ${vars.fontSizeText};
   white-space: nowrap;
   cursor: pointer;
@@ -84,5 +83,9 @@ export const orangeButtonStyles = css`
     background-color: ${vars.colorHighlight};
     color: ${vars.colorPrimaryDark};
     transition: all 250ms ${vars.ease};
+  }
+
+  @media (min-width: ${vars.breakpointExtraSmall}) {
+    font-weight: ${vars.fontWeightBold};
   }
 `;

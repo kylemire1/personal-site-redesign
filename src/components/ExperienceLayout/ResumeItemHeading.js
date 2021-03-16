@@ -54,7 +54,7 @@ const ShowNotesButton = styled.button`
   text-align: left;
   cursor: pointer;
 
-  ${ResumeItemHeading} {
+  ${StyledResumeItemHeading} {
     color: ${vars.colorAlmostBlack};
     transition: all 250ms ${vars.ease};
   }
@@ -62,7 +62,7 @@ const ShowNotesButton = styled.button`
   :hover,
   :focus,
   :focus-within {
-    ${ResumeItemHeading} {
+    ${StyledResumeItemHeading} {
       color: ${vars.colorPrimary};
     }
   }

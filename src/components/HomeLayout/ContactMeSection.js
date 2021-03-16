@@ -84,7 +84,7 @@ const ContactMeContainer = styled(Container)`
 const ContactHeading = styled(Heading)`
   color: ${vars.colorPrimaryLight};
   font-size: ${vars.fontSizeText};
-  font-weight: bold;
+  font-weight: ${vars.fontWeightBold};
   margin-bottom: 0.5rem;
 
   @media (min-width: ${vars.breakpointMedium}) {
