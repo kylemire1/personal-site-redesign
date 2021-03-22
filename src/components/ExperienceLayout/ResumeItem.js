@@ -1,14 +1,15 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import { CgRemoveR } from "react-icons/cg"
-import { darken } from "polished"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { CgRemoveR } from 'react-icons/cg';
+import { darken } from 'polished';
 
-import ResumeNotesList from "./ResumeNotesList"
-import ResumeContext from "../../../contexts/ResumeContext"
-import { Heading } from "../styled/global"
-import Plus from "../icons/Plus"
+import ResumeNotesList from './ResumeNotesList';
+import ResumeContext from '../../../contexts/ResumeContext';
 
-import vars from "../../styles/vars"
+import Plus from '../icons/Plus';
+
+import vars from '../../styles/vars';
+import ResumeItemHeading from './ResumeItemHeading';
 
 const ResumeItem = ({
   jobTitle,
@@ -22,16 +23,16 @@ const ResumeItem = ({
   endYear,
   current,
 }) => {
-  const [, dispatch] = useContext(ResumeContext)
+  const [, dispatch] = useContext(ResumeContext);
 
-  const handleShowNotes = id => {
+  const handleShowNotes = (id) => {
     if (isShowing) {
-      dispatch({ type: "HIDE_ALL" })
+      dispatch({ type: 'HIDE_ALL' });
     } else {
-      dispatch({ type: "HIDE_ALL" })
-      dispatch({ type: "SHOW_LIST_ITEM", payload: id })
+      dispatch({ type: 'HIDE_ALL' });
+      dispatch({ type: 'SHOW_LIST_ITEM', payload: id });
     }
-  }
+  };
 
   return (
     <StyledResumeItem>
@@ -39,33 +40,29 @@ const ResumeItem = ({
         {startMonth && startMonth}
         {startYear && ` ${startYear}`} &mdash; {endMonth && endMonth}
         {endYear && ` ${endYear}`}
-        {current && " Present"}
+        {current && ' Present'}
       </EmploymentPeriod>
       <Toggle
-        aria-label={`Click to ${isShowing ? "close" : "expand"}`}
+        aria-label={`Click to ${isShowing ? 'close' : 'expand'}`}
         onClick={() => handleShowNotes(id)}
-        className={isShowing ? "close" : "open"}
+        className={isShowing ? 'close' : 'open'}
       >
         {isShowing ? <CgRemoveR /> : <Plus />}
       </Toggle>
-      <ShowNotesButton onClick={() => handleShowNotes(id)}>
-        <ResumeItemHeading as="h2">
-          {jobTitle}
-          {!!employer && (
-            <>
-              <span> @</span> {employer}
-            </>
-          )}
-        </ResumeItemHeading>
-      </ShowNotesButton>
+      <ResumeItemHeading
+        id={id}
+        jobTitle={jobTitle}
+        employer={employer}
+        handleShowNotes={handleShowNotes}
+      />
       {notes.length && <ResumeNotesList id={id} notes={notes} />}
     </StyledResumeItem>
-  )
-}
+  );
+};
 
 const EmploymentPeriod = styled.div`
   color: ${vars.colorPrimary};
-`
+`;
 
 const Toggle = styled.button`
   position: absolute;
@@ -91,41 +88,25 @@ const Toggle = styled.button`
       fill: ${vars.colorPrimaryDark};
     }
   }
-`
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    display: none;
+  }
+`;
 
 const StyledResumeItem = styled.div`
   position: relative;
   padding-left: 1.5rem;
   font-size: ${vars.fontSizeText};
   font-weight: ${vars.fontWeightLight};
-`
 
-const ResumeItemHeading = styled(Heading)`
-  font-size: ${vars.fontSizeText};
-  span {
-    color: ${vars.colorPrimary};
-    font-weight: ${vars.fontWeightLight};
-  }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding-left: 0;
 
-const ShowNotesButton = styled.button`
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-
-  ${ResumeItemHeading} {
-    color: ${vars.colorAlmostBlack};
-    transition: all 250ms ${vars.ease};
-  }
-
-  :hover,
-  :focus,
-  :focus-within {
-    ${ResumeItemHeading} {
-      color: ${vars.colorPrimary};
+    & + & {
+      margin-top: 1.5rem;
     }
   }
-`
+`;
 
-export default ResumeItem
+export default ResumeItem;

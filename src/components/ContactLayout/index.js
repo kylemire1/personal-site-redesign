@@ -1,17 +1,17 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import Layout from "../Layout"
-import { Wrapper, Heading, Container } from "../styled/global"
+import Layout from '../Layout';
+import { Wrapper, Heading, Container } from '../styled/global';
 
-import vars from "../../styles/vars"
-import Socials from "./Socials"
-import ContactSection from "./ContactSection"
+import vars from '../../styles/vars';
+import Socials from './Socials';
+import ContactSection from './ContactSection';
 
 const ContactLayout = () => {
   return (
     <Layout>
-      <ContactWrapper>
+      <ContactWrapper id="contact">
         <HeadingContainer>
           <ContactHeading>I can't wait to hear from you!</ContactHeading>
         </HeadingContainer>
@@ -19,8 +19,8 @@ const ContactLayout = () => {
         <ContactSection />
       </ContactWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 const ContactWrapper = styled(Wrapper)`
   grid-template-columns: 1fr;
@@ -31,11 +31,19 @@ const ContactWrapper = styled(Wrapper)`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 8.75rem;
   }
-`
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-template-columns: 1.6fr 1fr 1.5rem;
+  }
+`;
 
 const HeadingContainer = styled(Container)`
   align-self: center;
-`
+
+  @media (min-width: ${vars.breakpointXXL}) {
+    padding-left: 0;
+  }
+`;
 
 const ContactHeading = styled(Heading)`
   color: ${vars.colorWhite};
@@ -43,9 +51,9 @@ const ContactHeading = styled(Heading)`
   text-transform: capitalize;
 
   @media (min-width: ${vars.breakpointMedium}) {
-    font-size: min(8vw, 8rem);
+    font-size: min(8vw, 8.8rem);
     max-width: 48.875rem;
   }
-`
+`;
 
-export default ContactLayout
+export default ContactLayout;

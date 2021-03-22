@@ -1,21 +1,21 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
-import MessageButton from "../MessageButton"
-import LayoutContext from "../../../contexts/LayoutContext"
-import { Container, PageSection, Heading } from "../styled/global"
+import MessageButton from '../MessageButton';
+import LayoutContext from '../../../contexts/LayoutContext';
+import { Container, PageSection, Heading } from '../styled/global';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const ContactMeSection = () => {
-  const [{ scrollDistance }] = useContext(LayoutContext)
+  const [{ scrollDistance }] = useContext(LayoutContext);
 
   return (
     <ContactMeNow $scrolled={scrollDistance > 0}>
       <ContactMeContainer>
         <ContactHeading as="h2">Don't need convincing?</ContactHeading>
         <ContactText>
-          Or just saying hi?{" "}
+          Or just saying hi?{' '}
           <span role="img" aria-label="Waving hand">
             👋
           </span>
@@ -25,8 +25,8 @@ const ContactMeSection = () => {
         </ButtonWrapper>
       </ContactMeContainer>
     </ContactMeNow>
-  )
-}
+  );
+};
 
 const ContactMeNow = styled(PageSection)`
   position: relative;
@@ -37,29 +37,57 @@ const ContactMeNow = styled(PageSection)`
   border-top-left-radius: ${vars.borderRadiusLarge};
   border-bottom-left-radius: ${({ $scrolled }) =>
     $scrolled ? vars.borderRadiusLarge : 0};
-  transition: border-bottom-left-radius 250ms ease-out;
-`
+  transition: border-bottom-left-radius 250ms ${vars.ease};
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-row: 3 / -1;
+    border-top-left-radius: 0;
+
+    border-bottom-right-radius: ${({ $scrolled }) =>
+      $scrolled ? vars.borderRadiusLarge : 0};
+    transition: border-bottom-right-radius 250ms ${vars.ease};
+
+    ::before {
+      content: '';
+      height: 1px;
+      background-color: ${vars.colorWhite};
+      width: 40%;
+      position: absolute;
+      left: -40%;
+      top: -1px;
+      z-index: 5;
+    }
+  }
+`;
 
 const ContactMeContainer = styled(Container)`
   padding: 1rem 1.5rem 2rem;
   width: auto;
+  height: 100%;
+  justify-content: center;
 
   @media (min-width: ${vars.breakpointMedium}) {
     margin-right: 0;
     text-align: right;
   }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding: 1rem 4rem 2rem;
+  }
+`;
 
 const ContactHeading = styled(Heading)`
   color: ${vars.colorPrimaryLight};
   font-size: ${vars.fontSizeText};
-  font-weight: bold;
+  font-weight: ${vars.fontWeightBold};
   margin-bottom: 0.5rem;
 
   @media (min-width: ${vars.breakpointMedium}) {
     font-size: ${vars.fontSizeHeading2};
   }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    font-size: ${vars.fontSizeHeading3};
+  }
+`;
 
 const ContactText = styled.p`
   color: ${vars.colorPrimaryLight};
@@ -68,10 +96,14 @@ const ContactText = styled.p`
   @media (min-width: ${vars.breakpointMedium}) {
     font-size: ${vars.fontSizeText};
   }
-`
+`;
 
 const ButtonWrapper = styled.div`
   margin-top: 0.75rem;
-`
 
-export default ContactMeSection
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    margin-top: 4rem;
+  }
+`;
+
+export default ContactMeSection;

@@ -1,20 +1,20 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import { CSSTransition } from "react-transition-group"
-import ResumeContext from "../../../contexts/ResumeContext"
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
+import ResumeContext from '../../../contexts/ResumeContext';
 
-import vars from "../../styles/vars"
-import ResumeNotesListItem from "./ResumeNotesListItem"
+import vars from '../../styles/vars';
+import ResumeNotesListItem from './ResumeNotesListItem';
 
 const ResumeNotesList = ({ id, notes }) => {
-  const [openResumeNotes] = useContext(ResumeContext)
-  let showNotes = false
-  openResumeNotes.some(note => {
+  const [openResumeNotes] = useContext(ResumeContext);
+  let showNotes = false;
+  openResumeNotes.some((note) => {
     if (note.id === id) {
-      showNotes = note.isOpen
-      return true
-    } else return null
-  })
+      showNotes = note.isOpen;
+      return true;
+    } else return null;
+  });
 
   return (
     <CSSTransition appear in={showNotes} timeout={750} classNames="notes-list">
@@ -30,8 +30,8 @@ const ResumeNotesList = ({ id, notes }) => {
         </ul>
       </ResumeNotesListWrapper>
     </CSSTransition>
-  )
-}
+  );
+};
 
 const ResumeNotesListWrapper = styled.div`
   max-height: 0px;
@@ -57,6 +57,10 @@ const ResumeNotesListWrapper = styled.div`
   &.notes-list-exit-done {
     max-height: 0px;
   }
-`
 
-export default ResumeNotesList
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    max-height: 100% !important;
+  }
+`;
+
+export default ResumeNotesList;

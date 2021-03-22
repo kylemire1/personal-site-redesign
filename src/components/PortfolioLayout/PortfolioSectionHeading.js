@@ -1,9 +1,11 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Heading, Container } from "../styled/global"
+import { Heading, Container } from '../styled/global';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
+
+const HEADING_EFFECT_COUNT = 5;
 
 const PortfolioSectionHeading = () => {
   return (
@@ -11,16 +13,20 @@ const PortfolioSectionHeading = () => {
       <div>
         <PortfolioHeading>Portfolio</PortfolioHeading>
         <HeadingEffect>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div key={`portfolio_effect_${index}`} aria-hidden={true}>
+          {Array.from({ length: HEADING_EFFECT_COUNT }).map((_, index) => (
+            <div
+              key={`portfolio_effect_${index}`}
+              aria-hidden={true}
+              className={index === HEADING_EFFECT_COUNT - 1 ? 'last' : ''}
+            >
               <PortfolioHeading>Portfolio</PortfolioHeading>
             </div>
           ))}
         </HeadingEffect>
       </div>
     </HeadingContainer>
-  )
-}
+  );
+};
 
 const HeadingContainer = styled(Container)`
   @media (min-width: ${vars.breakpointMedium}) {
@@ -31,7 +37,10 @@ const HeadingContainer = styled(Container)`
     align-items: center;
     justify-content: center;
   }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    align-items: flex-end;
+  }
+`;
 
 const PortfolioHeading = styled(Heading)`
   color: ${vars.colorWhite};
@@ -42,7 +51,12 @@ const PortfolioHeading = styled(Heading)`
     text-align: center;
     margin: 0;
   }
-`
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    font-size: ${vars.fontSizeHeading5};
+    line-height: 0.85;
+  }
+`;
 
 const HeadingEffect = styled.div`
   display: none;
@@ -78,6 +92,12 @@ const HeadingEffect = styled.div`
         0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
     }
   }
-`
 
-export default PortfolioSectionHeading
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    .last {
+      display: none;
+    }
+  }
+`;
+
+export default PortfolioSectionHeading;

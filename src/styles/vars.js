@@ -2,8 +2,12 @@
  * Variables for use in Styled Component CSS
  */
 const vars = {
-  /** 200px */
-  fontSizeHeadingHero: '12.5rem',
+  /** 1680px */
+  maxContentWidth: '105rem',
+  /** 160px */
+  fontSizeHeadingHero: '10rem',
+  /** 125px */
+  fontSizeHeadingHeroSmall: '7.5rem',
   /** 145px */
   fontSizeHeadingContact: '9.063rem',
   /** 135px */
@@ -53,6 +57,8 @@ const vars = {
   breakpointLarge: '62em',
   /** 1200px */
   breakpointExtraLarge: '75em',
+  /** 1460px */
+  breakpointXXL: '91.25em',
   ease: 'cubic-bezier(0.55, 0, 0.1, 1)',
 };
 

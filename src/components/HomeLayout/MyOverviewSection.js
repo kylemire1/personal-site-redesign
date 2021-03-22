@@ -8,27 +8,48 @@ import vars from '../../styles/vars';
 const MyOverviewSection = () => {
   return (
     <MyOverview>
-      <Container>
+      <OverviewContainer>
         <OverviewText>
           I’ve been designing and building websites professionally for over 5
           years. In that time I’ve served a wide variety of clients ranging from
           individuals to non-profit organizations and city governments.
         </OverviewText>
-        <OverviewText>
+        <InterestsText>
           My interests lie in creating fast, beautiful websites and helping
           other developers do the same through consulting.
-        </OverviewText>
-      </Container>
+        </InterestsText>
+      </OverviewContainer>
     </MyOverview>
   );
 };
 
+const OverviewContainer = styled(Container)`
+  justify-content: center;
+  height: 100%;
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    justify-content: space-between;
+  }
+`;
+
 const MyOverview = styled(PageSection)`
   grid-column: 1 / -1;
+  align-items: start;
   margin-top: -2rem;
   background-color: ${vars.colorPrimary};
   z-index: 0;
   padding: 8em 0 3em;
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-row: 2 / -1;
+    grid-column: 1 / 2;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    z-index: 1;
+  }
 `;
 
 const OverviewText = styled.p`
@@ -40,6 +61,22 @@ const OverviewText = styled.p`
 
   @media (min-width: ${vars.breakpointMedium}) {
     font-size: ${vars.fontSizeTextLarge};
+  }
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    &:first-child {
+      margin-top: -2rem;
+    }
+
+    font-size: ${vars.fontSizeText};
+    line-height: 1.5;
+    margin-bottom: 0 !important;
+  }
+`;
+
+const InterestsText = styled(OverviewText)`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    font-size: ${vars.fontSizeTextLarge};
+    font-weight: ${vars.fontWeightBold};
   }
 `;
 

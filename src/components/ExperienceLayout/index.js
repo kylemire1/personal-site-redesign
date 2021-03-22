@@ -1,23 +1,23 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import LookingFor from "./LookingFor"
-import Layout from "../Layout"
-import Resume from "./Resume"
-import { Wrapper } from "../styled/global"
+import LookingFor from './LookingFor';
+import Layout from '../Layout';
+import Resume from './Resume';
+import { Wrapper } from '../styled/global';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const ExperienceLayout = () => {
   return (
     <Layout>
-      <ExperienceWrapper>
+      <ExperienceWrapper id="experience">
         <Resume />
         <LookingFor />
       </ExperienceWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 const ExperienceWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 1.5rem;
@@ -27,6 +27,9 @@ const ExperienceWrapper = styled(Wrapper)`
   @media (min-width: ${vars.breakpointMedium}) {
     grid-template-columns: 1fr 1fr 1.5rem;
   }
-`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-template-columns: 1.6fr 1fr 1.5rem;
+  }
+`;
 
-export default ExperienceLayout
+export default ExperienceLayout;

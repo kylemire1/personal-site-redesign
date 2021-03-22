@@ -22,6 +22,7 @@ const StyledMe = styled.div`
   display: none;
 
   @media (min-width: ${vars.breakpointMedium}) {
+    grid-row: 1 / 2;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -30,6 +31,23 @@ const StyledMe = styled.div`
     background-color: ${vars.colorWhite};
     margin-left: -2rem;
     padding-left: 2rem;
+
+    ::after {
+      content: '';
+      position: absolute;
+      background-color: ${vars.colorWhite};
+      width: 8rem;
+      top: 0;
+      bottom: 0;
+      right: -4rem;
+      border-bottom-right-radius: ${vars.borderRadiusLarge};
+      z-index: -1;
+    }
+  }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-row: 1 / 3;
+    grid-column: 2 / -1;
   }
 `;
 
@@ -38,7 +56,7 @@ const ImageWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  max-width: 31.875rem;
+  max-width: 40rem;
 
   img {
     width: auto;

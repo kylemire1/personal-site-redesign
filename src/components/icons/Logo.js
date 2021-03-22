@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react';
 
-import styled from "styled-components"
+import styled from 'styled-components';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const Logo = () => {
   return (
@@ -39,13 +39,13 @@ const Logo = () => {
         </g>
       </g>
     </Svg>
-  )
-}
+  );
+};
 
 const Svg = styled.svg`
   path {
     transition: fill 500ms ${vars.ease};
   }
-`
+`;
 
-export default Logo
+export default Logo;

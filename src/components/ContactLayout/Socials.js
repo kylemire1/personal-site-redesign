@@ -1,12 +1,12 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import SocialItem from "./SocialItem"
-import Github from "../icons/Github"
+import SocialItem from './SocialItem';
+import Github from '../icons/Github';
 
-import vars from "../../styles/vars"
-import Linkedin from "../icons/Linkedin"
-import Twitter from "../icons/Twitter"
+import vars from '../../styles/vars';
+import Linkedin from '../icons/Linkedin';
+import Twitter from '../icons/Twitter';
 
 const Socials = () => {
   return (
@@ -23,10 +23,16 @@ const Socials = () => {
         </SocialItem>
       </StyledSocials>
     </SocialsWrapper>
-  )
-}
+  );
+};
 
-const SocialsWrapper = styled.div``
+const SocialsWrapper = styled.div`
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    grid-row: 2 / -1;
+    grid-column: 1 / 2;
+    align-self: end;
+  }
+`;
 
 const StyledSocials = styled.div`
   padding: 1em;
@@ -37,6 +43,13 @@ const StyledSocials = styled.div`
   background-color: ${vars.colorPrimaryDark};
   border-top-right-radius: ${vars.borderRadiusSmall};
   border-bottom-right-radius: ${vars.borderRadiusSmall};
-`
 
-export default Socials
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding: 2em;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: ${vars.borderRadiusLarge};
+    border-top-right-radius: ${vars.borderRadiusLarge};
+  }
+`;
+
+export default Socials;

@@ -1,13 +1,24 @@
-import React from "react"
+import React from 'react';
+import styled from 'styled-components';
+
+import vars from '../styles/vars';
 
 const Layout = ({ children }) => {
-  const pathname = "/"
+  const pathname = '/';
 
   return (
-    <div className={`section-wrapper ${pathname === "/" ? "section" : ""}`}>
+    <SectionWrapper
+      className={`section-wrapper ${pathname === '/' ? 'section' : ''}`}
+    >
       {children}
-    </div>
-  )
-}
+    </SectionWrapper>
+  );
+};
 
-export default Layout
+const SectionWrapper = styled.div`
+  max-width: ${vars.maxContentWidth};
+  display: block;
+  margin: 0 auto;
+`;
+
+export default Layout;

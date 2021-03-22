@@ -1,13 +1,13 @@
-import React from "react"
-import { createGlobalStyle } from "styled-components"
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 
-import { ResumeContextProvider } from "./contexts/ResumeContext"
-import { LayoutContextProvider } from "./contexts/LayoutContext"
+import { ResumeContextProvider } from './contexts/ResumeContext';
+import { LayoutContextProvider } from './contexts/LayoutContext';
 
-import vars from "./src/styles/vars"
+import vars from './src/styles/vars';
 
-import "./src/styles/normalize.css"
-import "./src/styles/globals.scss"
+import './src/styles/normalize.css';
+import './src/styles/globals.scss';
 
 export const wrapRootElement = ({ element }) => {
   return (
@@ -17,11 +17,12 @@ export const wrapRootElement = ({ element }) => {
         {element}
       </LayoutContextProvider>
     </ResumeContextProvider>
-  )
-}
+  );
+};
 
 const GlobalStyle = createGlobalStyle`
   html {
+    overflow-x: hidden;
     font-size: 72%;
     background-color: ${vars.colorPrimary};
 
@@ -32,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
     @media (min-width: ${vars.breakpointLarge}) {
       font-size: 100%;
     }
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   p {
@@ -60,4 +65,4 @@ const GlobalStyle = createGlobalStyle`
       padding-top: 10rem;
     }
   }
-`
+`;
