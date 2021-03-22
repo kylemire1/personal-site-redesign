@@ -116,7 +116,7 @@ const ItemContent = styled.div`
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     justify-content: flex-start;
-    padding-top: 4em;
+    padding-top: 2em;
   }
 `;
 
