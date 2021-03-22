@@ -25,14 +25,11 @@ const StyledShowcase = styled.div`
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   overflow: hidden;
 
-  @media (min-width: ${vars.breakpointLarge}) {
+  @media (min-width: ${vars.breakpointExtraLarge}) {
     width: calc(100% + 4rem);
     margin-left: -4rem;
     border-top-left-radius: ${vars.borderRadiusLarge};
     border-bottom-left-radius: ${vars.borderRadiusLarge};
-  }
-
-  @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(4, 1fr);
   }

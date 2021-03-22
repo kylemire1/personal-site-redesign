@@ -39,22 +39,13 @@ const ContactMeNow = styled(PageSection)`
     $scrolled ? vars.borderRadiusLarge : 0};
   transition: border-bottom-left-radius 250ms ${vars.ease};
 
-  ::after {
-    content: '';
-    position: absolute;
-    background-color: ${vars.colorPrimaryDark};
-    width: 4rem;
-    top: 0;
-    bottom: 0;
-    right: -4rem;
-    border-bottom-right-radius: ${({ $scrolled }) =>
-      $scrolled ? vars.borderRadiusLarge : 0};
-    transition: border-bottom-right-radius 250ms ${vars.ease};
-  }
-
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-row: 3 / -1;
     border-top-left-radius: 0;
+
+    border-bottom-right-radius: ${({ $scrolled }) =>
+      $scrolled ? vars.borderRadiusLarge : 0};
+    transition: border-bottom-right-radius 250ms ${vars.ease};
 
     ::before {
       content: '';
@@ -78,6 +69,9 @@ const ContactMeContainer = styled(Container)`
   @media (min-width: ${vars.breakpointMedium}) {
     margin-right: 0;
     text-align: right;
+  }
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    padding: 1rem 4rem 2rem;
   }
 `;
 

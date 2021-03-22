@@ -62,7 +62,7 @@ const StyledItem = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 1em 2em;
+  padding: 1em 3em 1em 2em;
   height: 100%;
   width: 100%;
   overflow: hidden;

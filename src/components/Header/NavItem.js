@@ -1,24 +1,29 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled, { css } from "styled-components"
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
-import vars from "../../styles/vars"
+import vars from '../../styles/vars';
 
 const NavItem = ({ href, children }) => {
-  const pathname = "/"
-
-  if (pathname !== "/") {
-    return <StyledNextLink to={href}>{children}</StyledNextLink>
-  }
-
-  return <StyledAnchorLink href={href}>{children}</StyledAnchorLink>
-}
+  return (
+    <StyledAnchorLink>
+      <AnchorLink to={href}>{children}</AnchorLink>
+    </StyledAnchorLink>
+  );
+};
 
 const linkStyles = css`
   font-weight: ${vars.fontWeightBold};
+`;
 
+const StyledAnchorLink = styled.div`
   & + & {
     margin-left: 1rem;
+  }
+
+  a {
+    ${linkStyles}
+    color: ${vars.colorAlmostBlack};
   }
 
   @media (min-width: ${vars.breakpointTiny}) {
@@ -26,17 +31,6 @@ const linkStyles = css`
       margin-left: 1.5rem;
     }
   }
-`
+`;
 
-const StyledNextLink = styled(Link)`
-  ${linkStyles}
-  color: ${vars.colorAlmostBlack};
-  transition: color 500ms ${vars.ease};
-`
-
-const StyledAnchorLink = styled.a`
-  ${linkStyles}
-  color: ${vars.colorAlmostBlack};
-`
-
-export default NavItem
+export default NavItem;

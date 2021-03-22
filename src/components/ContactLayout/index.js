@@ -11,7 +11,7 @@ import ContactSection from './ContactSection';
 const ContactLayout = () => {
   return (
     <Layout>
-      <ContactWrapper>
+      <ContactWrapper id="contact">
         <HeadingContainer>
           <ContactHeading>I can't wait to hear from you!</ContactHeading>
         </HeadingContainer>
@@ -39,6 +39,10 @@ const ContactWrapper = styled(Wrapper)`
 
 const HeadingContainer = styled(Container)`
   align-self: center;
+
+  @media (min-width: ${vars.breakpointXXL}) {
+    padding-left: 0;
+  }
 `;
 
 const ContactHeading = styled(Heading)`
@@ -47,7 +51,7 @@ const ContactHeading = styled(Heading)`
   text-transform: capitalize;
 
   @media (min-width: ${vars.breakpointMedium}) {
-    font-size: min(8vw, 8rem);
+    font-size: min(8vw, 8.8rem);
     max-width: 48.875rem;
   }
 `;

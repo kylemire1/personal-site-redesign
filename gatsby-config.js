@@ -1,6 +1,6 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -34,6 +34,13 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-gatsby-cloud`,
-    "gatsby-plugin-sass",
+    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-anchor-links`,
+      options: {
+        offset: -100,
+        duration: 500,
+      },
+    },
   ],
-}
+};

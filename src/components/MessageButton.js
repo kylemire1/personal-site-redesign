@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 import { orangeButtonStyles } from './styled/global';
 import vars from '../styles/vars';
 
 const MessageButton = () => {
-  return <StyledButton href="/#contact">Get In Touch</StyledButton>;
+  return <StyledButton to="/#contact">Get In Touch</StyledButton>;
 };
 
-const StyledButton = styled.a`
+const StyledButton = styled(AnchorLink)`
   ${orangeButtonStyles}
 
   @media (min-width: ${vars.breakpointExtraLarge}) {

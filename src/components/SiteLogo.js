@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 import styled from 'styled-components';
 
 import LogoImg from './icons/Logo';
@@ -8,12 +8,12 @@ import vars from '../styles/vars';
 
 const Logo = () => {
   return (
-    <Link to="/">
+    <AnchorLink to="/#home">
       <LogoWrapper>
         <LogoImg />
         <LogoText id="logo-text">Kyle Lemire</LogoText>
       </LogoWrapper>
-    </Link>
+    </AnchorLink>
   );
 };
 

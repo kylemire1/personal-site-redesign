@@ -11,7 +11,7 @@ import vars from '../../styles/vars';
 const ExperienceLayout = () => {
   return (
     <Layout>
-      <ExperienceWrapper>
+      <ExperienceWrapper id="experience">
         <Resume />
         <LookingFor />
       </ExperienceWrapper>

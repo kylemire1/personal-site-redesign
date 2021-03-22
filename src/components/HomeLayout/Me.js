@@ -39,8 +39,9 @@ const StyledMe = styled.div`
       width: 8rem;
       top: 0;
       bottom: 0;
-      right: -8rem;
+      right: -4rem;
       border-bottom-right-radius: ${vars.borderRadiusLarge};
+      z-index: -1;
     }
   }
 

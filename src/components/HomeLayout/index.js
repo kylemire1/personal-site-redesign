@@ -14,7 +14,7 @@ import vars from '../../styles/vars';
 const HomeLayout = () => {
   return (
     <Layout>
-      <HomeWrapper>
+      <HomeWrapper id="home">
         <HelloSection />
         <Me />
         <MyOverviewSection />
@@ -36,7 +36,7 @@ const HomeWrapper = styled(Wrapper)`
   }
 
   @media (min-width: ${vars.breakpointMedium}) {
-    grid-template-rows: 3.5fr 1.6fr 1fr;
+    grid-template-rows: 45rem 1.6fr 1fr;
     grid-template-columns: 0.5fr 0.5fr 1fr;
   }
 

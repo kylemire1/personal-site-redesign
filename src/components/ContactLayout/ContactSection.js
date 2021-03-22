@@ -58,6 +58,10 @@ const FormWrapper = styled.div`
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+  @media (min-width: ${vars.breakpointExtraLarge}) {
+    height: 92%;
+  }
 `;
 
 export default ContactSection;

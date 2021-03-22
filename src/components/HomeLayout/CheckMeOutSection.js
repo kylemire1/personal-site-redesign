@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 import { Container } from '../styled/global';
 import ArrowThinDown from '../icons/ArrowThinDown';
@@ -7,9 +8,8 @@ import ArrowThinDown from '../icons/ArrowThinDown';
 import vars from '../../styles/vars';
 
 const CheckMeOutSection = () => {
-  const handleClick = () => {};
   return (
-    <CheckMeOutButton onClick={handleClick}>
+    <CheckMeOutButton to="/#portfolio">
       <CheckMeOutContainer>
         <CheckMeOutText>Check out some projects I'm proud of.</CheckMeOutText>
         <ArrowThinDown />
@@ -18,7 +18,7 @@ const CheckMeOutSection = () => {
   );
 };
 
-const CheckMeOutButton = styled.button`
+const CheckMeOutButton = styled(AnchorLink)`
   background: none;
   border: none;
   cursor: pointer;
@@ -84,7 +84,7 @@ const CheckMeOutButton = styled.button`
 
   @media (min-width: ${vars.breakpointXXL}) {
     ::before {
-      width: 660%;
+      width: 40vh;
     }
   }
 

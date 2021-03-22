@@ -12,7 +12,7 @@ import PortfolioSectionHeading from './PortfolioSectionHeading';
 const PortfolioLayout = () => {
   return (
     <Layout>
-      <PortfolioWrapper>
+      <PortfolioWrapper id="portfolio">
         <PortfolioSectionHeading />
         <PortfolioShowcase />
       </PortfolioWrapper>
