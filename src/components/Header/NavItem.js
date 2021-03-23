@@ -1,13 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { AnchorLink } from 'gatsby-plugin-anchor-links';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import vars from '../../styles/vars';
 
 const NavItem = ({ href, children }) => {
   return (
     <StyledAnchorLink>
-      <AnchorLink to={href}>{children}</AnchorLink>
+      <AnchorLink href={href} offset="100">
+        {children}
+      </AnchorLink>
     </StyledAnchorLink>
   );
 };

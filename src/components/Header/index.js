@@ -43,9 +43,9 @@ const LazyLoaded = () => {
       <StyledContainer>
         <SiteLogo />
         <Nav role="menu">
-          <NavItem href="/#portfolio">Portfolio</NavItem>
-          <NavItem href="/#experience">Experience</NavItem>
-          <NavItem href="/#contact">Contact</NavItem>
+          <NavItem href="#portfolio">Portfolio</NavItem>
+          <NavItem href="#experience">Experience</NavItem>
+          <NavItem href="#contact">Contact</NavItem>
         </Nav>
       </StyledContainer>
     </StyledHeader>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AnchorLink } from 'gatsby-plugin-anchor-links';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import { Container } from '../styled/global';
 import ArrowThinDown from '../icons/ArrowThinDown';
@@ -9,7 +9,7 @@ import vars from '../../styles/vars';
 
 const CheckMeOutSection = () => {
   return (
-    <CheckMeOutButton to="/#portfolio">
+    <CheckMeOutButton href="#portfolio" offset="100">
       <CheckMeOutContainer>
         <CheckMeOutText>Check out some projects I'm proud of.</CheckMeOutText>
         <ArrowThinDown />

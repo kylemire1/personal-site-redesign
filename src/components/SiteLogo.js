@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnchorLink } from 'gatsby-plugin-anchor-links';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
 
 import LogoImg from './icons/Logo';
@@ -8,7 +8,7 @@ import vars from '../styles/vars';
 
 const Logo = () => {
   return (
-    <AnchorLink to="/#home">
+    <AnchorLink href="#home" offset="100">
       <LogoWrapper>
         <LogoImg />
         <LogoText id="logo-text">Kyle Lemire</LogoText>
