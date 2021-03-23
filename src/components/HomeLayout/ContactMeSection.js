@@ -37,15 +37,16 @@ const ContactMeNow = styled(PageSection)`
   border-top-left-radius: ${vars.borderRadiusLarge};
   border-bottom-left-radius: ${({ $scrolled }) =>
     $scrolled ? vars.borderRadiusLarge : 0};
-  transition: border-bottom-left-radius 250ms ${vars.ease};
+  transition: all 250ms ${vars.ease};
+  transition-property: border-bottom-left-radius, border-bottom-right-radius;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-row: 3 / -1;
     border-top-left-radius: 0;
-
     border-bottom-right-radius: ${({ $scrolled }) =>
       $scrolled ? vars.borderRadiusLarge : 0};
-    transition: border-bottom-right-radius 250ms ${vars.ease};
+    transition: all 250ms ${vars.ease};
+    transition-property: border-bottom-left-radius, border-bottom-right-radius;
 
     ::before {
       content: '';
