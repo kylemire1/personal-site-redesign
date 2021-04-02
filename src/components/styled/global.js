@@ -21,11 +21,6 @@ export const Wrapper = styled(Grid)`
   position: relative;
 `;
 
-export const PageSection = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 export const Heading = styled.h1`
   font-weight: ${vars.fontWeightBlack};
   color: ${vars.colorAlmostBlack};

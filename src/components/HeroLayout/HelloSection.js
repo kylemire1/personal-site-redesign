@@ -2,14 +2,17 @@ import React, { useLayoutEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import useDimensions from 'react-use-dimensions';
+import { motion, useReducedMotion } from 'framer-motion';
 
-import { Container, PageSection, Heading } from '../styled/global';
+import { Container, Heading } from '../styled/global';
 import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import meSrcMobile from '../../images/me-large.jpg';
+import { basicAnimateIn } from '../../consts';
 
 const HelloSection = () => {
+  const reduceMotion = useReducedMotion();
   const [ref, { height }] = useDimensions();
   const [, dispatch] = useContext(LayoutContext);
 
@@ -18,8 +21,21 @@ const HelloSection = () => {
   }, [height, dispatch]);
 
   return (
-    <HelloWrapper ref={ref}>
-      <HelloContainer>
+    <HelloWrapper
+      ref={ref}
+      {...basicAnimateIn}
+      variants={{
+        hidden: { height: reduceMotion ? '100%' : 0 },
+        visible: { height: '100%' },
+      }}
+    >
+      <HelloContainer
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: reduceMotion ? 0.15 : 0.45,
+        }}
+      >
         <HelloHeading as="h1">Hello there!</HelloHeading>
         <IntroText>
           My name is Kyle Lemire. I’m a <span>designer and web developer</span>{' '}
@@ -30,7 +46,9 @@ const HelloSection = () => {
   );
 };
 
-const HelloWrapper = styled(PageSection)`
+const HelloWrapper = styled(motion.div)`
+  display: flex;
+  align-items: center;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
   border-bottom-left-radius: ${vars.borderRadiusLarge};
@@ -41,6 +59,7 @@ const HelloWrapper = styled(PageSection)`
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   position: relative;
+  overflow: hidden;
 
   ::before {
     content: '';
@@ -79,7 +98,7 @@ const HelloWrapper = styled(PageSection)`
   }
 `;
 
-const HelloContainer = styled(Container)`
+const HelloContainer = styled(motion(Container))`
   position: relative;
   margin-bottom: -4rem;
 

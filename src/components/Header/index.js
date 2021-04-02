@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import useDimensions from 'react-use-dimensions';
@@ -10,12 +11,11 @@ import NavItem from './NavItem';
 import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
+import { basicAnimateIn } from '../../consts';
 
 const Header = () => {
-  const [ref, { height: headerHeight }] = useDimensions();
-  const [{ welcomeSectionHeight, scrollDistance }, dispatch] = useContext(
-    LayoutContext
-  );
+  const [ref] = useDimensions();
+  const [{ scrollDistance }, dispatch] = useContext(LayoutContext);
 
   useScrollPosition(({ currPos }) => {
     if (currPos.y * -1 !== scrollDistance) {
@@ -24,11 +24,9 @@ const Header = () => {
     }
   });
 
-  const scrollPassed = scrollDistance > welcomeSectionHeight / 2 - headerHeight;
-
   return (
-    <StyledHeader className={scrollPassed ? 'passed' : ''} ref={ref}>
-      <StyledContainer>
+    <StyledHeader className={scrollDistance > 0 ? 'passed' : ''} ref={ref}>
+      <StyledContainer {...basicAnimateIn}>
         <SiteLogo />
         <Nav role="menu">
           <NavItem href="#portfolio">Portfolio</NavItem>
@@ -61,7 +59,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const StyledContainer = styled(Container)`
+const StyledContainer = styled(motion(Container))`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

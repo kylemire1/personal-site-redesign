@@ -60,6 +60,7 @@ const vars = {
   /** 1460px */
   breakpointXXL: '91.25em',
   ease: 'cubic-bezier(0.55, 0, 0.1, 1)',
+  easeFramer: [0.55, 0, 0.1, 1],
 };
 
 export default vars;

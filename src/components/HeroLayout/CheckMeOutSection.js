@@ -1,16 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { motion } from 'framer-motion';
 
 import { Container } from '../styled/global';
 import ArrowThinDown from '../icons/ArrowThinDown';
 
 import vars from '../../styles/vars';
+import { basicAnimateIn } from '../../consts';
 
 const CheckMeOutSection = () => {
   return (
     <CheckMeOutButton href="#portfolio" offset="100">
-      <CheckMeOutContainer>
+      <CheckMeOutContainer
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: 0.9,
+        }}
+      >
         <CheckMeOutText>Check out some projects I'm proud of.</CheckMeOutText>
         <ArrowThinDown />
       </CheckMeOutContainer>
@@ -94,7 +102,7 @@ const CheckMeOutButton = styled(AnchorLink)`
   }
 `;
 
-const CheckMeOutContainer = styled(Container)`
+const CheckMeOutContainer = styled(motion(Container))`
   height: 100%;
   justify-content: center;
 
