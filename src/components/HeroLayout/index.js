@@ -11,7 +11,7 @@ import { Wrapper } from '../styled/global';
 
 import vars from '../../styles/vars';
 
-const HomeLayout = () => {
+const HeroLayout = () => {
   return (
     <Layout>
       <HomeWrapper id="home">
@@ -46,4 +46,4 @@ const HomeWrapper = styled(Wrapper)`
   }
 `;
 
-export default HomeLayout;
+export default HeroLayout;

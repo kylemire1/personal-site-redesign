@@ -4,7 +4,7 @@ import { CgRemoveR } from 'react-icons/cg';
 import { darken } from 'polished';
 
 import ResumeNotesList from './ResumeNotesList';
-import ResumeContext from '../../../contexts/ResumeContext';
+import ResumeContext from '../../contexts/ResumeContext';
 
 import Plus from '../icons/Plus';
 

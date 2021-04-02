@@ -1,7 +1,7 @@
-import React from "react"
-import { Helmet } from "react-helmet"
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
-import FullPageLayout from "../components/FullPageLayout"
+import HomeLayout from '../components/HomeLayout';
 
 const Home = () => {
   return (
@@ -9,9 +9,9 @@ const Home = () => {
       <Helmet>
         <title>Chicago based web developer Kyle Lemire</title>
       </Helmet>
-      <FullPageLayout />
+      <HomeLayout />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

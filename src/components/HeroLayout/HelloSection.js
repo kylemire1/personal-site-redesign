@@ -4,7 +4,7 @@ import { rgba } from 'polished';
 import useDimensions from 'react-use-dimensions';
 
 import { Container, PageSection, Heading } from '../styled/global';
-import LayoutContext from '../../../contexts/LayoutContext';
+import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import meSrcMobile from '../../images/me-large.jpg';

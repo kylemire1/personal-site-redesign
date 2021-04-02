@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import useDimensions from 'react-use-dimensions';
@@ -7,23 +7,11 @@ import { rgba } from 'polished';
 import SiteLogo from '../SiteLogo';
 import { Container } from '../styled/global';
 import NavItem from './NavItem';
-import LayoutContext from '../../../contexts/LayoutContext';
+import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 
-const Header = (props) => {
-  const [showChild, setShowChild] = useState(false);
-
-  useEffect(() => setShowChild(true), []);
-
-  if (!showChild) {
-    return null;
-  }
-
-  return <LazyLoaded {...props} />;
-};
-
-const LazyLoaded = () => {
+const Header = () => {
   const [ref, { height: headerHeight }] = useDimensions();
   const [{ welcomeSectionHeight, scrollDistance }, dispatch] = useContext(
     LayoutContext
@@ -77,7 +65,7 @@ const StyledContainer = styled(Container)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.875rem 2.35rem;
+  padding: 0.875rem 1.75rem;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     padding-right: 1rem;

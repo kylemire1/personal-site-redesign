@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ResumeContextProvider } from './contexts/ResumeContext';
-import { LayoutContextProvider } from './contexts/LayoutContext';
+import { ResumeContextProvider } from './src/contexts/ResumeContext';
+import { LayoutContextProvider } from './src/contexts/LayoutContext';
 import GlobalStyles from './src/styles/GlobalStyles';
 
 import './src/styles/normalize.css';

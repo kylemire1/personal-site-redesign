@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import MessageButton from '../MessageButton';
-import LayoutContext from '../../../contexts/LayoutContext';
+import LayoutContext from '../../contexts/LayoutContext';
 import { Container, PageSection, Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
