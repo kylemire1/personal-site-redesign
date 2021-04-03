@@ -1,13 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import vars from '../../styles/vars';
+import { basicAnimateIn } from '../../consts';
 
 const Me = () => {
+  const reduceMotion = useReducedMotion();
   return (
-    <StyledMe>
-      <ImageWrapper>
+    <StyledMe
+      {...basicAnimateIn}
+      transition={{
+        ...basicAnimateIn.transition,
+        delay: 0.15,
+      }}
+      variants={{
+        hidden: { height: reduceMotion ? '100%' : 0 },
+        visible: { height: '100%' },
+      }}
+    >
+      <ImageWrapper
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: 0.75,
+        }}
+      >
         <StaticImage
           src="../../images/profile-pic.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
@@ -18,7 +37,7 @@ const Me = () => {
   );
 };
 
-const StyledMe = styled.div`
+const StyledMe = styled(motion.div)`
   display: none;
 
   @media (min-width: ${vars.breakpointMedium}) {
@@ -51,7 +70,7 @@ const StyledMe = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(motion.div)`
   position: relative;
   display: flex;
   width: 100%;
