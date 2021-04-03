@@ -1,18 +1,38 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import MessageButton from '../MessageButton';
-import LayoutContext from '../../../contexts/LayoutContext';
-import { Container, PageSection, Heading } from '../styled/global';
+import LayoutContext from '../../contexts/LayoutContext';
+import { Container, Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
+import { basicAnimateIn } from '../../consts';
 
 const ContactMeSection = () => {
+  const reduceMotion = useReducedMotion();
   const [{ scrollDistance }] = useContext(LayoutContext);
 
   return (
-    <ContactMeNow $scrolled={scrollDistance > 0}>
-      <ContactMeContainer>
+    <ContactMeNow
+      $scrolled={scrollDistance > 0}
+      {...basicAnimateIn}
+      transition={{
+        ...basicAnimateIn.transition,
+        delay: 0.9,
+      }}
+      variants={{
+        hidden: { left: reduceMotion ? 0 : '100%' },
+        visible: { left: '0' },
+      }}
+    >
+      <ContactMeContainer
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: 1.5,
+        }}
+      >
         <ContactHeading as="h2">Don't need convincing?</ContactHeading>
         <ContactText>
           Or just saying hi?{' '}
@@ -28,7 +48,7 @@ const ContactMeSection = () => {
   );
 };
 
-const ContactMeNow = styled(PageSection)`
+const ContactMeNow = styled(motion.div)`
   position: relative;
   grid-column: 2 / -1;
   display: flex;
@@ -61,7 +81,7 @@ const ContactMeNow = styled(PageSection)`
   }
 `;
 
-const ContactMeContainer = styled(Container)`
+const ContactMeContainer = styled(motion(Container))`
   padding: 1rem 1.5rem 2rem;
   width: auto;
   height: 100%;

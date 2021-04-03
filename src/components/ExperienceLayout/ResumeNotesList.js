@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
-import ResumeContext from '../../../contexts/ResumeContext';
+import ResumeContext from '../../contexts/ResumeContext';
 
 import vars from '../../styles/vars';
 import ResumeNotesListItem from './ResumeNotesListItem';

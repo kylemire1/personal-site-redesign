@@ -1,13 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-import { Container, PageSection } from '../styled/global';
+import { Container } from '../styled/global';
 
 import vars from '../../styles/vars';
+import { basicAnimateIn } from '../../consts';
 
 const MyOverviewSection = () => {
   return (
-    <MyOverview>
+    <MyOverview
+      {...basicAnimateIn}
+      transition={{
+        ...basicAnimateIn.transition,
+        delay: 0.7,
+      }}
+    >
       <OverviewContainer>
         <OverviewText>
           I’ve been designing and building websites professionally for over 5
@@ -32,8 +40,9 @@ const OverviewContainer = styled(Container)`
   }
 `;
 
-const MyOverview = styled(PageSection)`
+const MyOverview = styled(motion.div)`
   grid-column: 1 / -1;
+  display: flex;
   align-items: start;
   margin-top: -2rem;
   background-color: ${vars.colorPrimary};

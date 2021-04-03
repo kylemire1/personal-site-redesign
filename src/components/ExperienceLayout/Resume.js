@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import ResumeItem from './ResumeItem';
-import ResumeContext from '../../../contexts/ResumeContext';
+import ResumeContext from '../../contexts/ResumeContext';
 import { Heading, Container } from '../styled/global';
 
 import vars from '../../styles/vars';
@@ -97,19 +97,33 @@ const ResumeDownloadButton = styled.a`
   ::after {
     content: '';
     position: absolute;
-    bottom: -0.7rem;
+    bottom: -0.6rem;
     right: 0.3rem;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 10px 10px 0 0;
     border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
+    z-index: -1;
+  }
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    ::after {
+      right: 0.35rem;
+    }
   }
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     top: 2rem;
+    right: -1.3rem;
     bottom: auto;
     font-size: ${vars.fontSizeText};
+
+    ::after {
+      border-width: 1rem 1rem 0 0;
+      bottom: -0.8rem;
+      right: 0.3rem;
+    }
   }
 `;
 
