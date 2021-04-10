@@ -32,41 +32,39 @@ const HelloSection = () => {
         visible: { transform: 'scaleY(1)', opacity: 1 },
       }}
     >
-      <HelloInner>
-        <HelloContainer
-          {...basicAnimateIn}
-          transition={{
-            ...basicAnimateIn.transition,
-            delay: reduceMotion ? 0.15 : 0.45,
-          }}
-          variants={{
-            hidden: {
-              opacity: reduceMotion ? 1 : 0,
-            },
-            visible: { opacity: 1 },
-          }}
-        >
-          <HelloHeading as="h1">Hello there!</HelloHeading>
-          <IntroText>
-            My name is Kyle Lemire. I’m a{' '}
-            <span>designer and web developer</span> based in Chicago.
-          </IntroText>
-        </HelloContainer>
-        <MobileMe
-          {...basicAnimateIn}
-          transition={{
-            ...basicAnimateIn.transition,
-            delay: 0.75,
-          }}
-        >
-          <StaticImage
-            src="../../images/me-large.jpg"
-            alt="Me smiling wearing a shirt with a floral pattern"
-            placeholder="#FFFFFF"
-            quality={100}
-          />
-        </MobileMe>
-      </HelloInner>
+      <MobileMe
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: 0.75,
+        }}
+      >
+        <StaticImage
+          src="../../images/me-large.jpg"
+          alt="Me smiling wearing a shirt with a floral pattern"
+          placeholder="#FFFFFF"
+          quality={100}
+        />
+      </MobileMe>
+      <HelloContainer
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: reduceMotion ? 0.15 : 0.45,
+        }}
+        variants={{
+          hidden: {
+            opacity: reduceMotion ? 1 : 0,
+          },
+          visible: { opacity: 1 },
+        }}
+      >
+        <HelloHeading as="h1">Hello there!</HelloHeading>
+        <IntroText>
+          My name is Kyle Lemire. I’m a <span>designer and web developer</span>{' '}
+          based in Chicago.
+        </IntroText>
+      </HelloContainer>
     </HelloWrapper>
   );
 };
@@ -84,6 +82,7 @@ const HelloWrapper = styled(motion.div)`
   transform-origin: top;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
+  overflow: hidden;
 
   ::before {
     content: '';
@@ -102,20 +101,12 @@ const HelloWrapper = styled(motion.div)`
     transition: all 500ms ${vars.ease};
     transition-property: background-position, background-size;
     border-bottom-left-radius: 0;
+    overflow: visible;
   }
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-column: 1 / 5;
   }
-`;
-
-const HelloInner = styled.div`
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
 `;
 
 const HelloContainer = styled(motion(Container))`
