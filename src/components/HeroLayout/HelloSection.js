@@ -26,10 +26,10 @@ const HelloSection = () => {
       {...basicAnimateIn}
       variants={{
         hidden: {
-          height: reduceMotion ? '100%' : 0,
-          filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+          transform: reduceMotion ? 'scaleY(1)' : 'scaleY(0)',
+          opacity: reduceMotion ? 1 : 0,
         },
-        visible: { height: '100%', filter: 'opacity(1)' },
+        visible: { transform: 'scaleY(1)', opacity: 1 },
       }}
     >
       <HelloInner>
@@ -41,9 +41,9 @@ const HelloSection = () => {
           }}
           variants={{
             hidden: {
-              filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+              opacity: reduceMotion ? 1 : 0,
             },
-            visible: { filter: 'opacity(1)' },
+            visible: { opacity: 1 },
           }}
         >
           <HelloHeading as="h1">Hello there!</HelloHeading>
@@ -75,6 +75,7 @@ const HelloWrapper = styled(motion.div)`
   background-color: ${vars.colorWhite};
   box-shadow: 0 4px 90px ${rgba(vars.colorPrimary, 0.4)};
   z-index: 2;
+  transform-origin: top;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   position: relative;
