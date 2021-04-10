@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import { Container } from '../styled/global';
 import ArrowThinDown from '../icons/ArrowThinDown';
@@ -10,13 +10,20 @@ import vars from '../../styles/vars';
 import { basicAnimateIn } from '../../consts';
 
 const CheckMeOutSection = () => {
+  const reduceMotion = useReducedMotion();
   return (
     <CheckMeOutButton href="#portfolio" offset="100">
       <CheckMeOutContainer
         {...basicAnimateIn}
         transition={{
           ...basicAnimateIn.transition,
-          delay: 0.9,
+          delay: 1,
+        }}
+        variants={{
+          hidden: {
+            filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+          },
+          visible: { filter: 'opacity(1)' },
         }}
       >
         <CheckMeOutText>Check out some projects I'm proud of.</CheckMeOutText>
@@ -55,7 +62,12 @@ const CheckMeOutButton = styled(AnchorLink)`
   }
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
+    display: none;
+  }
+
+  @media (min-width: 110em) {
     position: absolute;
+    display: block;
     bottom: 0;
     left: 0;
     z-index: 5;
@@ -71,7 +83,7 @@ const CheckMeOutButton = styled(AnchorLink)`
       position: absolute;
       height: ${vars.pixel};
       background-color: ${vars.colorWhite};
-      width: 100%;
+      border-radius: ${vars.borderRadiusLarge};
       bottom: 50%;
       left: 5rem;
     }
@@ -93,6 +105,28 @@ const CheckMeOutButton = styled(AnchorLink)`
   @media (min-width: ${vars.breakpointXXL}) {
     ::before {
       width: 40vh;
+      transform: scaleX(0);
+      transform-origin: left;
+      will-change: transform;
+      animation-name: growIn;
+      animation-duration: 1s;
+      animation-timing-function: ${vars.ease};
+      animation-fill-mode: forwards;
+      animation-delay: 1.25s;
+
+      @media (prefers-reduced-motion) {
+        animation-name: none;
+        transform: scaleX(1);
+      }
+
+      @keyframes growIn {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
     }
   }
 

@@ -26,7 +26,13 @@ const Header = () => {
 
   return (
     <StyledHeader className={scrollDistance > 0 ? 'passed' : ''} ref={ref}>
-      <StyledContainer {...basicAnimateIn}>
+      <StyledContainer
+        {...basicAnimateIn}
+        transition={{
+          ...basicAnimateIn.transition,
+          delay: 0.5,
+        }}
+      >
         <SiteLogo />
         <Nav role="menu">
           <NavItem href="#portfolio">Portfolio</NavItem>
@@ -49,7 +55,7 @@ const StyledHeader = styled.header`
   border-bottom-right-radius: ${vars.borderRadiusLarge};
 
   &.passed {
-    box-shadow: 0 4px 30px ${rgba(vars.colorBlack, 0.2)};
+    box-shadow: 0 4px 30px ${rgba(vars.colorPrimary, 0.2)};
     background-color: ${vars.colorWhite};
 
     #logo-text {

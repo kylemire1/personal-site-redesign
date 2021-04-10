@@ -18,18 +18,28 @@ const ContactMeSection = () => {
       {...basicAnimateIn}
       transition={{
         ...basicAnimateIn.transition,
-        delay: 0.9,
+        delay: 0.25,
+        duration: 1,
       }}
       variants={{
-        hidden: { left: reduceMotion ? 0 : '100%' },
-        visible: { left: '0' },
+        hidden: {
+          top: reduceMotion ? 0 : '50%',
+          opacity: reduceMotion ? 1 : 0,
+        },
+        visible: { top: '0', opacity: 1 },
       }}
     >
       <ContactMeContainer
         {...basicAnimateIn}
         transition={{
           ...basicAnimateIn.transition,
-          delay: 1.5,
+          delay: 2,
+        }}
+        variants={{
+          hidden: {
+            filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+          },
+          visible: { filter: 'opacity(1)' },
         }}
       >
         <ContactHeading as="h2">Don't need convincing?</ContactHeading>
@@ -69,14 +79,41 @@ const ContactMeNow = styled(motion.div)`
 
     ::before {
       content: '';
-      height: 1px;
+      height: ${vars.pixel};
       background-color: ${vars.colorWhite};
       width: 40%;
+      border-radius: ${vars.borderRadiusLarge};
       position: absolute;
-      left: -40%;
       top: -1px;
+      opacity: 0;
       z-index: 5;
+      animation-name: slideIn;
+      animation-duration: 1s;
+      animation-timing-function: ${vars.ease};
+      animation-fill-mode: forwards;
+      animation-delay: 1.25s;
+
+      @media (prefers-reduced-motion) {
+        animation-name: none;
+        opacity: 1;
+        left: -40%;
+      }
+
+      @keyframes slideIn {
+        from {
+          left: 0;
+          opacity: 1;
+        }
+        to {
+          left: -40%;
+          opacity: 1;
+        }
+      }
     }
+  }
+
+  @media (min-height: 85.5em) {
+    border-bottom-left-radius: ${vars.borderRadiusLarge};
   }
 `;
 
