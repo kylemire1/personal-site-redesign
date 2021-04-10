@@ -26,6 +26,13 @@ const StyledAnchorLink = styled.div`
   a {
     ${linkStyles}
     color: ${vars.colorAlmostBlack};
+    transition: color 250ms ${vars.ease};
+
+    :hover,
+    :focus {
+      color: ${vars.colorPrimary};
+      transition: color 250ms ${vars.ease};
+    }
   }
 
   @media (min-width: ${vars.breakpointTiny}) {

@@ -13,18 +13,22 @@ const Me = () => {
       {...basicAnimateIn}
       transition={{
         ...basicAnimateIn.transition,
-        delay: 0.15,
+        delay: 0.25,
+        duration: 1,
       }}
       variants={{
-        hidden: { height: reduceMotion ? '100%' : 0 },
-        visible: { height: '100%' },
+        hidden: {
+          height: reduceMotion ? '100%' : 0,
+          filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+        },
+        visible: { height: '100%', filter: 'opacity(1)' },
       }}
     >
       <ImageWrapper
         {...basicAnimateIn}
         transition={{
           ...basicAnimateIn.transition,
-          delay: 0.75,
+          delay: reduceMotion ? 0 : 1,
         }}
       >
         <StaticImage

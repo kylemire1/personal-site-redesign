@@ -25,8 +25,11 @@ const HelloSection = () => {
       ref={ref}
       {...basicAnimateIn}
       variants={{
-        hidden: { height: reduceMotion ? '100%' : 0 },
-        visible: { height: '100%' },
+        hidden: {
+          height: reduceMotion ? '100%' : 0,
+          filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+        },
+        visible: { height: '100%', filter: 'opacity(1)' },
       }}
     >
       <HelloContainer
@@ -34,6 +37,12 @@ const HelloSection = () => {
         transition={{
           ...basicAnimateIn.transition,
           delay: reduceMotion ? 0.15 : 0.45,
+        }}
+        variants={{
+          hidden: {
+            filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+          },
+          visible: { filter: 'opacity(1)' },
         }}
       >
         <HelloHeading as="h1">Hello there!</HelloHeading>
