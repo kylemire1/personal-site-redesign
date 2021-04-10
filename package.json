@@ -1,7 +1,7 @@
 {
   "name": "kyle-lemire-portfolio",
   "private": true,
-  "description": "The personal portfolio website of Chicago web developer Kyle Lemire",
+  "description": "My personal portfolio site",
   "version": "1.0.0",
   "author": "Kyle Lemire <hello@klemire.com>",
   "dependencies": {
