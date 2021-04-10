@@ -8,8 +8,8 @@ import { Container, Heading } from '../styled/global';
 import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
-import meSrcMobile from '../../images/me-large.jpg';
 import { basicAnimateIn } from '../../consts';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const HelloSection = () => {
   const reduceMotion = useReducedMotion();
@@ -32,25 +32,35 @@ const HelloSection = () => {
         visible: { height: '100%', filter: 'opacity(1)' },
       }}
     >
-      <HelloContainer
-        {...basicAnimateIn}
-        transition={{
-          ...basicAnimateIn.transition,
-          delay: reduceMotion ? 0.15 : 0.45,
-        }}
-        variants={{
-          hidden: {
-            filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
-          },
-          visible: { filter: 'opacity(1)' },
-        }}
-      >
-        <HelloHeading as="h1">Hello there!</HelloHeading>
-        <IntroText>
-          My name is Kyle Lemire. I’m a <span>designer and web developer</span>{' '}
-          based in Chicago.
-        </IntroText>
-      </HelloContainer>
+      <HelloInner>
+        <HelloContainer
+          {...basicAnimateIn}
+          transition={{
+            ...basicAnimateIn.transition,
+            delay: reduceMotion ? 0.15 : 0.45,
+          }}
+          variants={{
+            hidden: {
+              filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+            },
+            visible: { filter: 'opacity(1)' },
+          }}
+        >
+          <HelloHeading as="h1">Hello there!</HelloHeading>
+          <IntroText>
+            My name is Kyle Lemire. I’m a{' '}
+            <span>designer and web developer</span> based in Chicago.
+          </IntroText>
+        </HelloContainer>
+        <MobileMe>
+          <StaticImage
+            src="../../images/me-large.jpg"
+            alt="Me smiling wearing a shirt with a floral pattern"
+            placeholder="#FFFFFF"
+            quality={100}
+          />
+        </MobileMe>
+      </HelloInner>
     </HelloWrapper>
   );
 };
@@ -80,19 +90,6 @@ const HelloWrapper = styled(motion.div)`
     border-bottom-left-radius: ${vars.borderRadiusLarge};
   }
 
-  @media (min-width: ${vars.breakpointExtraSmall}) {
-    background-image: url(${meSrcMobile});
-    background-repeat: no-repeat;
-    background-position: top 0 right -20rem;
-    background-size: 42rem;
-    tansition: all 500ms ${vars.ease};
-    transition-property: background-position, background-size;
-  }
-
-  @media (min-width: ${vars.breakpointLarge}) {
-    background-image: none;
-  }
-
   @media (min-width: ${vars.breakpointMedium}) {
     grid-column: 1 / 3;
     background-image: none;
@@ -104,6 +101,14 @@ const HelloWrapper = styled(motion.div)`
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-column: 1 / 5;
   }
+`;
+
+const HelloInner = styled.div`
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 const HelloContainer = styled(motion(Container))`
@@ -137,6 +142,25 @@ const IntroText = styled.p`
 
   @media (min-width: ${vars.breakpointMedium}) {
     font-size: ${vars.fontSizeTextLarge};
+  }
+`;
+
+const MobileMe = styled.div`
+  display: none;
+  @media (min-width: ${vars.breakpointExtraSmall}) {
+    display: block;
+  }
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    display: none;
+  }
+
+  .gatsby-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 8rem;
+    width: 42rem;
+    z-index: -1;
   }
 `;
 
