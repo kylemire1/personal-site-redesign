@@ -5,7 +5,6 @@ const GlobalStyles = createGlobalStyle`
   html {
     overflow-x: hidden;
     font-size: 72%;
-    background-color: ${vars.colorPrimary};
 
     @media (min-width: ${vars.breakpointTiny}) {
       font-size: 85%;

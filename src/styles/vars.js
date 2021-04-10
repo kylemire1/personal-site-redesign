@@ -32,7 +32,7 @@ const vars = {
   fontWeightBlack: '900',
   colorAlmostBlack: '#333',
   colorBlack: 'black',
-  colorWhite: '#FFF',
+  colorWhite: 'rgb(255,255,255)',
   colorPrimaryLight: '#8B83C1',
   colorPrimary: '#524A86',
   colorPrimaryDark: '#211E33',

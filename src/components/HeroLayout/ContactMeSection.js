@@ -12,7 +12,6 @@ import { basicAnimateIn } from '../../consts';
 const ContactMeSection = () => {
   const reduceMotion = useReducedMotion();
   const [{ scrollDistance }] = useContext(LayoutContext);
-
   return (
     <ContactMeNow
       $scrolled={scrollDistance > 0}

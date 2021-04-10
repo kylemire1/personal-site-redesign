@@ -32,7 +32,7 @@ const HomeWrapper = styled(Wrapper)`
 
   @media (min-height: ${vars.breakpointExtraSmall}) {
     height: 100vh;
-    max-height: 83.75em;
+    max-height: 85.5em;
   }
 
   @media (min-width: ${vars.breakpointMedium}) {

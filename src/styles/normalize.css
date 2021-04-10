@@ -349,3 +349,7 @@ template {
 [hidden] {
   display: none;
 }
+
+html {
+  background-color: #524a86;
+}

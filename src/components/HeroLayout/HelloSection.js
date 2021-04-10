@@ -59,7 +59,6 @@ const HelloWrapper = styled(motion.div)`
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   position: relative;
-  overflow: hidden;
 
   ::before {
     content: '';

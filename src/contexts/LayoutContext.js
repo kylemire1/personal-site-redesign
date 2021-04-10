@@ -1,27 +1,27 @@
-import React, { createContext, useReducer, useMemo } from "react"
+import React, { createContext, useReducer, useMemo } from 'react';
 
 import layoutContextReducer, {
   LAYOUT_INITIAL_STATE,
-} from "./layoutContextReducer"
+} from './layoutContextReducer';
 
-const LayoutContext = createContext(null)
+const LayoutContext = createContext({});
 
 export const LayoutContextProvider = ({ children }) => {
   const [layoutState, layoutDispatch] = useReducer(
     layoutContextReducer,
     LAYOUT_INITIAL_STATE
-  )
+  );
 
   const layoutContextValue = useMemo(() => [layoutState, layoutDispatch], [
     layoutState,
     layoutDispatch,
-  ])
+  ]);
 
   return (
     <LayoutContext.Provider value={layoutContextValue}>
       {children}
     </LayoutContext.Provider>
-  )
-}
+  );
+};
 
-export default LayoutContext
+export default LayoutContext;
