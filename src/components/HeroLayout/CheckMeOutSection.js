@@ -21,9 +21,9 @@ const CheckMeOutSection = () => {
         }}
         variants={{
           hidden: {
-            filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+            opacity: reduceMotion ? 1 : 0,
           },
-          visible: { filter: 'opacity(1)' },
+          visible: { opacity: 1 },
         }}
       >
         <CheckMeOutText>Check out some projects I'm proud of.</CheckMeOutText>

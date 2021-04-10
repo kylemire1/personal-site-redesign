@@ -9,7 +9,7 @@ export const basicAnimateIn = {
     ease: vars.easeFramer,
   },
   variants: {
-    hidden: { filter: 'opacity(0)' },
-    visible: { filter: 'opacity(1)' },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   },
 };

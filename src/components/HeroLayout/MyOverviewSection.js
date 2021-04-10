@@ -20,9 +20,9 @@ const MyOverviewSection = () => {
           }}
           variants={{
             hidden: {
-              filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+              opacity: reduceMotion ? 1 : 0,
             },
-            visible: { filter: 'opacity(1)' },
+            visible: { opacity: 1 },
           }}
         >
           I’ve been designing and building websites professionally for over 5
@@ -38,9 +38,9 @@ const MyOverviewSection = () => {
           }}
           variants={{
             hidden: {
-              filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+              opacity: reduceMotion ? 1 : 0,
             },
-            visible: { filter: 'opacity(1)' },
+            visible: { opacity: 1 },
           }}
         >
           My interests lie in creating fast, beautiful websites and helping

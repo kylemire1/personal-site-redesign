@@ -23,10 +23,10 @@ const ContactMeSection = () => {
       }}
       variants={{
         hidden: {
-          top: reduceMotion ? 0 : '50%',
+          transform: reduceMotion ? 'translateY(0%)' : 'translateY(50%)',
           opacity: reduceMotion ? 1 : 0,
         },
-        visible: { top: '0', opacity: 1 },
+        visible: { transform: 'translateY(0%)', opacity: 1 },
       }}
     >
       <ContactMeContainer
@@ -37,9 +37,9 @@ const ContactMeSection = () => {
         }}
         variants={{
           hidden: {
-            filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+            opacity: reduceMotion ? 1 : 0,
           },
-          visible: { filter: 'opacity(1)' },
+          visible: { opacity: 1 },
         }}
       >
         <ContactHeading as="h2">Don't need convincing?</ContactHeading>
@@ -68,6 +68,8 @@ const ContactMeNow = styled(motion.div)`
     $scrolled ? vars.borderRadiusLarge : 0};
   transition: all 250ms ${vars.ease};
   transition-property: border-bottom-left-radius, border-bottom-right-radius;
+  transform-origin: bottom;
+  z-index: 10;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-row: 3 / -1;
@@ -84,9 +86,12 @@ const ContactMeNow = styled(motion.div)`
       width: 40%;
       border-radius: ${vars.borderRadiusLarge};
       position: absolute;
+      left: -40%;
       top: -1px;
-      opacity: 0;
-      z-index: 5;
+      z-index: 99;
+      transform: scaleX(0);
+      transform-origin: right;
+      will-change: transform;
       animation-name: slideIn;
       animation-duration: 1s;
       animation-timing-function: ${vars.ease};
@@ -101,14 +106,10 @@ const ContactMeNow = styled(motion.div)`
 
       @keyframes slideIn {
         from {
-          left: 0;
-        }
-        50% {
-          opacity: 1;
+          transform: scaleX(0);
         }
         to {
-          left: -40%;
-          opacity: 1;
+          transform: scaleX(1);
         }
       }
     }
