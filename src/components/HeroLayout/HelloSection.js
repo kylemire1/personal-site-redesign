@@ -52,7 +52,13 @@ const HelloSection = () => {
             <span>designer and web developer</span> based in Chicago.
           </IntroText>
         </HelloContainer>
-        <MobileMe>
+        <MobileMe
+          {...basicAnimateIn}
+          transition={{
+            ...basicAnimateIn.transition,
+            delay: 0.75,
+          }}
+        >
           <StaticImage
             src="../../images/me-large.jpg"
             alt="Me smiling wearing a shirt with a floral pattern"
@@ -78,7 +84,6 @@ const HelloWrapper = styled(motion.div)`
   transform-origin: top;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
-  position: relative;
 
   ::before {
     content: '';
@@ -110,6 +115,7 @@ const HelloInner = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  position: relative;
 `;
 
 const HelloContainer = styled(motion(Container))`
@@ -123,7 +129,7 @@ const HelloContainer = styled(motion(Container))`
 
 const HelloHeading = styled(Heading)`
   font-size: ${vars.fontSizeHeading4};
-
+  z-index: 50;
   @media (min-width: ${vars.breakpointExtraLarge}) {
     font-size: clamp(
       ${vars.fontSizeHeadingHeroSmall},
@@ -136,6 +142,7 @@ const HelloHeading = styled(Heading)`
 
 const IntroText = styled.p`
   max-width: 50ch;
+  z-index: 50;
   span {
     font-weight: ${vars.fontWeightBold};
     color: ${vars.colorPrimary};
@@ -146,7 +153,7 @@ const IntroText = styled.p`
   }
 `;
 
-const MobileMe = styled.div`
+const MobileMe = styled(motion.div)`
   display: none;
   @media (min-width: ${vars.breakpointExtraSmall}) {
     display: block;
