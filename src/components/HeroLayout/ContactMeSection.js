@@ -102,6 +102,8 @@ const ContactMeNow = styled(motion.div)`
       @keyframes slideIn {
         from {
           left: 0;
+        }
+        50% {
           opacity: 1;
         }
         to {
