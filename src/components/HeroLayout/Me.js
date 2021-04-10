@@ -18,10 +18,10 @@ const Me = () => {
       }}
       variants={{
         hidden: {
-          height: reduceMotion ? '100%' : 0,
-          filter: reduceMotion ? 'opacity(1)' : 'opacity(0)',
+          transform: reduceMotion ? 'scaleY(1)' : 'scaleY(0)',
+          opacity: reduceMotion ? 1 : 0,
         },
-        visible: { height: '100%', filter: 'opacity(1)' },
+        visible: { transform: 'scaleY(1)', opacity: 1 },
       }}
     >
       <ImageWrapper
@@ -54,6 +54,7 @@ const StyledMe = styled(motion.div)`
     background-color: ${vars.colorWhite};
     margin-left: -2rem;
     padding-left: 2rem;
+    transform-origin: top;
 
     ::after {
       content: '';
