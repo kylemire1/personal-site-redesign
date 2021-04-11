@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
@@ -6,6 +6,7 @@ import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
+import patternBg from '../../images/pattern.webp';
 
 const ShowcaseItem = ({
   name,
@@ -15,12 +16,14 @@ const ShowcaseItem = ({
   repo,
   caseStudy,
   projectFor,
+  isOpen,
+  setOpen,
+  setClosed,
+  itemIndex,
 }) => {
-  const [showImage, setShowImage] = useState(true);
-
   return (
-    <StyledItem $show={showImage}>
-      <CloseButton onClick={() => setShowImage(true)}>
+    <StyledItem>
+      <CloseButton onClick={setClosed}>
         <IoIosCloseCircleOutline />
       </CloseButton>
       <ItemContent>
@@ -46,12 +49,12 @@ const ShowcaseItem = ({
           )}
         </ItemLinks>
       </ItemContent>
-      <CSSTransition in={showImage} timeout={250} classNames="showcase-image">
+      <CSSTransition in={!isOpen} timeout={250} classNames="showcase-image">
         <ItemImage
           role="img"
           aria-label="Mockups of the project arranged in a horizontal pattern"
           image={image}
-          onClick={() => setShowImage(false)}
+          onClick={() => setOpen(itemIndex)}
         />
       </CSSTransition>
     </StyledItem>
@@ -66,7 +69,7 @@ const StyledItem = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: ${vars.colorWhite};
+  background-color: ${vars.colorWhite};
 
   :first-child {
     padding-top: 2em;
@@ -102,6 +105,13 @@ const StyledItem = styled.div`
       padding-bottom: 1em;
     }
   }
+
+  @media (min-width: 104.67em) {
+    background-image: url(${patternBg});
+    background-size: cover;
+    background-position: left top 18rem;
+    background-repeat: no-repeat;
+  }
 `;
 
 const ItemContent = styled.div`
@@ -113,10 +123,15 @@ const ItemContent = styled.div`
   justify-content: space-between;
   border-bottom: solid ${vars.pixel} ${vars.colorPrimary};
   padding-bottom: 0.5em;
+  z-index: 0;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     justify-content: flex-start;
     padding-top: 2em;
+  }
+
+  @media (min-width: 104.67em) {
+    border-bottom: none;
   }
 `;
 
@@ -132,6 +147,17 @@ const ItemHeading = styled(Heading)`
     color: ${vars.colorPrimary};
     text-align: right;
     padding-bottom: 0.5em;
+  }
+
+  @media (min-width: 104.67em) {
+    margin-top: 2rem;
+
+    span {
+      top: 2.5rem;
+      left: 0;
+      bottom: auto;
+      right: auto;
+    }
   }
 `;
 
@@ -184,24 +210,24 @@ const ItemLinks = styled.div`
     margin-left: 1.5rem;
   }
 
-  @media (min-width: ${vars.breakpointExtraLarge}) {
+  @media (min-width: 104.67em) {
     flex-direction: column;
     justify-content: flex-start;
 
     a {
       padding: 1em;
-      border: solid ${vars.pixel} ${vars.colorPrimary};
       border-radius: ${vars.borderRadiusSmall};
       text-align: center;
       cursor: pointer;
-      background-color: ${vars.colorWhite};
+      background-color: ${vars.colorPrimary};
+      color: ${vars.colorWhite};
       transition: all 250ms ${vars.ease};
       transition-property: background-color, color;
 
       :hover,
       :focus {
-        background-color: ${vars.colorPrimary};
-        color: ${vars.colorWhite};
+        background-color: ${vars.colorHighlight};
+        color: ${vars.colorAlmostBlack};
         transition: all 250ms ${vars.ease};
         transition-property: background-color, color;
       }

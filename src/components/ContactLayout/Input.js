@@ -1,46 +1,84 @@
-import React from "react"
-import { FormControl } from "../styled/global"
+import React from 'react';
+import styled from 'styled-components';
+import { useField } from 'formik';
+import { rgba } from 'polished';
 
-const Input = ({ type, name, label, id, required, className }) => {
+import vars from '../../styles/vars';
+
+const Input = ({ required, id, placeholder, label, type, ...props }) => {
+  const [field, meta] = useField(props);
+  const errorText = meta.error && meta.touched ? meta.error : '';
+
   return (
     <FormControl>
-      <label htmlFor={id}>{label}</label>
-      {type === "textarea" ? (
-        <TextArea
-          name={name}
-          id={id}
-          required={required}
-          className={className}
-        />
-      ) : (
-        <TextInput
-          name={name}
-          type={type}
-          id={id}
-          required={required}
-          className={className}
-        />
-      )}
+      <label htmlFor={id}>
+        {label} {required ? <span className="required">*</span> : null}
+      </label>
+      <StyledInput
+        {...field}
+        helperText={errorText}
+        error={!!errorText}
+        placeholder={placeholder}
+        label={label}
+        type={type}
+        id={id}
+        as={type === 'textarea' ? 'textarea' : 'input'}
+      />
+      {errorText && <ErrorText>{errorText}</ErrorText>}
     </FormControl>
-  )
-}
+  );
+};
 
-const TextInput = ({ name, type, id, className, required }) => {
-  return (
-    <input
-      type={type}
-      name={name}
-      id={id}
-      className={className}
-      required={required}
-    />
-  )
-}
+const FormControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
-const TextArea = ({ name, id, className, required }) => {
-  return (
-    <textarea name={name} id={id} className={className} required={required} />
-  )
-}
+  input,
+  textarea {
+    box-shadow: none;
+    --webkit-appearance: none;
+    border: solid ${vars.pixel} ${vars.colorPrimary};
+    border-radius: ${vars.borderRadiusSmall};
+    background-color: ${rgba(vars.colorPrimary, 0.05)};
+    font-size: ${vars.fontSizeText};
+    font-weight: ${vars.fontWeightLight};
+    padding: 0.5em;
+  }
 
-export default Input
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: ${vars.fontWeightBold};
+    color: ${vars.colorPrimary};
+  }
+
+  input {
+    height: 3rem;
+  }
+
+  textarea {
+    min-height: 8rem;
+  }
+
+  .required {
+    color: ${vars.colorPrimary};
+  }
+
+  & + & {
+    margin-top: 1.5rem;
+  }
+`;
+
+const StyledInput = styled.input`
+  margin-bottom: 0.5rem;
+`;
+
+const ErrorText = styled.div`
+  position: absolute;
+  bottom: -1.3rem;
+  color: #cc0000;
+  text-transform: capitalize;
+  padding: 0.25em 0;
+`;
+
+export default Input;

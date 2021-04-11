@@ -24,6 +24,7 @@ const PortfolioWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 1.5rem;
   grid-template-rows: auto 1fr;
   background-color: ${vars.colorPrimary};
+  min-height: 46.875em;
 
   @media (min-width: ${vars.breakpointMedium}) {
     grid-template-columns: 1fr 1fr 1.5rem;

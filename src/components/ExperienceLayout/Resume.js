@@ -89,9 +89,16 @@ const ResumeDownloadButton = styled.a`
   position: absolute;
   bottom: 2rem;
   right: -1rem;
+  transition: background-color 250ms ${vars.ease};
 
   svg {
     margin-left: 0.5rem;
+  }
+
+  :hover,
+  :focus {
+    background-color: ${darken(0.05, vars.colorHighlight)};
+    transition: background-color 250ms ${vars.ease};
   }
 
   ::after {

@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ShowcaseItem from './ShowcaseItem';
+
+import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import portfolioData from './portfolioData';
 
 const PortfolioShowcase = () => {
+  const [{ openPortfolioItemIndex }, dispatch] = useContext(LayoutContext);
+
+  const setOpen = (openIndex) => {
+    dispatch({
+      type: 'CLOSE_PORTFOLIO_ITEMS',
+    });
+    dispatch({
+      type: 'OPEN_PORTFOLIO_ITEM',
+      payload: openIndex,
+    });
+  };
+
+  const setClosed = () => {
+    dispatch({
+      type: 'CLOSE_PORTFOLIO_ITEMS',
+    });
+  };
+
   return (
     <StyledShowcase>
       {portfolioData.map((item, itemIndex) => (
-        <ShowcaseItem key={`${item.name}_${itemIndex}`} {...item} />
+        <ShowcaseItem
+          key={`${item.name}_${itemIndex}`}
+          isOpen={openPortfolioItemIndex === itemIndex}
+          setOpen={setOpen}
+          setClosed={setClosed}
+          itemIndex={itemIndex}
+          {...item}
+        />
       ))}
     </StyledShowcase>
   );
@@ -25,7 +52,7 @@ const StyledShowcase = styled.div`
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   overflow: hidden;
 
-  @media (min-width: ${vars.breakpointExtraLarge}) {
+  @media (min-width: 104.67em) {
     width: calc(100% + 4rem);
     margin-left: -4rem;
     border-top-left-radius: ${vars.borderRadiusLarge};
