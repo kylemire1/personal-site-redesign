@@ -13,3 +13,10 @@ export const basicAnimateIn = {
     visible: { opacity: 1 },
   },
 };
+
+export const basicAnimateOut = {
+  ...basicAnimateIn,
+  initial: 'visible',
+  animate: 'hidden',
+  exit: { opacity: 0 },
+};

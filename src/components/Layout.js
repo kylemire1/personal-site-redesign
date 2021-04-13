@@ -4,14 +4,8 @@ import styled from 'styled-components';
 import vars from '../styles/vars';
 
 const Layout = ({ children }) => {
-  const pathname = '/';
-
   return (
-    <SectionWrapper
-      className={`section-wrapper ${pathname === '/' ? 'section' : ''}`}
-    >
-      {children}
-    </SectionWrapper>
+    <SectionWrapper className="section-wrapper">{children}</SectionWrapper>
   );
 };
 

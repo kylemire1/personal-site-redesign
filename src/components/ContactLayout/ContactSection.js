@@ -36,9 +36,13 @@ const FormWrapper = styled.div`
   margin-top: auto;
   margin-bottom: 1.5rem;
   position: relative;
-  display: grid;
-  align-content: start;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  min-height: 37rem;
+
+  form {
+    width: 100%;
+  }
 
   ::before {
     content: '';

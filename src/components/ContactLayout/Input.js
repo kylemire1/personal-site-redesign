@@ -10,7 +10,7 @@ const Input = ({ required, id, placeholder, label, type, ...props }) => {
   const errorText = meta.error && meta.touched ? meta.error : '';
 
   return (
-    <FormControl>
+    <FormControl className={!!errorText ? 'error' : ''}>
       <label htmlFor={id}>
         {label} {required ? <span className="required">*</span> : null}
       </label>
@@ -61,11 +61,22 @@ const FormControl = styled.div`
   }
 
   .required {
-    color: ${vars.colorPrimary};
+    color: ${vars.colorError};
   }
 
   & + & {
     margin-top: 1.5rem;
+  }
+
+  &.error {
+    label {
+      color: ${vars.colorError};
+    }
+
+    input,
+    textarea {
+      border-color: ${vars.colorError};
+    }
   }
 `;
 
@@ -76,7 +87,7 @@ const StyledInput = styled.input`
 const ErrorText = styled.div`
   position: absolute;
   bottom: -1.3rem;
-  color: #cc0000;
+  color: ${vars.colorError};
   text-transform: capitalize;
   padding: 0.25em 0;
 `;

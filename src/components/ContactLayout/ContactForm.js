@@ -2,40 +2,37 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Input from './Input';
+import AnimatedCheckmark from '../icons/AnimatedCheckmark';
 
+import { encodeFormData } from '../../utils/encodeFormData';
 import vars from '../../styles/vars';
 
 const validationSchema = yup.object({
   name: yup.string().required(),
   email: yup.string().email().required(),
-  question: yup.string().required(),
+  message: yup.string().required(),
 });
 
 const ContactForm = () => {
-  const [, setFormSubmitted] = useState(false);
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
-      )
-      .join('&');
-  };
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={{
         name: '',
         email: '',
-        question: '',
+        message: '',
       }}
       onSubmit={(data, { setSubmitting }) => {
         setSubmitting(true);
         const options = {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({ 'form-name': 'contactme', ...data }),
+          body: encodeFormData({ 'form-name': 'contactme', ...data }),
         };
 
         fetch('/', options)
@@ -46,21 +43,51 @@ const ContactForm = () => {
         setFormSubmitted(true);
       }}
     >
-      {({ handleSubmit }) => (
-        <form name="contactme" onSubmit={handleSubmit} data-netlify="true">
-          <input type="hidden" name="form-name" value="contactme" />
-          <Input name="name" type="text" label="Name" required />
-          <Input name="email" type="email" label="Email" required />
-          <Input
-            name="question"
-            type="textarea"
-            label="How can I help you?"
-            required
-          />
-          <div>
-            <SubmitButton type="submit">Submit</SubmitButton>
-          </div>
-        </form>
+      {({ handleSubmit, isSubmitting }) => (
+        <AnimatePresence exitBeforeEnter>
+          {!formSubmitted ? (
+            <motion.form
+              name="contactme"
+              onSubmit={handleSubmit}
+              data-netlify="true"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: vars.easeFramer }}
+              key="form"
+            >
+              <input type="hidden" name="form-name" value="contactme" />
+              <Input name="name" type="text" label="Name" required />
+              <Input name="email" type="email" label="Email" required />
+              <Input name="message" type="textarea" label="Message" required />
+              <div>
+                <SubmitButton
+                  type="submit"
+                  style={{ opacity: isSubmitting ? '.75' : '1' }}
+                  disabled={isSubmitting}
+                >
+                  Submit
+                </SubmitButton>
+              </div>
+            </motion.form>
+          ) : (
+            <ThankYou
+              key="thankyou"
+              animate={{ opacity: 1, transform: 'translateY(0rem)' }}
+              transition={{
+                ease: vars.easeFramer,
+                duration: 0.75,
+                delay: 0.25,
+              }}
+            >
+              <AnimatedCheckmark />
+              <p>
+                Hey, thanks! I've received your message and will get back to you
+                as soon as I can.
+              </p>
+            </ThankYou>
+          )}
+        </AnimatePresence>
       )}
     </Formik>
   );
@@ -87,6 +114,26 @@ const SubmitButton = styled.button`
     color: ${vars.colorPrimaryDark};
     transition: all 250ms ${vars.ease};
     transition-property: background-color, color;
+  }
+`;
+
+const ThankYou = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(2rem);
+
+  p {
+    font-weight: ${vars.fontWeightBold};
+    line-height: 1.2;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: ${vars.fontSizeHeading2};
   }
 `;
 

@@ -37,6 +37,7 @@ const vars = {
   colorPrimary: '#524A86',
   colorPrimaryDark: '#211E33',
   colorHighlight: '#EE8041',
+  colorError: '#cc0000',
   gradientVertical:
     'linear-gradient(0deg, rgba(119,0,147,1) 0%, rgba(214,107,45,1) 100%)',
   gradientHorizontal:
