@@ -1,19 +1,37 @@
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 import LogoImg from './icons/Logo';
 
 import vars from '../styles/vars';
+import { useIsHome } from '../utils/hooks/useIsHome';
+
+const SiteLogo = () => {
+  const { isHome } = useIsHome();
+
+  if (isHome) {
+    return (
+      <AnchorLink href="#home" offset="100">
+        <Logo />
+      </AnchorLink>
+    );
+  }
+
+  return (
+    <Link to="/">
+      <Logo />
+    </Link>
+  );
+};
 
 const Logo = () => {
   return (
-    <AnchorLink href="#home" offset="100">
-      <LogoWrapper>
-        <LogoImg />
-        <LogoText id="logo-text">Kyle Lemire</LogoText>
-      </LogoWrapper>
-    </AnchorLink>
+    <LogoWrapper>
+      <LogoImg />
+      <LogoText id="logo-text">Kyle Lemire</LogoText>
+    </LogoWrapper>
   );
 };
 
@@ -36,4 +54,4 @@ const LogoText = styled.span`
   }
 `;
 
-export default Logo;
+export default SiteLogo;

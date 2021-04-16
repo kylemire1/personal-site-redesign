@@ -1,0 +1,41 @@
+---
+title: GatsbyJS Consulting for Elyk Innovation Inc.
+---
+
+# GatsbyJS Consulting for Elyk Innovation
+
+Elyk Innovation (Elyk) is a web development small business based in Jacksonville, FL. They specialize in building accessible websites that help grow their clients' businesses and reach their target audiences. Since the day-to-day needs of a growing business can change frequently, Elyk's clients often want control of their content to make edits on the fly. This need made choosing WordPress as their CMS of choice an obvious decision. Elyk gets access to a huge ecosystem of plugins to develop websites rapidly, and their clients can be trained to make common updates themselves.
+
+## The Problem: The Monolith
+
+Out of the box, WordPress is a monolithic, all-in-one CMS. As a developer, it is a powerful and relatively intuitive platform for building a website upon, but with all of that power and flexibility comes a great deal of overhead that gets shipped to your end users. This has the potential to cause major friction for a dev team. As a WordPress site grows, it becomes more difficult to trim off parts you don't need and optimize for performance.
+
+## The Solution: Go Headless
+
+I proposed a solution that to alleviate these issues while allowing them to continue to use the CMS they had grown so experienced with over the years.
+
+- Convert their existing WordPress website to a GraphQL data source with no front end (AKA a Headless CMS), leaving only the admin dashboard accessible.
+- Build a lightning fast static front end and host it separately on a CDN.
+- Only access the specific post data the front end needs from the headless CMS, meaning no extra overhead and better speed tests.
+- Deliver this new Headless architecture to Elyk as a proof-of-concept for how it can be utilized in client projects while keeping key features such as live previews and visual page building intact.
+
+## Training Strategy
+
+The world of Headless architecture was new to Elyk and I wasn't going to leave them hanging, so alongside building the site I created a lesson plan.
+
+1. Conduct weekly sessions wherein I teach Elyk the fundamentals of consuming data and building pages with GatsbyJS.
+2. Assign small practice projects for members of the team to complete individually to grow their confidence.
+3. Evaluate team members' comfort level and work one-on-one with those who are struggling.
+4. As the site nears completion, hand the remaining development off to Elyk, so they can take the project over the finish line and gain experience deploying it.
+
+## Reflection
+
+This project was a lot of fun. I love teaching, and this was an opportunity to do that _and_ use some of my favorite frameworks simultaneously.
+
+**Some challenges along the way that felt great to solve**
+
+- Handling form submissions in a serverless environment and persisting those submissions to the WordPress database.
+- Setting up JWT authentication to authorize the front end to mutate WordPress's data.
+- Optimizing Gatsby's source data fetching when dealing with a large amount of post data.
+- Using Advanced Custom Fields to create layout 'blocks' that Gatsby can consume to build the UI.
+- Headless CMS post editing previews on a static site.

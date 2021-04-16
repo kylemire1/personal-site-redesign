@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { Link } from 'gatsby';
 
 import { Heading } from '../styled/global';
 
@@ -14,7 +15,7 @@ const ShowcaseItem = ({
   image,
   link,
   repo,
-  caseStudy,
+  about,
   projectFor,
   isOpen,
   setOpen,
@@ -42,11 +43,7 @@ const ShowcaseItem = ({
               Project Repo
             </a>
           )}
-          {caseStudy && (
-            <a href={caseStudy} target="_blank" rel="noopener noreferrer">
-              View Case Study
-            </a>
-          )}
+          {about && <Link to={about}>About the Project</Link>}
         </ItemLinks>
       </ItemContent>
       <CSSTransition in={!isOpen} timeout={250} classNames="showcase-image">
