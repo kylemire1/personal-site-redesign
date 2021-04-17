@@ -1,30 +1,38 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Link } from 'gatsby';
 
 import vars from '../../styles/vars';
+import { useIsHome } from '../../utils/hooks/useIsHome';
 
 const NavItem = ({ href, children }) => {
+  const { isHome } = useIsHome();
+
+  if (isHome) {
+    return (
+      <LinkWrapper>
+        <AnchorLink href={href} offset="100">
+          {children}
+        </AnchorLink>
+      </LinkWrapper>
+    );
+  }
+
   return (
-    <StyledAnchorLink>
-      <AnchorLink href={href} offset="100">
-        {children}
-      </AnchorLink>
-    </StyledAnchorLink>
+    <LinkWrapper>
+      <Link to={`/${href}`}>{children}</Link>
+    </LinkWrapper>
   );
 };
 
-const linkStyles = css`
-  font-weight: ${vars.fontWeightBold};
-`;
-
-const StyledAnchorLink = styled.div`
+const LinkWrapper = styled.div`
   & + & {
     margin-left: 1rem;
   }
 
   a {
-    ${linkStyles}
+    font-weight: ${vars.fontWeightBold};
     color: ${vars.colorAlmostBlack};
     transition: color 250ms ${vars.ease};
 

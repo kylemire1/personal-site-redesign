@@ -23,14 +23,13 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/src/pages/case-studies`,
+        path: `${__dirname}/src/projects`,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: `${__dirname}/src/components/Layout`,
           posts: `${__dirname}/src/components/PostLayout`,
         },
       },

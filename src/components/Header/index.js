@@ -12,10 +12,12 @@ import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import { basicAnimateIn } from '../../consts';
+import { useIsHome } from '../../utils/hooks/useIsHome';
 
 const Header = () => {
   const [ref] = useDimensions();
   const [{ scrollDistance }, dispatch] = useContext(LayoutContext);
+  const { isHome } = useIsHome();
 
   useScrollPosition(({ currPos }) => {
     if (currPos.y * -1 !== scrollDistance) {
@@ -24,15 +26,23 @@ const Header = () => {
     }
   });
 
+  let animateProps;
+  if (isHome) {
+    animateProps = {
+      ...basicAnimateIn,
+      transition: {
+        ...basicAnimateIn.transition,
+        delay: 0.5,
+      },
+    };
+  }
+
   return (
-    <StyledHeader className={scrollDistance > 0 ? 'passed' : ''} ref={ref}>
-      <StyledContainer
-        {...basicAnimateIn}
-        transition={{
-          ...basicAnimateIn.transition,
-          delay: 0.5,
-        }}
-      >
+    <StyledHeader
+      className={scrollDistance > 0 || !isHome ? 'passed' : ''}
+      ref={ref}
+    >
+      <StyledContainer {...animateProps}>
         <SiteLogo />
         <Nav role="menu">
           <NavItem href="#portfolio">Portfolio</NavItem>
@@ -44,7 +54,7 @@ const Header = () => {
   );
 };
 
-const StyledHeader = styled.header`
+const StyledHeader = styled(motion.header)`
   position: fixed;
   top: 0;
   left: 0;

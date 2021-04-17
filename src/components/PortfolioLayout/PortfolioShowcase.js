@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useLayoutEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import ShowcaseItem from './ShowcaseItem';
 
@@ -20,11 +20,17 @@ const PortfolioShowcase = () => {
     });
   };
 
-  const setClosed = () => {
+  const setClosed = useCallback(() => {
     dispatch({
       type: 'CLOSE_PORTFOLIO_ITEMS',
     });
-  };
+  }, [dispatch]);
+
+  useLayoutEffect(() => {
+    return () => {
+      setClosed();
+    };
+  }, [setClosed]);
 
   return (
     <StyledShowcase>
