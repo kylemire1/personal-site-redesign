@@ -6,6 +6,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           slug
           frontmatter {
             featuredImg
+            embeddedImgs {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
         }
       }
@@ -17,13 +22,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const posts = result.data.allMdx.nodes;
 
   posts.forEach((post) => {
-    console.log(post.frontmatter);
     actions.createPage({
       path: `/projects/${post.slug}`,
       component: require.resolve('./src/templates/postTemplate.js'),
       context: {
         slug: post.slug,
         featuredImgSlug: post.frontmatter.featuredImg,
+        embeddedImgs: post.frontmatter.embeddedImgs,
       },
     });
   });

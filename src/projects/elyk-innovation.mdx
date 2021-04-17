@@ -1,7 +1,13 @@
 ---
 title: GatsbyJS Consulting for Elyk Innovation Inc.
-featuredImg: 'elyk-project-banner.jpg'
+featuredImg: 'elyk-project-banner-large.jpg'
+embeddedImgs:
+  - elyk-project-image.jpg
+  - elyk-lesson-plan.jpg
 ---
+
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+import EmbeddedPostImage from '../components/EmbeddedPostImage';
 
 # GatsbyJS Consulting for Elyk Innovation
 
@@ -13,12 +19,22 @@ Out of the box, WordPress is a monolithic, all-in-one CMS. As a developer, it is
 
 ## The Solution: Go Headless
 
-I proposed a solution that to alleviate these issues while allowing them to continue to use the CMS they had grown so experienced with over the years.
+I proposed a solution to alleviate these issues while allowing them to continue using the CMS they had grown experienced with over the years.
 
 - Convert their existing WordPress website to a GraphQL data source with no front end (AKA a Headless CMS), leaving only the admin dashboard accessible.
 - Build a lightning fast static front end and host it separately on a CDN.
 - Only access the specific post data the front end needs from the headless CMS, meaning no extra overhead and better speed tests.
 - Deliver this new Headless architecture to Elyk as a proof-of-concept for how it can be utilized in client projects while keeping key features such as live previews and visual page building intact.
+
+<div>
+  <EmbeddedPostImage
+    image={getImage(props.embeddedImages[0])}
+    layout="fullWidth"
+    placeholder="blurred"
+    caption="A segment of Elyk's new home page"
+    alt=""
+  />
+</div>
 
 ## Training Strategy
 
@@ -28,6 +44,16 @@ The world of Headless architecture was new to Elyk and I wasn't going to leave t
 2. Assign small practice projects for members of the team to complete individually to grow their confidence.
 3. Evaluate team members' comfort level and work one-on-one with those who are struggling.
 4. As the site nears completion, hand the remaining development off to Elyk, so they can take the project over the finish line and gain experience deploying this type of site.
+
+<div>
+  <EmbeddedPostImage
+    image={getImage(props.embeddedImages[1])}
+    layout="fullWidth"
+    placeholder="blurred"
+    caption="An overview of the lesson plan I created for Elyk"
+    alt=""
+  />
+</div>
 
 ## Reflection
 

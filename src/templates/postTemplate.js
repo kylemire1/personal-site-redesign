@@ -27,18 +27,22 @@ export const query = graphql`
   }
 `;
 
-const Post = ({ data: { imageData, mdx } }) => {
+const Post = ({ data: { imageData, mdx }, pageContext }) => {
   const { body } = mdx;
-  const image = getImage(imageData);
-
+  const featuredImage = getImage(imageData);
+  const embeddedImages = pageContext.embeddedImgs || [];
   return (
     <Layout>
       <Header />
       <ArticleContainer>
         <StyledArticle>
-          <GatsbyImage image={image} alt="" />
+          <GatsbyImage
+            className="project-banner"
+            image={featuredImage}
+            alt=""
+          />
           <ContentWrapper>
-            <MDXRenderer>{body}</MDXRenderer>
+            <MDXRenderer embeddedImages={embeddedImages}>{body}</MDXRenderer>
           </ContentWrapper>
         </StyledArticle>
       </ArticleContainer>
@@ -49,8 +53,10 @@ const Post = ({ data: { imageData, mdx } }) => {
 const ArticleContainer = styled(Container)`
   max-width: 61.25em;
 
-  .gatsby-image-wrapper {
+  .project-banner {
     min-height: 7.813rem;
+    border-top-left-radius: ${vars.borderRadiusLarge};
+    border-top-right-radius: ${vars.borderRadiusLarge};
   }
 `;
 
@@ -59,7 +65,6 @@ const StyledArticle = styled.article`
   border-radius: ${vars.borderRadiusLarge};
   margin: 7em 0;
   box-shadow: 0 4px 90px ${rgba(vars.colorPrimaryDark, 0.4)};
-  overflow: hidden;
 
   strong {
     font-weight: ${vars.fontWeightBold};
@@ -78,6 +83,7 @@ const StyledArticle = styled.article`
     font-size: ${vars.fontSizeHeading2};
     font-weight: ${vars.fontWeightBlack};
     margin-bottom: 0.5rem;
+    color: ${vars.colorPrimaryDark};
   }
 
   h2 {
