@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: 1.5rem;
     li + li {
       margin-top: 1em;
+      line-height: 1.5;
     }
   }
 
