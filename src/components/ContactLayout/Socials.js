@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import SocialItem from './SocialItem';
 import Github from '../icons/Github';
@@ -11,7 +12,10 @@ import Twitter from '../icons/Twitter';
 const Socials = () => {
   return (
     <SocialsWrapper>
-      <StyledSocials>
+      <StyledSocials
+        whileHover={{ y: 5 }}
+        transition={{ duration: 0.25, ease: vars.easeFramer }}
+      >
         <SocialItem link="https://github.com/kylemire1?tab=repositories">
           <Github />
         </SocialItem>
@@ -26,7 +30,8 @@ const Socials = () => {
   );
 };
 
-const SocialsWrapper = styled.div`
+const SocialsWrapper = styled(motion.div)`
+  position: relative;
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-row: 2 / -1;
     grid-column: 1 / 2;
@@ -34,7 +39,7 @@ const SocialsWrapper = styled.div`
   }
 `;
 
-const StyledSocials = styled.div`
+const StyledSocials = styled(motion.div)`
   padding: 1em;
   display: flex;
   align-items: center;

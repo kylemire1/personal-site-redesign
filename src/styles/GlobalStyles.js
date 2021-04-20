@@ -34,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
     padding-left: 1.25rem;
     margin-bottom: 1.5rem;
     li + li {
-      margin-top: 1em;
+      margin-top: .5em;
       line-height: 1.5;
     }
   }
@@ -45,6 +45,16 @@ const GlobalStyles = createGlobalStyle`
     @media (min-width: ${vars.breakpointExtraSmall}) {
       padding-top: 10rem;
     }
+  }
+
+  #portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -9999;
+    pointer-events: none;
   }
 `;
 

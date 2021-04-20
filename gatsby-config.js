@@ -51,5 +51,12 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [`IntersectionObserver`],
+      },
+    },
+    `gatsby-plugin-portal`,
   ],
 };

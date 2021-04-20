@@ -218,15 +218,18 @@ const ItemLinks = styled.div`
       cursor: pointer;
       background-color: ${vars.colorPrimary};
       color: ${vars.colorWhite};
+      will-change: transform;
+      transform: scale(1);
       transition: all 250ms ${vars.ease};
-      transition-property: background-color, color;
+      transition-property: background-color, color, transform;
 
       :hover,
       :focus {
         background-color: ${vars.colorHighlight};
         color: ${vars.colorAlmostBlack};
+        transform: scale(0.99);
         transition: all 250ms ${vars.ease};
-        transition-property: background-color, color;
+        transition-property: background-color, color, transform;
       }
     }
 

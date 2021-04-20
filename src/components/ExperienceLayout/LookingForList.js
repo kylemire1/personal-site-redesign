@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import vars from '../../styles/vars';
 import lookingForData from './lookingForData';
@@ -8,7 +9,7 @@ const LookingForList = () => {
   return (
     <StyledLookingForList>
       {lookingForData.map((item, itemIndex) => (
-        <LookingForListItem key={`${item}_${itemIndex}`}>
+        <LookingForListItem key={`${item}_${itemIndex}`} whileHover={{ x: 5 }}>
           {item}
         </LookingForListItem>
       ))}
@@ -31,7 +32,7 @@ const StyledLookingForList = styled.ul`
   }
 `;
 
-const LookingForListItem = styled.li`
+const LookingForListItem = styled(motion.li)`
   background-color: ${vars.colorPrimaryDark};
   color: ${vars.colorWhite};
   font-size: ${vars.fontSizeTextSmall};

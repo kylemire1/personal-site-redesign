@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import handleViewport from 'react-in-viewport';
 
 import Layout from '../Layout';
 import { Wrapper, Heading, Container } from '../styled/global';
+import { intersectionObserverOptions } from '../../consts';
 
 import vars from '../../styles/vars';
 import Socials from './Socials';
 import ContactSection from './ContactSection';
 
-const ContactLayout = () => {
+const ContactLayout = ({ inViewport, forwardedRef }) => {
   return (
-    <Layout>
+    <Layout inViewport={inViewport} forwardedRef={forwardedRef}>
       <ContactWrapper id="contact">
         <HeadingContainer>
           <ContactHeading>I can't wait to hear from you!</ContactHeading>
@@ -56,4 +58,4 @@ const ContactHeading = styled(Heading)`
   }
 `;
 
-export default ContactLayout;
+export default handleViewport(ContactLayout, intersectionObserverOptions);

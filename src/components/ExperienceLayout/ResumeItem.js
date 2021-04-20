@@ -104,7 +104,7 @@ const StyledResumeItem = styled.div`
     padding-left: 0;
 
     & + & {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
     }
   }
 `;
