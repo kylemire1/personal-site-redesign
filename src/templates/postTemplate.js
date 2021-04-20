@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { rgba } from 'polished';
+import { motion } from 'framer-motion';
 
 import Layout from '../components/Layout';
 import Header from '../components/Header';
@@ -35,7 +36,11 @@ const Post = ({ data: { imageData, mdx }, pageContext }) => {
     <Layout>
       <Header />
       <ArticleContainer>
-        <StyledArticle>
+        <StyledArticle
+          initial={{ opacity: 0, transform: 'translateY(-2rem)' }}
+          animate={{ opacity: 1, transform: 'translateY(0rem)' }}
+          transition={{ duration: 0.75, ease: vars.easeFramer, delay: 0.2 }}
+        >
           <GatsbyImage
             className="project-banner"
             image={featuredImage}
@@ -60,7 +65,7 @@ const ArticleContainer = styled(Container)`
   }
 `;
 
-const StyledArticle = styled.article`
+const StyledArticle = styled(motion.article)`
   background-color: ${vars.colorWhite};
   border-radius: ${vars.borderRadiusLarge};
   margin: 7em 0;

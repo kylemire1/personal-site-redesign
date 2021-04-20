@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { rgba } from 'polished';
+import { useReducedMotion } from 'framer-motion';
 
 import vars from '../styles/vars';
 
 const EmbeddedPostImage = (props) => {
+  const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const imageRef = useRef(null);
 
@@ -33,12 +35,14 @@ const EmbeddedPostImage = (props) => {
     <StyledFigure key="figure">
       <StyledButton
         onClick={() => setIsOpen(!isOpen)}
-        onKeyUp={handleKeyPress}
+        onKeyPress={handleKeyPress}
         className={isOpen ? 'open' : 'closed'}
       >
         <ImageWrapper
           ref={imageRef}
-          className={`${isOpen ? 'open' : 'closed'}`}
+          className={`${isOpen ? 'open' : 'closed'} ${
+            reduceMotion ? 'no-animate' : 'do-animate'
+          }`}
         >
           <GatsbyImage {...props} />
         </ImageWrapper>
@@ -78,7 +82,9 @@ const ImageWrapper = styled.div`
     width: 136%;
     margin-left: -18%;
     transform: scale(1);
-    transition: all 500ms ${vars.ease};
+    &.do-animate {
+      transition: transform 500ms ${vars.ease};
+    }
   }
 
   @media (min-width: ${vars.breakpointMedium}) {

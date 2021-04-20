@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 import Input from './Input';
 import AnimatedCheckmark from '../icons/AnimatedCheckmark';
 
 import { encodeFormData } from '../../utils/encodeFormData';
 import vars from '../../styles/vars';
+import Confetti from '../Confetti';
 
 const validationSchema = yup.object({
   name: yup.string().required(),
@@ -18,78 +19,102 @@ const validationSchema = yup.object({
 
 const ContactForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    if (formSubmitted && !reduceMotion) {
+      timeoutRef.current = setShowConfetti(true);
+      window.setTimeout(() => {
+        setShowConfetti(false);
+      }, 4000);
+    }
+
+    return () => {
+      window.clearTimeout(timeoutRef.current);
+    };
+  }, [formSubmitted, reduceMotion]);
 
   return (
-    <Formik
-      validationSchema={validationSchema}
-      initialValues={{
-        name: '',
-        email: '',
-        message: '',
-      }}
-      onSubmit={(data, { setSubmitting }) => {
-        setSubmitting(true);
-        const options = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encodeFormData({ 'form-name': 'contactme', ...data }),
-        };
+    <>
+      {showConfetti && <Confetti />}
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={{
+          name: '',
+          email: '',
+          message: '',
+        }}
+        onSubmit={(data, { setSubmitting }) => {
+          setSubmitting(true);
+          const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encodeFormData({ 'form-name': 'contactme', ...data }),
+          };
 
-        fetch('/', options)
-          .then((res) => console.log('Form successfully submitted', { res }))
-          .catch((error) => alert(error));
+          fetch('/', options)
+            .then((res) => console.log('Form successfully submitted', { res }))
+            .catch((error) => alert(error));
 
-        setSubmitting(false);
-        setFormSubmitted(true);
-      }}
-    >
-      {({ handleSubmit, isSubmitting }) => (
-        <AnimatePresence exitBeforeEnter>
-          {!formSubmitted ? (
-            <motion.form
-              name="contactme"
-              onSubmit={handleSubmit}
-              data-netlify="true"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ ease: vars.easeFramer }}
-              key="form"
-            >
-              <input type="hidden" name="form-name" value="contactme" />
-              <Input name="name" type="text" label="Name" required />
-              <Input name="email" type="email" label="Email" required />
-              <Input name="message" type="textarea" label="Message" required />
-              <div>
-                <SubmitButton
-                  type="submit"
-                  style={{ opacity: isSubmitting ? '.75' : '1' }}
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </SubmitButton>
-              </div>
-            </motion.form>
-          ) : (
-            <ThankYou
-              key="thankyou"
-              animate={{ opacity: 1, transform: 'translateY(0rem)' }}
-              transition={{
-                ease: vars.easeFramer,
-                duration: 0.75,
-                delay: 0.25,
-              }}
-            >
-              <AnimatedCheckmark />
-              <p>
-                Hey, thanks! I've received your message and will get back to you
-                as soon as I can.
-              </p>
-            </ThankYou>
-          )}
-        </AnimatePresence>
-      )}
-    </Formik>
+          setSubmitting(false);
+          setFormSubmitted(true);
+        }}
+      >
+        {({ handleSubmit, isSubmitting }) => (
+          <AnimatePresence exitBeforeEnter>
+            {!formSubmitted ? (
+              <motion.form
+                name="contactme"
+                onSubmit={handleSubmit}
+                data-netlify="true"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ ease: vars.easeFramer }}
+                key="form"
+              >
+                <input type="hidden" name="form-name" value="contactme" />
+                <Input name="name" type="text" label="Name" required />
+                <Input name="email" type="email" label="Email" required />
+                <Input
+                  name="message"
+                  type="textarea"
+                  label="Message"
+                  required
+                />
+                <div>
+                  <SubmitButton
+                    type="submit"
+                    style={{ opacity: isSubmitting ? '.75' : '1' }}
+                    disabled={isSubmitting}
+                  >
+                    Submit
+                  </SubmitButton>
+                </div>
+              </motion.form>
+            ) : (
+              <ThankYou
+                key="thankyou"
+                animate={{ opacity: 1, transform: 'translateY(0rem)' }}
+                transition={{
+                  ease: vars.easeFramer,
+                  duration: 0.75,
+                  delay: 0.25,
+                }}
+              >
+                <AnimatedCheckmark />
+                <p>
+                  Hey, thanks! I've received your message and will get back to
+                  you as soon as I can.
+                </p>
+              </ThankYou>
+            )}
+          </AnimatePresence>
+        )}
+      </Formik>
+    </>
   );
 };
 
@@ -105,15 +130,18 @@ const SubmitButton = styled.button`
   margin-top: 2rem;
   width: 100%;
   cursor: pointer;
+  will-change: transform;
+  transform: scale(1);
   transition: all 250ms ${vars.ease};
-  transition-property: background-color, color;
+  transition-property: background-color, color, transform;
 
   :hover,
   :focus {
     background-color: ${vars.colorHighlight};
     color: ${vars.colorPrimaryDark};
+    transform: scale(0.99);
     transition: all 250ms ${vars.ease};
-    transition-property: background-color, color;
+    transition-property: background-color, color, transform;
   }
 `;
 

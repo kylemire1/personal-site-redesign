@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import handleViewport from 'react-in-viewport';
 
 import LookingFor from './LookingFor';
 import Layout from '../Layout';
@@ -8,9 +9,9 @@ import { Wrapper } from '../styled/global';
 
 import vars from '../../styles/vars';
 
-const ExperienceLayout = () => {
+const ExperienceLayout = ({ inViewport, forwardedRef }) => {
   return (
-    <Layout>
+    <Layout inViewport={inViewport} forwardedRef={forwardedRef}>
       <ExperienceWrapper id="experience">
         <Resume />
         <LookingFor />
@@ -32,4 +33,7 @@ const ExperienceWrapper = styled(Wrapper)`
   }
 `;
 
-export default ExperienceLayout;
+export default handleViewport(ExperienceLayout, {
+  rootMargin: '0px',
+  threshold: 0.45,
+});

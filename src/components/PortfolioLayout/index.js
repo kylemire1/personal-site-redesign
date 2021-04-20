@@ -1,17 +1,19 @@
 import React from 'react';
+import handleViewport from 'react-in-viewport';
 
 import styled from 'styled-components';
 
+import PortfolioShowcase from './PortfolioShowcase';
+import PortfolioSectionHeading from './PortfolioSectionHeading';
 import Layout from '../Layout';
 import { Wrapper } from '../styled/global';
 
 import vars from '../../styles/vars';
-import PortfolioShowcase from './PortfolioShowcase';
-import PortfolioSectionHeading from './PortfolioSectionHeading';
+import { intersectionObserverOptions } from '../../consts';
 
-const PortfolioLayout = () => {
+const PortfolioLayout = ({ inViewport, forwardedRef }) => {
   return (
-    <Layout>
+    <Layout inViewport={inViewport} forwardedRef={forwardedRef}>
       <PortfolioWrapper id="portfolio">
         <PortfolioSectionHeading />
         <PortfolioShowcase />
@@ -35,4 +37,4 @@ const PortfolioWrapper = styled(Wrapper)`
   }
 `;
 
-export default PortfolioLayout;
+export default handleViewport(PortfolioLayout, intersectionObserverOptions);
