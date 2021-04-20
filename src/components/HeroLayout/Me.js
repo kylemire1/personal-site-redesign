@@ -32,7 +32,7 @@ const Me = () => {
         }}
       >
         <StaticImage
-          src="../../images/profile-pic.jpg"
+          src="../../images/profile-pic-color.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
           placeholder="#FFFFFF"
         />
