@@ -58,10 +58,13 @@ const Post = ({ data: { imageData, mdx }, pageContext }) => {
 const ArticleContainer = styled(Container)`
   max-width: 61.25em;
 
-  .project-banner {
+  .project-banner,
+  img {
+    background-color: ${vars.colorPrimary};
     min-height: 7.813rem;
     border-top-left-radius: ${vars.borderRadiusLarge};
     border-top-right-radius: ${vars.borderRadiusLarge};
+    overflow: hidden;
   }
 `;
 
