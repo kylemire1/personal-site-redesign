@@ -17,9 +17,9 @@ const Confetti = () => {
 
   return ReactDOM.createPortal(
     <ReactConfetti
-      numberOfPieces={500}
+      numberOfPieces={200}
       width={width}
-      height={height}
+      height={height * 10}
       recycle={false}
     />,
     portalEl

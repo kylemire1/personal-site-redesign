@@ -28,13 +28,29 @@ const ContactForm = () => {
       timeoutRef.current = setShowConfetti(true);
       window.setTimeout(() => {
         setShowConfetti(false);
-      }, 4000);
+      }, 5000);
     }
 
     return () => {
       window.clearTimeout(timeoutRef.current);
     };
   }, [formSubmitted, reduceMotion]);
+
+  const handleFormSubmit = (data, { setSubmitting }) => {
+    setSubmitting(true);
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeFormData({ 'form-name': 'contactme', ...data }),
+    };
+
+    fetch('/', options)
+      .then((res) => console.log('Form successfully submitted', { res }))
+      .catch((error) => alert(error));
+
+    setSubmitting(false);
+    setFormSubmitted(true);
+  };
 
   return (
     <>
@@ -46,21 +62,7 @@ const ContactForm = () => {
           email: '',
           message: '',
         }}
-        onSubmit={(data, { setSubmitting }) => {
-          setSubmitting(true);
-          const options = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encodeFormData({ 'form-name': 'contactme', ...data }),
-          };
-
-          fetch('/', options)
-            .then((res) => console.log('Form successfully submitted', { res }))
-            .catch((error) => alert(error));
-
-          setSubmitting(false);
-          setFormSubmitted(true);
-        }}
+        onSubmit={handleFormSubmit}
       >
         {({ handleSubmit, isSubmitting }) => (
           <AnimatePresence exitBeforeEnter>
