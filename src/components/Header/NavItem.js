@@ -12,7 +12,7 @@ const NavItem = ({ href, children }) => {
   if (isHome) {
     return (
       <LinkWrapper>
-        <AnchorLink href={href} offset="100">
+        <AnchorLink href={href} offset="250">
           {children}
         </AnchorLink>
       </LinkWrapper>

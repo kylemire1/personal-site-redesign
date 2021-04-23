@@ -121,7 +121,7 @@ const ContactMeNow = styled(motion.div)`
 `;
 
 const ContactMeContainer = styled(motion(Container))`
-  padding: 1rem 1.5rem 2rem;
+  padding: 0 1.5rem;
   width: auto;
   height: 100%;
   justify-content: center;

@@ -25,8 +25,8 @@ const ContactForm = () => {
 
   useEffect(() => {
     if (formSubmitted && !reduceMotion) {
-      timeoutRef.current = setShowConfetti(true);
-      window.setTimeout(() => {
+      setShowConfetti(true);
+      timeoutRef.current = window.setTimeout(() => {
         setShowConfetti(false);
       }, 5000);
     }

@@ -61,8 +61,8 @@ const HelloSection = () => {
       >
         <HelloHeading as="h1">Hello there!</HelloHeading>
         <IntroText>
-          My name is Kyle Lemire. I’m a <span>designer and web developer</span>{' '}
-          based in Chicago.
+          My name is Kyle Lemire. I’m a{' '}
+          <span>designer &amp; web developer</span> based in Chicago.
         </IntroText>
       </HelloContainer>
     </HelloWrapper>
@@ -132,7 +132,7 @@ const HelloHeading = styled(Heading)`
 `;
 
 const IntroText = styled.p`
-  max-width: 50ch;
+  max-width: 45ch;
   z-index: 50;
   span {
     font-weight: ${vars.fontWeightBold};

@@ -20,7 +20,7 @@ const EmbeddedPostImage = (props) => {
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
 
-    return function () {
+    return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   });
@@ -47,7 +47,11 @@ const EmbeddedPostImage = (props) => {
           <GatsbyImage {...props} />
         </ImageWrapper>
       </StyledButton>
-      {props.caption && <figcaption>{props.caption}</figcaption>}
+      {props.caption && (
+        <figcaption aria-label={`${props.caption} - Click to expand`}>
+          {props.caption}
+        </figcaption>
+      )}
     </StyledFigure>
   );
 };
@@ -84,6 +88,11 @@ const ImageWrapper = styled.div`
     transform: scale(1);
     &.do-animate {
       transition: transform 500ms ${vars.ease};
+
+      :not(.open):hover,
+      :not(.open):focus {
+        transform: scale(1.01);
+      }
     }
   }
 
