@@ -77,7 +77,7 @@ const HelloWrapper = styled(motion.div)`
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   border-bottom-right-radius: ${vars.borderRadiusLarge};
   background-color: ${vars.colorWhite};
-  box-shadow: 0 4px 90px ${rgba(vars.colorPrimary, 0.4)};
+  box-shadow: 0 0.25rem 5.625rem ${rgba(vars.colorPrimary, 0.4)};
   z-index: 2;
   transform-origin: top;
   transition: all 500ms ${vars.ease};

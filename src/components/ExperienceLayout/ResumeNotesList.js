@@ -34,28 +34,28 @@ const ResumeNotesList = ({ id, notes }) => {
 };
 
 const ResumeNotesListWrapper = styled.div`
-  max-height: 0px;
+  max-height: 0rem;
   overflow: hidden;
 
   &.notes-list-enter {
-    max-height: 0px;
+    max-height: 0rem;
   }
   &.notes-list-enter-active {
-    max-height: 400px;
+    max-height: 25rem;
     transition: max-height 750ms ${vars.ease};
   }
   &.notes-list-enter-done {
-    max-height: 400px;
+    max-height: 25rem;
   }
   &.notes-list-exit {
-    max-height: 400px;
+    max-height: 25rem;
   }
   &.notes-list-exit-active {
-    max-height: 0px;
+    max-height: 0rem;
     transition: max-height 750ms ${vars.ease};
   }
   &.notes-list-exit-done {
-    max-height: 0px;
+    max-height: 0rem;
   }
 
   @media (min-width: ${vars.breakpointExtraLarge}) {

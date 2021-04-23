@@ -20,8 +20,3 @@ export const basicAnimateOut = {
   animate: 'hidden',
   exit: { opacity: 0 },
 };
-
-export const intersectionObserverOptions = {
-  rootMargin: '0px',
-  threshold: 0.5,
-};

@@ -20,8 +20,8 @@ const StyledSocialItem = styled.a`
   margin-left: 1rem;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     margin-left: 0;
 
     & + & {

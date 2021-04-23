@@ -12,6 +12,8 @@ import { Container } from '../components/styled/global';
 import SEO from '../components/seo';
 
 import vars from '../styles/vars';
+import { usePrevPath } from '../utils/hooks/usePrevPath';
+import PageTransition from '../components/PageTransition';
 
 export const query = graphql`
   query($slug: String!, $featuredImgSlug: String) {
@@ -34,27 +36,39 @@ const Post = ({ data: { imageData, mdx }, pageContext }) => {
   const featuredImage = getImage(imageData);
   const embeddedImages = pageContext.embeddedImgs || [];
 
+  usePrevPath();
+
   return (
-    <Layout>
-      <SEO title={frontmatter.title} />
+    <>
       <Header />
-      <ArticleContainer>
-        <StyledArticle
-          initial={{ opacity: 0, transform: 'translateY(-2rem)' }}
-          animate={{ opacity: 1, transform: 'translateY(0rem)' }}
-          transition={{ duration: 0.75, ease: vars.easeFramer, delay: 0.2 }}
-        >
-          <GatsbyImage
-            className="project-banner"
-            image={featuredImage}
-            alt=""
-          />
-          <ContentWrapper>
-            <MDXRenderer embeddedImages={embeddedImages}>{body}</MDXRenderer>
-          </ContentWrapper>
-        </StyledArticle>
-      </ArticleContainer>
-    </Layout>
+      <Layout>
+        <SEO title={frontmatter.title} />
+        <PageTransition>
+          <ArticleContainer>
+            <StyledArticle
+              initial={{ opacity: 0, transform: 'translateY(-2rem)' }}
+              animate={{ opacity: 1, transform: 'translateY(0rem)' }}
+              transition={{
+                duration: 0.75,
+                ease: vars.easeFramer,
+                delay: 0.2,
+              }}
+            >
+              <GatsbyImage
+                className="project-banner"
+                image={featuredImage}
+                alt=""
+              />
+              <ContentWrapper>
+                <MDXRenderer embeddedImages={embeddedImages}>
+                  {body}
+                </MDXRenderer>
+              </ContentWrapper>
+            </StyledArticle>
+          </ArticleContainer>
+        </PageTransition>
+      </Layout>
+    </>
   );
 };
 

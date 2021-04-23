@@ -11,12 +11,11 @@ import NavItem from './NavItem';
 import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
-import { basicAnimateIn } from '../../consts';
 import { useIsHome } from '../../utils/hooks/useIsHome';
 
 const Header = () => {
   const [ref] = useDimensions();
-  const [{ scrollDistance }, dispatch] = useContext(LayoutContext);
+  const [{ scrollDistance, prevPath }, dispatch] = useContext(LayoutContext);
   const { isHome } = useIsHome();
 
   useScrollPosition(({ currPos }) => {
@@ -26,23 +25,18 @@ const Header = () => {
     }
   });
 
-  let animateProps;
-  if (isHome) {
-    animateProps = {
-      ...basicAnimateIn,
-      transition: {
-        ...basicAnimateIn.transition,
-        delay: 0.5,
-      },
-    };
-  }
+  const prevPathString = prevPath ? prevPath : '';
 
   return (
     <StyledHeader
-      className={scrollDistance > 0 || !isHome ? 'passed' : ''}
+      className={
+        scrollDistance > 5 || prevPathString.includes('/projects/') || !isHome
+          ? 'passed'
+          : ''
+      }
       ref={ref}
     >
-      <StyledContainer {...animateProps}>
+      <StyledContainer>
         <SiteLogo />
         <Nav role="menu">
           <NavItem href="#portfolio">Portfolio</NavItem>
@@ -54,7 +48,7 @@ const Header = () => {
   );
 };
 
-const StyledHeader = styled(motion.header)`
+const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -65,7 +59,7 @@ const StyledHeader = styled(motion.header)`
   border-bottom-right-radius: ${vars.borderRadiusLarge};
 
   &.passed {
-    box-shadow: 0 4px 30px ${rgba(vars.colorPrimary, 0.2)};
+    box-shadow: 0 0.25rem 1.875rem ${rgba(vars.colorPrimary, 0.2)};
     background-color: ${vars.colorWhite};
 
     #logo-text {

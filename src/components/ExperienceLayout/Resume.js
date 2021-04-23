@@ -109,7 +109,7 @@ const ResumeDownloadButton = styled.a`
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 10px 10px 0 0;
+    border-width: 0.625rem 0.625rem 0 0;
     border-color: ${darken(0.2, vars.colorHighlight)} transparent transparent;
     z-index: -1;
   }

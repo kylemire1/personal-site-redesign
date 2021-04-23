@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import { Link } from 'gatsby';
 
+import PageTransitionLink from '../PageTransitionLink';
 import { Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
@@ -43,7 +43,11 @@ const ShowcaseItem = ({
               Project Repo
             </a>
           )}
-          {about && <Link to={about}>About the Project</Link>}
+          {about && typeof window !== 'undefined' && (
+            <PageTransitionLink to={about}>
+              About the Project
+            </PageTransitionLink>
+          )}
         </ItemLinks>
       </ItemContent>
       <CSSTransition in={!isOpen} timeout={250} classNames="showcase-image">

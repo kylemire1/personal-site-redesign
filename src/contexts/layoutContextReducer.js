@@ -3,6 +3,7 @@ export const LAYOUT_INITIAL_STATE = {
   hasScrolled: false,
   scrollDistance: 0,
   openPortfolioItemIndex: false,
+  prevPath: false,
 };
 
 const layoutContextReducer = (state = LAYOUT_INITIAL_STATE, action) => {
@@ -35,6 +36,12 @@ const layoutContextReducer = (state = LAYOUT_INITIAL_STATE, action) => {
       return {
         ...state,
         openPortfolioItemIndex: false,
+      };
+
+    case 'SET_PREV_PATH':
+      return {
+        ...state,
+        prevPath: action.payload,
       };
 
     default:

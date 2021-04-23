@@ -87,7 +87,7 @@ const ContactMeNow = styled(motion.div)`
       border-radius: ${vars.borderRadiusLarge};
       position: absolute;
       left: -40%;
-      top: -1px;
+      top: -${vars.pixel};
       z-index: 99;
       transform: scaleX(0);
       transform-origin: right;

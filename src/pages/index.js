@@ -3,7 +3,10 @@ import { Helmet } from 'react-helmet';
 
 import HomeLayout from '../components/HomeLayout';
 
+import { usePrevPath } from '../utils/hooks/usePrevPath';
+
 const Home = () => {
+  usePrevPath();
   return (
     <>
       <Helmet>

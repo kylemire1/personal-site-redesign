@@ -16,8 +16,8 @@ const AnimatedCheckmark = () => {
 };
 
 const StyledCheckmark = styled.svg`
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
   display: block;
   stroke-width: 2;
@@ -62,7 +62,7 @@ const StyledCheckmark = styled.svg`
 
   @keyframes fill {
     100% {
-      box-shadow: inset 0px 0px 0px 30px #7ac142;
+      box-shadow: inset 0px 0px 0px 1.875rem #7ac142;
     }
   }
 `;

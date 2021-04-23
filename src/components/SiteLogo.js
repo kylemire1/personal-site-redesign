@@ -1,8 +1,8 @@
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
+import PageTransitionLink from '../components/PageTransitionLink';
 import LogoImg from './icons/Logo';
 
 import vars from '../styles/vars';
@@ -20,9 +20,9 @@ const SiteLogo = () => {
   }
 
   return (
-    <Link to="/">
+    <PageTransitionLink to="/">
       <Logo />
-    </Link>
+    </PageTransitionLink>
   );
 };
 

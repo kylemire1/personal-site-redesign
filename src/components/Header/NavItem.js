@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { Link } from 'gatsby';
 
 import vars from '../../styles/vars';
 import { useIsHome } from '../../utils/hooks/useIsHome';
+import PageTransitionLink from '../PageTransitionLink';
 
 const NavItem = ({ href, children }) => {
   const { isHome } = useIsHome();
@@ -21,7 +21,7 @@ const NavItem = ({ href, children }) => {
 
   return (
     <LinkWrapper>
-      <Link to={`/${href}`}>{children}</Link>
+      <PageTransitionLink to={`/${href}`}>{children}</PageTransitionLink>
     </LinkWrapper>
   );
 };
