@@ -68,13 +68,6 @@ const StyledItem = styled.div`
   overflow: hidden;
   background-color: ${vars.colorWhite};
 
-  :first-child {
-    padding-top: 2em;
-  }
-  :last-child {
-    padding-bottom: 2em;
-  }
-
   .showcase-image-enter {
     opacity: 0;
     display: block;
@@ -108,6 +101,13 @@ const StyledItem = styled.div`
     background-size: cover;
     background-position: left top 18rem;
     background-repeat: no-repeat;
+
+    :first-child {
+      order: 2;
+    }
+    :last-child {
+      order: 1;
+    }
   }
 `;
 
@@ -122,12 +122,14 @@ const ItemContent = styled.div`
   padding-bottom: 0.5em;
   z-index: 0;
 
-  @media (min-width: ${vars.breakpointExtraLarge}) {
+  @media (min-width: ${vars.breakpointXXL}) {
     justify-content: flex-start;
     padding-top: 2em;
   }
 
   @media (min-width: 104.67em) {
+    justify-content: flex-start;
+    padding-top: 2em;
     border-bottom: none;
   }
 `;
@@ -197,7 +199,7 @@ const ItemImage = styled.button`
 
 const ItemLinks = styled.div`
   display: flex;
-
+  margin-top: auto;
   a {
     color: ${vars.colorPrimary};
     font-weight: ${vars.fontWeightBold};
@@ -210,7 +212,7 @@ const ItemLinks = styled.div`
   @media (min-width: 104.67em) {
     flex-direction: column;
     justify-content: flex-start;
-
+    margin-top: 0;
     a {
       padding: 1em;
       border-radius: ${vars.borderRadiusSmall};
@@ -244,8 +246,8 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   z-index: 10;
   cursor: pointer;
 

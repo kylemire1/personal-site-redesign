@@ -20,7 +20,7 @@ const EmbeddedPostImage = (props) => {
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
 
-    return function () {
+    return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   });

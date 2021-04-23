@@ -2,18 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useLocation } from '@reach/router';
+import { useMediaQuery } from 'react-responsive';
 
 import vars from '../styles/vars';
 
 const Layout = ({ children, inViewport, forwardedRef }) => {
   const location = useLocation();
+  const isTabletOrLarger = useMediaQuery({
+    minWidth: vars.breakpointMedium,
+  });
 
   const showInViewport =
-    children.props?.id === 'home' || location.pathname !== '/' || inViewport;
+    !isTabletOrLarger ||
+    children.props?.id === 'home' ||
+    location.pathname !== '/' ||
+    inViewport;
+
   return (
     <SectionWrapper
-      $inViewport={showInViewport}
       ref={forwardedRef}
+      $inViewport={showInViewport}
       className="section-wrapper"
       animate={{
         opacity: showInViewport ? 1 : 0,

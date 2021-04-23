@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import { Container } from '../components/styled/global';
+import SEO from '../components/seo';
 
 import vars from '../styles/vars';
 
@@ -29,11 +30,13 @@ export const query = graphql`
 `;
 
 const Post = ({ data: { imageData, mdx }, pageContext }) => {
-  const { body } = mdx;
+  const { body, frontmatter } = mdx;
   const featuredImage = getImage(imageData);
   const embeddedImages = pageContext.embeddedImgs || [];
+
   return (
     <Layout>
+      <SEO title={frontmatter.title} />
       <Header />
       <ArticleContainer>
         <StyledArticle

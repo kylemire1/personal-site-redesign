@@ -34,6 +34,6 @@ const ExperienceWrapper = styled(Wrapper)`
 `;
 
 export default handleViewport(ExperienceLayout, {
-  rootMargin: '0px',
-  threshold: 0.45,
+  rootMargin: '20px 0px 0px 0px',
+  threshold: 0.5,
 });
