@@ -4,7 +4,7 @@ import { CgRemoveR } from 'react-icons/cg';
 import { darken } from 'polished';
 
 import ResumeNotesList from './ResumeNotesList';
-import ResumeContext from '../../contexts/ResumeContext';
+import LayoutContext from '../../contexts/LayoutContext';
 
 import Plus from '../icons/Plus';
 
@@ -23,14 +23,14 @@ const ResumeItem = ({
   endYear,
   current,
 }) => {
-  const [, dispatch] = useContext(ResumeContext);
+  const [, dispatch] = useContext(LayoutContext);
 
   const handleShowNotes = (id) => {
     if (isShowing) {
-      dispatch({ type: 'HIDE_ALL' });
+      dispatch({ type: 'HIDE_ALL_RESUME_ITEMS' });
     } else {
-      dispatch({ type: 'HIDE_ALL' });
-      dispatch({ type: 'SHOW_LIST_ITEM', payload: id });
+      dispatch({ type: 'HIDE_ALL_RESUME_ITEMS' });
+      dispatch({ type: 'SHOW_RESUME_LIST_ITEM', payload: id });
     }
   };
 

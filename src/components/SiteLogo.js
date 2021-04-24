@@ -20,7 +20,7 @@ const SiteLogo = () => {
   }
 
   return (
-    <PageTransitionLink to="/">
+    <PageTransitionLink to="/" type="upToFade">
       <Logo />
     </PageTransitionLink>
   );

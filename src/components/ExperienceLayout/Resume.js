@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import ResumeItem from './ResumeItem';
-import ResumeContext from '../../contexts/ResumeContext';
 import { Heading, Container } from '../styled/global';
+import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import resumeData from './resumeData';
 import Pdf from '../icons/Pdf';
 
 const Resume = () => {
-  const [openResumeNotes] = useContext(ResumeContext);
+  const [{ resumeItemStateMap }] = useContext(LayoutContext);
 
   return (
     <ResumeWrapper>
@@ -19,7 +19,7 @@ const Resume = () => {
         <ResumeHeading>Experience</ResumeHeading>
         {resumeData.map((item, itemIndex) => {
           let isShowing = false;
-          openResumeNotes.some((note) => {
+          resumeItemStateMap.some((note) => {
             if (note.id === item.id) {
               isShowing = note.isOpen;
               return true;

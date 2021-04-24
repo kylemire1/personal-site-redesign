@@ -44,7 +44,7 @@ const ShowcaseItem = ({
             </a>
           )}
           {about && typeof window !== 'undefined' && (
-            <PageTransitionLink to={about}>
+            <PageTransitionLink to={about} type="leftToUp">
               About the Project
             </PageTransitionLink>
           )}

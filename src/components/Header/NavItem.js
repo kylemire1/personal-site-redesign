@@ -21,7 +21,9 @@ const NavItem = ({ href, children }) => {
 
   return (
     <LinkWrapper>
-      <PageTransitionLink to={`/${href}`}>{children}</PageTransitionLink>
+      <PageTransitionLink to={`/${href}`} type="upToLeft">
+        {children}
+      </PageTransitionLink>
     </LinkWrapper>
   );
 };

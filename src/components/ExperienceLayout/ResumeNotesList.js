@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
-import ResumeContext from '../../contexts/ResumeContext';
+import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
 import ResumeNotesListItem from './ResumeNotesListItem';
 
 const ResumeNotesList = ({ id, notes }) => {
-  const [openResumeNotes] = useContext(ResumeContext);
+  const [{ resumeItemStateMap }] = useContext(LayoutContext);
   let showNotes = false;
-  openResumeNotes.some((note) => {
+  resumeItemStateMap.some((note) => {
     if (note.id === id) {
       showNotes = note.isOpen;
       return true;
