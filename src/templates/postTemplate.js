@@ -10,10 +10,12 @@ import Layout from '../components/Layout';
 import Header from '../components/Header';
 import { Container } from '../components/styled/global';
 import SEO from '../components/seo';
+import PageTransition from '../components/PageTransition';
 
 import vars from '../styles/vars';
 import { usePrevPath } from '../utils/hooks/usePrevPath';
-import PageTransition from '../components/PageTransition';
+import { useBrowserNavEvent } from '../utils/hooks/useBrowserNavEvent';
+import { handleBrowserNavigation } from '../utils/handleBrowserNavigation';
 
 export const query = graphql`
   query($slug: String!, $featuredImgSlug: String) {
@@ -35,7 +37,7 @@ const Post = ({ data: { imageData, mdx }, pageContext }) => {
   const { body, frontmatter } = mdx;
   const featuredImage = getImage(imageData);
   const embeddedImages = pageContext.embeddedImgs || [];
-
+  const show = useBrowserNavEvent(handleBrowserNavigation);
   usePrevPath();
 
   return (
@@ -43,30 +45,32 @@ const Post = ({ data: { imageData, mdx }, pageContext }) => {
       <Header />
       <Layout>
         <SEO title={frontmatter.title} />
-        <PageTransition>
-          <ArticleContainer>
-            <StyledArticle
-              initial={{ opacity: 0, transform: 'translateY(-2rem)' }}
-              animate={{ opacity: 1, transform: 'translateY(0rem)' }}
-              transition={{
-                duration: 0.75,
-                ease: vars.easeFramer,
-                delay: 0.2,
-              }}
-            >
-              <GatsbyImage
-                className="project-banner"
-                image={featuredImage}
-                alt=""
-              />
-              <ContentWrapper>
-                <MDXRenderer embeddedImages={embeddedImages}>
-                  {body}
-                </MDXRenderer>
-              </ContentWrapper>
-            </StyledArticle>
-          </ArticleContainer>
-        </PageTransition>
+        <div style={{ opacity: show ? 1 : 0 }}>
+          <PageTransition>
+            <ArticleContainer>
+              <StyledArticle
+                initial={{ opacity: 0, transform: 'translateY(-2rem)' }}
+                animate={{ opacity: 1, transform: 'translateY(0rem)' }}
+                transition={{
+                  duration: 0.75,
+                  ease: vars.easeFramer,
+                  delay: 0.2,
+                }}
+              >
+                <GatsbyImage
+                  className="project-banner"
+                  image={featuredImage}
+                  alt=""
+                />
+                <ContentWrapper>
+                  <MDXRenderer embeddedImages={embeddedImages}>
+                    {body}
+                  </MDXRenderer>
+                </ContentWrapper>
+              </StyledArticle>
+            </ArticleContainer>
+          </PageTransition>
+        </div>
       </Layout>
     </>
   );

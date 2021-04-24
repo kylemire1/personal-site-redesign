@@ -7,15 +7,22 @@ import ContactLayout from './ContactLayout';
 import Header from './Header';
 import PageTransition from './PageTransition';
 
+import { useBrowserNavEvent } from '../utils/hooks/useBrowserNavEvent';
+import { handleBrowserNavigation } from '../utils/handleBrowserNavigation';
+
 const HomeLayout = () => {
+  const show = useBrowserNavEvent(handleBrowserNavigation);
+
   return (
     <>
       <Header />
       <PageTransition>
-        <HeroLayout />
-        <PortfolioLayout />
-        <ExperienceLayout />
-        <ContactLayout />
+        <div style={{ opacity: show ? 1 : 0 }}>
+          <HeroLayout />
+          <PortfolioLayout />
+          <ExperienceLayout />
+          <ContactLayout />
+        </div>
       </PageTransition>
     </>
   );

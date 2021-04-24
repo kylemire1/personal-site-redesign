@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { TransitionState } from 'gatsby-plugin-transition-link';
 
 import vars from '../styles/vars';
@@ -17,16 +17,23 @@ const PageTransition = ({ children }) => {
             animate:
               transitionStatus === 'exiting'
                 ? exit.state
-                : { opacity: 1, x: 0, y: 0 },
+                : { opacity: 1, x: 0 },
 
             transition:
               transitionStatus === 'exiting'
                 ? { duration: exit.length, ease: vars.easeFramer }
                 : { duration: 0.75, ease: vars.easeFramer },
+            exit: { opacity: 0 },
           };
         }
 
-        return <motion.div {...transitionProps}>{children}</motion.div>;
+        return (
+          <AnimatePresence>
+            <motion.div key="page" {...transitionProps}>
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        );
       }}
     </TransitionState>
   );

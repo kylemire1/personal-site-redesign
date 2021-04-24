@@ -113,7 +113,6 @@ const StyledButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  outline: none;
   pointer-events: none;
 
   @media (min-width: ${vars.breakpointMedium}) {
