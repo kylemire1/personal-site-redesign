@@ -34,6 +34,7 @@ const Me = () => {
         <StaticImage
           src="../../images/profile-pic-color.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
+          quality="100"
           placeholder="#FFFFFF"
         />
       </ImageWrapper>

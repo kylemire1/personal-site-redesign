@@ -85,6 +85,7 @@ const ImageWrapper = styled.div`
   @media (min-width: ${vars.breakpointLarge}) {
     width: 136%;
     margin-left: -18%;
+    will-change: transform;
     transform: scale(1);
     &.do-animate {
       transition: transform 500ms ${vars.ease};
