@@ -40,7 +40,7 @@ const HelloSection = () => {
         }}
       >
         <StaticImage
-          src="../../images/me-large.jpg"
+          src="../../assets/images/me-large.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
           placeholder="#FFFFFF"
           quality={100}
@@ -61,8 +61,8 @@ const HelloSection = () => {
       >
         <HelloHeading as="h1">Hello there!</HelloHeading>
         <IntroText>
-          My name is Kyle Lemire. I’m a{' '}
-          <span>designer &amp; web developer</span> based in Chicago.
+          My name is Kyle Lemire. I’m a <span>web developer & designer</span>{' '}
+          based in Chicago.
         </IntroText>
       </HelloContainer>
     </HelloWrapper>

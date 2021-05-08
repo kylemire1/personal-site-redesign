@@ -5,9 +5,9 @@ const resumeData = [
     startYear: 2020,
     current: true,
     notes: [
-      'Designing and building websites with React and Gatsby that make my clients smile!',
-      'Consulting with front end teams to train them on new technology.',
-      'Delivering modern SPA’s with client-editable content by leveraging headless CMS’s.',
+      'Designing and building websites and applications with React, NextJS, and GatsbyJS',
+      'Expert consultancy with front-end web development teams, teaching them React and GatsbyJS.',
+      "Leveraging headless CMS's to deliver modern single-pageapplications with client-editable content.",
     ],
   },
   {
@@ -21,8 +21,8 @@ const resumeData = [
     notes: [
       'Used React, Redux, and Server-Side Rendering to develop the company’s e-commerce platform.',
       'Learned new server-side programming skills on the job to help support the company’s legacy codebase.',
-      'Collaborated directly with the designer to solve design problems and inform design decisions.',
-      'Pushed for accessibility compliance and trained the designer on best practices such as color contrast ratio and ARIA to help inform design decisions. ',
+      'Collaborated directly with the designer to solve creative problems.',
+      'Pushed for accessibility compliance and trained the designer on best practices such as color contrast ratio and ARIA to help inform design decisions.',
     ],
   },
   {

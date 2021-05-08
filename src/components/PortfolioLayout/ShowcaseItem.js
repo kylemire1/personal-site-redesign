@@ -7,7 +7,7 @@ import PageTransitionLink from '../PageTransitionLink';
 import { Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
-import patternBg from '../../images/pattern.webp';
+import patternBg from '../../assets/images/pattern.webp';
 
 const ShowcaseItem = ({
   name,
@@ -53,7 +53,7 @@ const ShowcaseItem = ({
       <CSSTransition in={!isOpen} timeout={250} classNames="showcase-image">
         <ItemImage
           role="img"
-          aria-label="Mockups of the project arranged in a horizontal pattern"
+          aria-label={`Mockups of the ${name} project arranged in a horizontal pattern`}
           image={image}
           onClick={() => setOpen(itemIndex)}
         />

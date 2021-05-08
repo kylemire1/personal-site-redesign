@@ -1,9 +1,9 @@
 const lookingForData = [
-  'Web Design',
-  'Front End Development',
+  'Modern JavaScript Development',
+  'UI Design',
   'GatsbyJS Consulting',
   'Contract Work',
-  'Web Accessibility Consulting',
+  'Web Content Accessibility Consulting',
 ];
 
 export default lookingForData;

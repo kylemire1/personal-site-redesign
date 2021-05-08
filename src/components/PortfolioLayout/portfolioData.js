@@ -1,7 +1,7 @@
-import elykSrc from '../../images/elyk-showcase.jpg';
-import booksSrc from '../../images/book-review-showcase.jpg';
-import apexSrc from '../../images/apex-legends-showcase.jpg';
-import dashboardSrc from '../../images/dashboard-showcase.jpg';
+import elykSrc from '../../assets/images/elyk-showcase.jpg';
+import booksSrc from '../../assets/images/book-review-showcase.jpg';
+import apexSrc from '../../assets/images/apex-legends-showcase.jpg';
+import dashboardSrc from '../../assets/images/dashboard-showcase.jpg';
 
 const portfolioData = [
   {
