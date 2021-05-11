@@ -9,6 +9,9 @@ module.exports = {
     author: `@kylelemire1`,
     siteUrl: 'https://www.klemire.com',
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,

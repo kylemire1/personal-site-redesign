@@ -19,10 +19,10 @@ const resumeData = [
     endYear: '2020',
     current: false,
     notes: [
-      'Used React, Redux, and Server-Side Rendering to develop the company’s e-commerce platform.',
-      'Learned new server-side programming skills on the job to help support the company’s legacy codebase.',
-      'Collaborated directly with the designer to solve creative problems.',
-      'Pushed for accessibility compliance and trained the designer on best practices such as color contrast ratio and ARIA to help inform design decisions.',
+      "Worked on the company's re-designed e-commerce platform using React and server-side rendering to deliver great performance without sacrificing search engine optimization.",
+      "Learned Lucee / Cold Fusion on the job to support the company's legacy codebase while the new site was developed.",
+      'Implemented the re-designed front ends of industry-first tools, such as an HVAC room configurator and operating cost calculator.',
+      'Advocated for web accessibility guidelines, influencing design and technical decisions to improve access for all customers.',
     ],
   },
   {
@@ -35,10 +35,22 @@ const resumeData = [
     endYear: '2020',
     current: false,
     notes: [
-      'Personally built and deployed over a dozen client websites.',
-      'Designed and developed custom Wordpress themes from the ground up.',
-      'Trained clients to maintain and update their content, and provided ongoing support.',
-      'Learned to foster and maintain ongoing client relationships.',
+      'Designed and developed over a dozen custom Wordpress sites from the ground up.',
+      'Worked one-on-one with clients and trained them to maintain and update their content.',
+      "Designed and developed a private e-commerce platform exclusively for the client's customer base, facilitating toner sales to over 3000 locations nationwide.",
+    ],
+  },
+  {
+    id: 4,
+    jobTitle: 'Freelance',
+    startMonth: 'Feb',
+    startYear: '2015',
+    endMonth: 'Jul',
+    endYear: '2017',
+    current: false,
+    notes: [
+      'Built Wordpress websites for local artists and events, promoting ticket sales.',
+      'Built a web app for the local county historical archive with PHP and MySQL that allows users to search over 50,000 historic family names and key events.',
     ],
   },
 ];

@@ -9,7 +9,7 @@ import LayoutContext from '../../contexts/LayoutContext';
 import vars from '../../styles/vars';
 import resumeData from './resumeData';
 import Pdf from '../icons/Pdf';
-import resumeSrc from '../../assets/docs/resume-updated-20210508.pdf';
+import resumeSrc from '../../assets/docs/resume.pdf';
 
 const Resume = () => {
   const [{ resumeItemStateMap }] = useContext(LayoutContext);
@@ -42,7 +42,7 @@ const Resume = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>Download Full Resume</span>
+        <span>Download Resume</span>
         <Pdf />
       </ResumeDownloadButton>
     </ResumeWrapper>

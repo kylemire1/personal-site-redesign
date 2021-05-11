@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import useDimensions from 'react-use-dimensions';
@@ -69,11 +68,12 @@ const StyledHeader = styled.header`
   }
 `;
 
-const StyledContainer = styled(motion(Container))`
+const StyledContainer = styled(Container)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0.875rem 1.75rem;
+  opacity: 1;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     padding-right: 1rem;
