@@ -31,11 +31,12 @@ const HomeWrapper = styled(Wrapper)`
   grid-template-columns: 1fr 0.75fr;
 
   @media (min-height: ${vars.breakpointExtraSmall}) {
-    height: 100vh;
     max-height: 85.5em;
+    min-height: 100vh;
   }
 
   @media (min-width: ${vars.breakpointMedium}) {
+    height: 100vh;
     grid-template-rows: 45rem 1.6fr 1fr;
     grid-template-columns: 0.5fr 0.5fr 1fr;
   }

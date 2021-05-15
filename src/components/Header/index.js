@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import useDimensions from 'react-use-dimensions';
@@ -12,7 +12,22 @@ import LayoutContext from '../../contexts/LayoutContext';
 import vars from '../../styles/vars';
 import { useIsHome } from '../../utils/hooks/useIsHome';
 
-const Header = () => {
+function Header(props) {
+  const [showChild, setShowChild] = useState(false);
+
+  // Wait until after client-side hydration to show
+  useEffect(() => {
+    setShowChild(true);
+  }, []);
+
+  if (!showChild) {
+    return null;
+  }
+
+  return <LazyLoaded {...props} />;
+}
+
+const LazyLoaded = () => {
   const [ref] = useDimensions();
   const [{ scrollDistance, prevPath }, dispatch] = useContext(LayoutContext);
   const { isHome } = useIsHome();
