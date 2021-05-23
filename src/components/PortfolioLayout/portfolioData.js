@@ -2,6 +2,7 @@ import elykSrc from '../../assets/images/elyk-showcase.jpg';
 import booksSrc from '../../assets/images/book-review-showcase.jpg';
 import apexSrc from '../../assets/images/apex-legends-showcase.jpg';
 import dashboardSrc from '../../assets/images/dashboard-showcase.jpg';
+import moviesPlusSrc from '../../assets/images/movies-plus-showcase.jpg';
 
 const portfolioData = [
   {
@@ -11,24 +12,17 @@ const portfolioData = [
     projectFor: 'Elyk Innovation',
     image: elykSrc,
     about: '/projects/elyk-innovation/',
+    skills: ['React', 'Gatsby', 'Styled Components', 'Headless WordPress'],
   },
   {
-    name: 'Book Review Site',
+    name: 'Streaming Site',
     description:
-      'A React site built with GatsbyJS that uses GraphQL to load book reviews from a headless CMS.',
+      'A mock web application for a movie streaming platform built with the Movie Database API.',
     projectFor: 'Personal Project',
-    image: booksSrc,
-    link: 'https://www.book-worm.me/',
-    repo: 'https://github.com/kylemire1/book-blog',
-  },
-  {
-    name: 'Apex Legends Profile Tracker',
-    description:
-      'A React web app with a Node backend that displays game profile data from Tracker.gg.',
-    projectFor: 'Personal Project',
-    image: apexSrc,
-    link: 'https://apex-legends-stat-tracker.herokuapp.com',
-    repo: 'https://github.com/kylemire1/apex-legends-stat-tracker',
+    image: moviesPlusSrc,
+    link: 'https://movies-plus.vercel.app/',
+    repo: 'https://github.com/kylemire1/movies-plus-typescript',
+    skills: ['React', 'Next.js', 'TypeScript', 'TailwindCSS', 'Firebase Auth'],
   },
   {
     name: 'Bug Tracking Dashboard',
@@ -38,6 +32,17 @@ const portfolioData = [
     image: dashboardSrc,
     link: 'https://hungry-sinoussi-134062.netlify.app/',
     repo: 'https://github.com/kylemire1/ticket-tracker',
+    skills: ['React', 'Firebase Auth', 'Firestore'],
+  },
+  {
+    name: 'Apex Legends Profile Tracker',
+    description:
+      'A full-stack web app that displays game profile data from Tracker.gg.',
+    projectFor: 'Personal Project',
+    image: apexSrc,
+    link: 'https://apex-legends-stat-tracker.herokuapp.com',
+    repo: 'https://github.com/kylemire1/apex-legends-stat-tracker',
+    skills: ['React', 'Node', 'Express'],
   },
 ];
 

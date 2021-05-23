@@ -21,6 +21,7 @@ const ShowcaseItem = ({
   setOpen,
   setClosed,
   itemIndex,
+  skills,
 }) => {
   return (
     <StyledItem>
@@ -32,10 +33,26 @@ const ShowcaseItem = ({
           {name} <span aria-label={`for ${projectFor}`}>{projectFor}</span>
         </ItemHeading>
         <ItemDescription>{description}</ItemDescription>
+        <Skills>
+          <span id="skills-used">Skills Used: </span>
+          <ul aria-labelledby="skills-used">
+            {skills.length &&
+              skills.map((s, idx) => {
+                return (
+                  <li
+                    className={idx === skills.length - 1 ? 'last' : ''}
+                    key={`${s}_${itemIndex}_${link}`}
+                  >
+                    {s}
+                  </li>
+                );
+              })}
+          </ul>
+        </Skills>
         <ItemLinks>
           {link && (
             <a href={link} target="_blank" rel="noopener noreferrer">
-              View Project
+              Visit Project
             </a>
           )}
           {repo && (
@@ -106,10 +123,16 @@ const StyledItem = styled.div`
     background-position: left top 18rem;
     background-repeat: no-repeat;
 
-    :first-child {
+    :nth-child(1) {
+      order: 4;
+    }
+    :nth-child(2) {
+      order: 3;
+    }
+    :nth-child(3) {
       order: 2;
     }
-    :last-child {
+    :nth-child(4) {
       order: 1;
     }
   }
@@ -267,6 +290,40 @@ const CloseButton = styled.button`
     :hover {
       path {
         fill: ${vars.colorPrimaryDark};
+      }
+    }
+  }
+`;
+
+const Skills = styled.div`
+  span {
+    font-weight: ${vars.fontWeightBold};
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  @media (max-width: 104.67em) {
+    .mobile-only {
+      display: block;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        margin-top: 0;
+        margin-right: 0.25rem;
+
+        :not(.last)::after {
+          content: ' •';
+        }
       }
     }
   }
