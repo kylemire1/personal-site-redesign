@@ -1,5 +1,4 @@
 import elykSrc from '../../assets/images/elyk-showcase.jpg';
-import booksSrc from '../../assets/images/book-review-showcase.jpg';
 import apexSrc from '../../assets/images/apex-legends-showcase.jpg';
 import dashboardSrc from '../../assets/images/dashboard-showcase.jpg';
 import moviesPlusSrc from '../../assets/images/movies-plus-showcase.jpg';
