@@ -9,7 +9,7 @@ import LayoutContext from '../../contexts/LayoutContext';
 import vars from '../../styles/vars';
 import resumeData from './resumeData';
 import Pdf from '../icons/Pdf';
-import resumeSrc from '../../assets/docs/resume.pdf';
+import resumeSrc from '../../assets/docs/resume-updated-20210527.pdf';
 
 const Resume = () => {
   const [{ resumeItemStateMap }] = useContext(LayoutContext);

@@ -41,14 +41,14 @@ const ResumeNotesListWrapper = styled.div`
     max-height: 0rem;
   }
   &.notes-list-enter-active {
-    max-height: 25rem;
+    max-height: 35rem;
     transition: max-height 750ms ${vars.ease};
   }
   &.notes-list-enter-done {
-    max-height: 25rem;
+    max-height: 35rem;
   }
   &.notes-list-exit {
-    max-height: 25rem;
+    max-height: 35rem;
   }
   &.notes-list-exit-active {
     max-height: 0rem;
