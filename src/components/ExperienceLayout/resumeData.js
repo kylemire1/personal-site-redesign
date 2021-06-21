@@ -7,7 +7,7 @@ const resumeData = [
     notes: [
       'Designing and building websites and applications with React, NextJS, and GatsbyJS.',
       'Expert consultancy with front-end web development teams, teaching them React and GatsbyJS.',
-      "Leveraging headless CMS's to deliver modern single-pageapplications with client-editable content.",
+      "Leveraging headless CMS's to deliver modern single-page applications with client-editable content.",
       'Over a dozen hours of instructional video content recorded and counting.',
     ],
   },

@@ -30,11 +30,6 @@ const HomeWrapper = styled(Wrapper)`
   grid-template-rows: 1.4fr 1.6fr 1fr;
   grid-template-columns: 1fr 0.75fr;
 
-  @media (min-height: ${vars.breakpointExtraSmall}) {
-    max-height: 85.5em;
-    min-height: 100vh;
-  }
-
   @media (min-width: ${vars.breakpointMedium}) {
     height: 100vh;
     grid-template-rows: 45rem 1.6fr 1fr;
@@ -44,6 +39,11 @@ const HomeWrapper = styled(Wrapper)`
   @media (min-width: ${vars.breakpointExtraLarge}) {
     grid-template-columns: 1fr 0.2fr 0.2fr 0.2fr 1fr;
     grid-template-rows: 1fr 12rem 0.75fr;
+  }
+
+  @media (min-width: ${vars.breakpointLarge}) and (max-height: 850px) {
+    max-height: 60em;
+    height: 100%;
   }
 `;
 

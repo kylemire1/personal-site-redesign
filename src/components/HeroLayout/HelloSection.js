@@ -32,20 +32,6 @@ const HelloSection = () => {
         visible: { transform: 'scaleY(1)', opacity: 1 },
       }}
     >
-      <MobileMe
-        {...basicAnimateIn}
-        transition={{
-          ...basicAnimateIn.transition,
-          delay: 0.75,
-        }}
-      >
-        <StaticImage
-          src="../../assets/images/me-large.jpg"
-          alt="Me smiling wearing a shirt with a floral pattern"
-          placeholder="#FFFFFF"
-          quality={100}
-        />
-      </MobileMe>
       <HelloContainer
         {...basicAnimateIn}
         transition={{
