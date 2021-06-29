@@ -2,17 +2,13 @@ import React, { useLayoutEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import useDimensions from 'react-use-dimensions';
-import { motion, useReducedMotion } from 'framer-motion';
 
 import { Container, Heading } from '../styled/global';
 import LayoutContext from '../../contexts/LayoutContext';
 
 import vars from '../../styles/vars';
-import { basicAnimateIn } from '../../consts';
-import { StaticImage } from 'gatsby-plugin-image';
 
 const HelloSection = () => {
-  const reduceMotion = useReducedMotion();
   const [ref, { height }] = useDimensions();
   const [, dispatch] = useContext(LayoutContext);
 
@@ -21,30 +17,8 @@ const HelloSection = () => {
   }, [height, dispatch]);
 
   return (
-    <HelloWrapper
-      ref={ref}
-      {...basicAnimateIn}
-      variants={{
-        hidden: {
-          transform: reduceMotion ? 'scaleY(1)' : 'scaleY(0)',
-          opacity: reduceMotion ? 1 : 0,
-        },
-        visible: { transform: 'scaleY(1)', opacity: 1 },
-      }}
-    >
-      <HelloContainer
-        {...basicAnimateIn}
-        transition={{
-          ...basicAnimateIn.transition,
-          delay: reduceMotion ? 0.15 : 0.45,
-        }}
-        variants={{
-          hidden: {
-            opacity: reduceMotion ? 1 : 0,
-          },
-          visible: { opacity: 1 },
-        }}
-      >
+    <HelloWrapper ref={ref}>
+      <HelloContainer>
         <HelloHeading as="h1">Hello there!</HelloHeading>
         <IntroText>
           My name is Kyle Lemire. I’m a <span>web developer & designer</span>{' '}
@@ -55,7 +29,7 @@ const HelloSection = () => {
   );
 };
 
-const HelloWrapper = styled(motion.div)`
+const HelloWrapper = styled.div`
   display: flex;
   align-items: center;
   grid-column: 1 / -1;
@@ -65,10 +39,11 @@ const HelloWrapper = styled(motion.div)`
   background-color: ${vars.colorWhite};
   box-shadow: 0 0.25rem 5.625rem ${rgba(vars.colorPrimary, 0.4)};
   z-index: 2;
-  transform-origin: top;
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   overflow: hidden;
+  transform: translateY(-100%);
+  animation: slideIn 750ms ${vars.ease} forwards;
 
   ::before {
     content: '';
@@ -95,9 +70,12 @@ const HelloWrapper = styled(motion.div)`
   }
 `;
 
-const HelloContainer = styled(motion(Container))`
+const HelloContainer = styled(Container)`
   position: relative;
   margin-bottom: -4rem;
+  animation: fadeIn 750ms ${vars.ease} forwards;
+  animation-delay: 450ms;
+  opacity: 0;
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     margin-bottom: 0;
@@ -127,25 +105,6 @@ const IntroText = styled.p`
 
   @media (min-width: ${vars.breakpointMedium}) {
     font-size: ${vars.fontSizeTextLarge};
-  }
-`;
-
-const MobileMe = styled(motion.div)`
-  display: none;
-  @media (min-width: ${vars.breakpointExtraSmall}) {
-    display: block;
-  }
-
-  @media (min-width: ${vars.breakpointMedium}) {
-    display: none;
-  }
-
-  .gatsby-image-wrapper {
-    position: absolute;
-    top: 0;
-    left: 8rem;
-    width: 42rem;
-    z-index: -1;
   }
 `;
 

@@ -56,6 +56,24 @@ const GlobalStyles = createGlobalStyle`
     z-index: -9999;
     pointer-events: none;
   }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export default GlobalStyles;

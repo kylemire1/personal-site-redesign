@@ -1,36 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
-import { motion, useReducedMotion } from 'framer-motion';
 
 import vars from '../../styles/vars';
-import { basicAnimateIn } from '../../consts';
 
 const Me = () => {
-  const reduceMotion = useReducedMotion();
   return (
-    <StyledMe
-      {...basicAnimateIn}
-      transition={{
-        ...basicAnimateIn.transition,
-        delay: 0.25,
-        duration: 1,
-      }}
-      variants={{
-        hidden: {
-          transform: reduceMotion ? 'scaleY(1)' : 'scaleY(0)',
-          opacity: reduceMotion ? 1 : 0,
-        },
-        visible: { transform: 'scaleY(1)', opacity: 1 },
-      }}
-    >
-      <ImageWrapper
-        {...basicAnimateIn}
-        transition={{
-          ...basicAnimateIn.transition,
-          delay: reduceMotion ? 0 : 1,
-        }}
-      >
+    <StyledMe>
+      <ImageWrapper>
         <StaticImage
           src="../../assets/images/profile-pic-color.jpg"
           alt="Me smiling wearing a shirt with a floral pattern"
@@ -42,7 +19,7 @@ const Me = () => {
   );
 };
 
-const StyledMe = styled(motion.div)`
+const StyledMe = styled.div`
   display: none;
 
   @media (min-width: ${vars.breakpointMedium}) {
@@ -55,7 +32,9 @@ const StyledMe = styled(motion.div)`
     background-color: ${vars.colorWhite};
     margin-left: -2rem;
     padding-left: 2rem;
-    transform-origin: top;
+    transform: translateY(-100%);
+    animation: slideIn 750ms ${vars.ease} forwards;
+    animation-delay: 350ms;
 
     ::after {
       content: '';
@@ -76,12 +55,15 @@ const StyledMe = styled(motion.div)`
   }
 `;
 
-const ImageWrapper = styled(motion.div)`
+const ImageWrapper = styled.div`
   position: relative;
   display: flex;
   width: 100%;
   height: 100%;
   max-width: 40rem;
+  opacity: 0;
+  animation: fadeIn 750ms ${vars.ease} forwards;
+  animation-delay: 1s;
 
   img {
     width: auto;
