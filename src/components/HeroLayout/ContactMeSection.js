@@ -1,47 +1,17 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { motion, useReducedMotion } from 'framer-motion';
 
 import MessageButton from '../MessageButton';
 import LayoutContext from '../../contexts/LayoutContext';
 import { Container, Heading } from '../styled/global';
 
 import vars from '../../styles/vars';
-import { basicAnimateIn } from '../../consts';
 
 const ContactMeSection = () => {
-  const reduceMotion = useReducedMotion();
   const [{ scrollDistance }] = useContext(LayoutContext);
   return (
-    <ContactMeNow
-      $scrolled={scrollDistance > 0}
-      {...basicAnimateIn}
-      transition={{
-        ...basicAnimateIn.transition,
-        delay: 0.25,
-        duration: 1,
-      }}
-      variants={{
-        hidden: {
-          transform: reduceMotion ? 'translateY(0%)' : 'translateY(50%)',
-          opacity: reduceMotion ? 1 : 0,
-        },
-        visible: { transform: 'translateY(0%)', opacity: 1 },
-      }}
-    >
-      <ContactMeContainer
-        {...basicAnimateIn}
-        transition={{
-          ...basicAnimateIn.transition,
-          delay: 2,
-        }}
-        variants={{
-          hidden: {
-            opacity: reduceMotion ? 1 : 0,
-          },
-          visible: { opacity: 1 },
-        }}
-      >
+    <ContactMeNow $scrolled={scrollDistance > 0}>
+      <ContactMeContainer>
         <ContactHeading as="h2">Don't need convincing?</ContactHeading>
         <ContactText>
           Or just saying hi?{' '}
@@ -57,7 +27,7 @@ const ContactMeSection = () => {
   );
 };
 
-const ContactMeNow = styled(motion.div)`
+const ContactMeNow = styled.div`
   position: relative;
   grid-column: 2 / -1;
   display: flex;
@@ -67,8 +37,19 @@ const ContactMeNow = styled(motion.div)`
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   transition: all 250ms ${vars.ease};
   transition-property: border-bottom-left-radius, border-bottom-right-radius;
-  transform-origin: bottom;
+  transform: translateY(100%);
   z-index: 10;
+  animation: slideUp 750ms ${vars.ease} forwards;
+  animation-delay: 250ms;
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
 
   @media (min-width: ${vars.breakpointMedium}) {
     border-bottom-left-radius: ${({ $scrolled }) =>
@@ -94,27 +75,18 @@ const ContactMeNow = styled(motion.div)`
       left: -40%;
       top: -${vars.pixel};
       z-index: 99;
-      transform: scaleX(0);
+      transform: scaleX(0%);
       transform-origin: right;
       will-change: transform;
-      animation-name: slideIn;
-      animation-duration: 1s;
-      animation-timing-function: ${vars.ease};
-      animation-fill-mode: forwards;
+      animation: lineIn 1s ${vars.ease} forwards;
       animation-delay: 1.25s;
 
-      @media (prefers-reduced-motion) {
-        animation-name: none;
-        opacity: 1;
-        left: -40%;
-      }
-
-      @keyframes slideIn {
-        from {
-          transform: scaleX(0);
+      @keyframes lineIn {
+        0% {
+          transform: scaleX(0%);
         }
-        to {
-          transform: scaleX(1);
+        100% {
+          transform: scaleX(100%);
         }
       }
     }
@@ -125,11 +97,14 @@ const ContactMeNow = styled(motion.div)`
   }
 `;
 
-const ContactMeContainer = styled(motion(Container))`
+const ContactMeContainer = styled(Container)`
   padding: 0 1.5rem;
   width: auto;
   height: 100%;
   justify-content: center;
+  opacity: 0;
+  animation: fadeIn 750ms ${vars.ease} forwards;
+  animation-delay: 2s;
 
   @media (min-width: ${vars.breakpointMedium}) {
     margin-right: 0;

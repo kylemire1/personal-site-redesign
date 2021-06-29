@@ -10,7 +10,7 @@ module.exports = {
     siteUrl: 'https://www.klemire.com',
   },
   flags: {
-    DEV_SSR: true,
+    DEV_SSR: false,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
