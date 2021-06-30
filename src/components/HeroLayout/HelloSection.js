@@ -30,6 +30,7 @@ const HelloSection = () => {
 };
 
 const HelloWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   grid-column: 1 / -1;
@@ -42,8 +43,7 @@ const HelloWrapper = styled.div`
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   overflow: hidden;
-  transform: translateY(-100%);
-  animation: slideIn 750ms ${vars.ease} forwards;
+  opacity: 1;
 
   ::before {
     content: '';
@@ -57,6 +57,8 @@ const HelloWrapper = styled.div`
   }
 
   @media (min-width: ${vars.breakpointMedium}) {
+    opacity: 0;
+    animation: fadeIn 500ms ${vars.ease} forwards;
     grid-column: 1 / 3;
     background-image: none;
     transition: all 500ms ${vars.ease};
@@ -73,9 +75,13 @@ const HelloWrapper = styled.div`
 const HelloContainer = styled(Container)`
   position: relative;
   margin-bottom: -4rem;
-  animation: fadeIn 750ms ${vars.ease} forwards;
-  animation-delay: 450ms;
-  opacity: 0;
+  opacity: 1;
+
+  @media (min-width: ${vars.breakpointMedium}) {
+    animation: fadeIn 750ms ${vars.ease} forwards;
+    animation-delay: 450ms;
+    opacity: 0;
+  }
 
   @media (min-width: ${vars.breakpointExtraLarge}) {
     margin-bottom: 0;

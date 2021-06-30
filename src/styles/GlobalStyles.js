@@ -74,6 +74,15 @@ const GlobalStyles = createGlobalStyle`
       opacity: 1;
     }
   }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
 `;
 
 export default GlobalStyles;
