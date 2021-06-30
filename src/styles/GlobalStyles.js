@@ -59,10 +59,10 @@ const GlobalStyles = createGlobalStyle`
 
   @keyframes slideIn {
     0% {
-      transform: translateY(-500px);
+      transform: translateY(-100%);
     }
     100% {
-      transform: translateY(0px);
+      transform: translateY(0%);
     }
   }
 

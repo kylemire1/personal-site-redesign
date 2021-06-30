@@ -30,6 +30,7 @@ const HelloSection = () => {
 };
 
 const HelloWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   grid-column: 1 / -1;
@@ -42,8 +43,7 @@ const HelloWrapper = styled.div`
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   overflow: hidden;
-  transform: translateY(-500px);
-  animation: slideIn 750ms ${vars.ease} forwards;
+  animation: fadeIn 500ms ${vars.ease} forwards;
 
   ::before {
     content: '';
