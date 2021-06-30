@@ -1,48 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, useReducedMotion } from 'framer-motion';
 
 import { Container } from '../styled/global';
 
 import vars from '../../styles/vars';
-import { basicAnimateIn } from '../../consts';
 
 const MyOverviewSection = () => {
-  const reduceMotion = useReducedMotion();
   return (
     <MyOverview>
       <OverviewContainer>
-        <OverviewText
-          {...basicAnimateIn}
-          transition={{
-            ...basicAnimateIn.transition,
-            delay: 0.7,
-          }}
-          variants={{
-            hidden: {
-              opacity: reduceMotion ? 1 : 0,
-            },
-            visible: { opacity: 1 },
-          }}
-        >
+        <OverviewText>
           I’ve been designing and building websites professionally for over 5
           years. In that time I’ve served a wide variety of clients ranging from
           individuals to non-profit organizations and city governments.
         </OverviewText>
 
-        <InterestsText
-          {...basicAnimateIn}
-          transition={{
-            ...basicAnimateIn.transition,
-            delay: 0.9,
-          }}
-          variants={{
-            hidden: {
-              opacity: reduceMotion ? 1 : 0,
-            },
-            visible: { opacity: 1 },
-          }}
-        >
+        <InterestsText>
           My interests lie in creating fast, beautiful websites and helping
           other developers do the same through consulting.
         </InterestsText>
@@ -81,14 +54,18 @@ const MyOverview = styled.div`
   }
 `;
 
-const OverviewText = styled(motion.p)`
+const OverviewText = styled.p`
   color: ${vars.colorWhite};
+  opacity: 1;
 
   &:first-child {
     margin-top: -3rem;
   }
 
   @media (min-width: ${vars.breakpointMedium}) {
+    opacity: 0;
+    animation: fadeIn 750ms ${vars.ease} forwards;
+    animation-delay: 700ms;
     font-size: ${vars.fontSizeTextLarge};
   }
   @media (min-width: ${vars.breakpointExtraLarge}) {
@@ -103,6 +80,12 @@ const OverviewText = styled(motion.p)`
 `;
 
 const InterestsText = styled(OverviewText)`
+  opacity: 1;
+  @media (min-width: ${vars.breakpointMedium}) {
+    opacity: 0;
+    animation: fadeIn 750ms ${vars.ease} forwards;
+    animation-delay: 900ms;
+  }
   @media (min-width: ${vars.breakpointExtraLarge}) {
     font-size: ${vars.fontSizeTextLarge};
     font-weight: ${vars.fontWeightBold};

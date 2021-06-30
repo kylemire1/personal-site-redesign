@@ -37,21 +37,14 @@ const ContactMeNow = styled.div`
   border-bottom-left-radius: ${vars.borderRadiusLarge};
   transition: all 250ms ${vars.ease};
   transition-property: border-bottom-left-radius, border-bottom-right-radius;
-  transform: translateY(100%);
+  transform: translateY(0%);
   z-index: 10;
-  animation: slideUp 750ms ${vars.ease} forwards;
-  animation-delay: 250ms;
-
-  @keyframes slideUp {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0%);
-    }
-  }
 
   @media (min-width: ${vars.breakpointMedium}) {
+    transform: translateY(100%);
+    animation: slideUp 750ms ${vars.ease} forwards;
+    animation-delay: 250ms;
+
     border-bottom-left-radius: ${({ $scrolled }) =>
       $scrolled ? vars.borderRadiusLarge : 0};
   }
@@ -102,11 +95,11 @@ const ContactMeContainer = styled(Container)`
   width: auto;
   height: 100%;
   justify-content: center;
-  opacity: 0;
-  animation: fadeIn 750ms ${vars.ease} forwards;
-  animation-delay: 2s;
 
   @media (min-width: ${vars.breakpointMedium}) {
+    opacity: 0;
+    animation: fadeIn 750ms ${vars.ease} forwards;
+    animation-delay: 2s;
     margin-right: 0;
     text-align: right;
   }
