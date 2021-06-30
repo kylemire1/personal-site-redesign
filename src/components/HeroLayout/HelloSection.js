@@ -42,7 +42,7 @@ const HelloWrapper = styled.div`
   transition: all 500ms ${vars.ease};
   transition-property: background-position, background-size;
   overflow: hidden;
-  transform: translateY(-100%);
+  transform: translateY(-500px);
   animation: slideIn 750ms ${vars.ease} forwards;
 
   ::before {

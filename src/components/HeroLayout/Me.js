@@ -32,7 +32,7 @@ const StyledMe = styled.div`
     background-color: ${vars.colorWhite};
     margin-left: -2rem;
     padding-left: 2rem;
-    transform: translateY(-100%);
+    transform: translateY(-500px);
     animation: slideIn 750ms ${vars.ease} forwards;
     animation-delay: 350ms;
 
