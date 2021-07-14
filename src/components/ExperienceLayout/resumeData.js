@@ -3,6 +3,7 @@ const resumeData = [
     id: 1,
     jobTitle: 'Independent Web Development and Consulting',
     startYear: 2020,
+    startMonth: 'Dec',
     current: true,
     notes: [
       'Designing and building websites and applications with React, NextJS, and GatsbyJS.',
@@ -16,6 +17,7 @@ const resumeData = [
     jobTitle: 'Web Developer',
     employer: 'Alpine Home Air',
     startMonth: 'Feb',
+    startYear: '2020',
     endMonth: 'Nov',
     endYear: '2020',
     current: false,
