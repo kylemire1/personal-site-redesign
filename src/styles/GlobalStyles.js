@@ -33,9 +33,12 @@ const GlobalStyles = createGlobalStyle`
   ul, ol {
     padding-left: 1.25rem;
     margin-bottom: 1.5rem;
+    li {
+      line-height: 1.5;
+    }
     li + li {
       margin-top: .5em;
-      line-height: 1.5;
+      
     }
   }
 
