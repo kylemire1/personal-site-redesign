@@ -7,9 +7,9 @@ const resumeData = [
     current: true,
     notes: [
       'Designing and building websites and applications with React, NextJS, and GatsbyJS.',
-      'Expert consultancy with front-end web development teams, teaching them React and GatsbyJS.',
-      "Leveraging headless CMS's to deliver modern single-page applications with client-editable content.",
-      'Over a dozen hours of instructional video content recorded and counting.',
+      'Built a Jamstack site that consumes data from decoupled WordPress with GraphQL and uses lambda functions to enable form submissions.',
+      'Recorded over a dozen hours of instructional React video content for a client, supplemented with face-to-face training sessions.',
+      'Built a real-time application with React and Node.js that allows live-stream viewers to interact with a character on the screen using chat commands.',
     ],
   },
   {
